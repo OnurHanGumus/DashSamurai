@@ -2,49 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using Events.External;
 using Enums;
 using Signals;
 
 public class PoolManager : MonoBehaviour
 {
+    #region Self Variables
+    #region Injections
+    [Inject] private DiContainer Container;
     [Inject] private PoolSignals PoolSignals { get; set; }
     [Inject] private CoreGameSignals CoreGameSignals { get; set; }
 
-    [Inject] private BulletManager.Factory bulletFactory;
-    [Inject] private EnemyManager.Factory enemyFactory;
-    [Inject] private ExplosionManager.Factory explosionFactory;
-    #region Serialized Variables
-
-    [SerializeField] private Dictionary<PoolEnums, List<GameObject>> poolDictionary;
-    [SerializeField] private List<IPool> factoryList;
-
-
-    [SerializeField] private int amountBullet = 20;
-    [SerializeField] private int amountEnemy = 20;
-    [SerializeField] private int amountExplosion = 20;
-
-
-
     #endregion
-    #region Event Subscriptions
+    #region Serialized Variables
+    [SerializeField] private List<PooledObject> pooledObjects;
+
+    [System.Serializable]
+    public struct PooledObject
+    {
+        public PoolEnums PoolEnums;
+        public GameObject Prefab;
+        public int Amounts;
+    }
+    #endregion
+
+    #region Private Variables
+    private Dictionary<PoolEnums, List<GameObject>> _poolDictionary;
+    #endregion
+    #endregion
+
     private void Awake()
     {
         Init();
     }
+
     private void Init()
     {
-        poolDictionary = new Dictionary<PoolEnums, List<GameObject>>();
-        factoryList = new List<IPool>();
+        #region Zenject Factory Pool
+        _poolDictionary = new Dictionary<PoolEnums, List<GameObject>>();
 
-        factoryList.Add(bulletFactory);
-        factoryList.Add(enemyFactory);
-        factoryList.Add(explosionFactory);
+        foreach (var i in pooledObjects)
+        {
+            InitializePool(i);
+        }
 
-        InitializePool(PoolEnums.Bullet, amountBullet);
-        InitializePool(PoolEnums.Enemy, amountEnemy);
-        InitializePool(PoolEnums.Explosion, amountExplosion);
+        #endregion
     }
+    #region Event Subscriptions
+
     private void OnEnable()
     {
         SubscribeEvents();
@@ -69,31 +74,31 @@ public class PoolManager : MonoBehaviour
 
     #endregion
 
-    private void InitializePool(PoolEnums type, int size)
+    private void InitializePool(PooledObject pooledObject) //Enumlar?n s?ralamas? ?nemlidir.
     {
         List<GameObject> tempList = new List<GameObject>();
         GameObject tmp;
 
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < pooledObject.Amounts; i++)
         {
-            tmp = factoryList[(int) type].OnCreate();
+            tmp = Container.InstantiatePrefab(pooledObject.Prefab);
+
             tmp.SetActive(false);
             tmp.transform.parent = transform;
             tempList.Add(tmp);
         }
-        poolDictionary.Add(type, tempList);
+        _poolDictionary.Add(pooledObject.PoolEnums, tempList);
     }
 
     public GameObject OnGetObject(PoolEnums type, Vector3 position)
     {
-        for (int i = 0; i < poolDictionary[type].Count; i++)
+        for (int i = 0; i < _poolDictionary[type].Count; i++)
         {
-            if (!poolDictionary[type][i].activeInHierarchy)
+            if (!_poolDictionary[type][i].activeInHierarchy)
             {
-                poolDictionary[type][i].transform.position = position;
-                poolDictionary[type][i].gameObject.SetActive(true);
+                _poolDictionary[type][i].transform.position = position;
 
-                return poolDictionary[type][i];
+                return _poolDictionary[type][i];
             }
         }
         return ExplandPool(type, position);
@@ -101,10 +106,19 @@ public class PoolManager : MonoBehaviour
 
     private GameObject ExplandPool(PoolEnums type, Vector3 position)
     {
-        GameObject expandObject = factoryList[(int)type].OnCreate();
+        GameObject expandObject = null;
+        foreach (var i in pooledObjects)
+        {
+            if (i.PoolEnums.Equals(type))
+            {
+                expandObject = Container.InstantiatePrefab(i.Prefab);
+            }
+        }
+
+        expandObject.SetActive(false);
         expandObject.transform.position = position;
         expandObject.transform.parent = transform;
-        poolDictionary[type].Add(expandObject);
+        _poolDictionary[type].Add(expandObject);
 
         return expandObject;
     }
@@ -112,14 +126,15 @@ public class PoolManager : MonoBehaviour
     private void OnReset()
     {
         //reset
-        ResetPool(PoolEnums.Bullet);
-        ResetPool(PoolEnums.Enemy);
-        ResetPool(PoolEnums.Explosion);
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            ResetPool((PoolEnums)i);
+        }
     }
 
     private void ResetPool(PoolEnums type)
     {
-        foreach (var i in poolDictionary[type])
+        foreach (var i in _poolDictionary[type])
         {
             i.SetActive(false);
         }

@@ -1,4 +1,3 @@
-using Events.External;
 using Events.InternalEvents;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,6 +23,7 @@ namespace Controllers {
         {
             _enemyHits = 2;
         }
+
         void IAttackable.OnWeaponTriggerEnter()
         {
             _enemyHits--;

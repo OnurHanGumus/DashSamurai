@@ -12,7 +12,7 @@ namespace Signals
         public UnityAction<Vector3> onClicking = delegate { };
         public UnityAction onInputReleased = delegate { };
         public UnityAction onClicked = delegate { };
-        public UnityAction<Vector2> onInputDragged = delegate { };
+        public UnityAction<Vector3> onInputDragged = delegate { };
 
     }
 }

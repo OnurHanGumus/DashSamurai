@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using Events.External;
 using Enums;
 using Signals;
 
@@ -43,12 +42,5 @@ public class ExplosionManager : MonoBehaviour
     private void OnRestartLevel()
     {
         gameObject.SetActive(false);
-    }
-    public class Factory : PlaceholderFactory<ExplosionManager>, IPool 
-    {
-        GameObject IPool.OnCreate()
-        {
-            return base.Create().gameObject;
-        }
     }
 }

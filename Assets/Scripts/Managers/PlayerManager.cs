@@ -15,8 +15,9 @@ namespace Managers
     {
         #region Self Variables
         #region Injected Variables
-        [Inject] private PoolSignals PoolSignals { get; set; }
+        [Inject] private InputSignals InputSignals { get; set; }
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
+        [Inject] private PlayerSignals PlayerSignals { get; set; }
         #endregion
 
         #region Public Variables
@@ -25,7 +26,7 @@ namespace Managers
 
         #region Serialized Variables
         [SerializeField] private PlayerMovementController movementController;
-        [SerializeField] private PlayerShootController shootController;
+        [SerializeField] private PlayerPhysicsController shootController;
         #endregion
 
         #region Private Variables
@@ -56,14 +57,21 @@ namespace Managers
         {
             CoreGameSignals.onPlay += movementController.OnPlay;
             CoreGameSignals.onRestart += movementController.OnRestartLevel;
+
+            InputSignals.onInputDragged += movementController.OnInputDragged;
+
+            PlayerSignals.onPlayerStopped += movementController.OnPlayerStopped;
         }
 
         private void UnsubscribeEvents()
         {
             CoreGameSignals.onPlay -= movementController.OnPlay;
             CoreGameSignals.onRestart -= movementController.OnRestartLevel;
-        }
 
+            InputSignals.onInputDragged -= movementController.OnInputDragged;
+
+            PlayerSignals.onPlayerStopped -= movementController.OnPlayerStopped;
+        }
 
         private void OnDisable()
         {

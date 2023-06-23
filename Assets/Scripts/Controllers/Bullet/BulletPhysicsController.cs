@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Components.Enemies;
 using Data.MetaData;
-using Events.External;
 using UnityEngine;
 using Zenject;
 using Enums;
@@ -31,7 +30,6 @@ public class BulletPhysicsController : MonoBehaviour, IPoolType
     {
         if (other.TryGetComponent(out IAttackable attackable))
         {
-            PlayerSignals.onEnemyShooted?.Invoke(attackable);
             DespawnSignal();
             attackable.OnWeaponTriggerEnter();
             GameObject particle = PoolSignals.onGetObject(PoolEnums.Explosion, transform.position);

@@ -1,4 +1,3 @@
-using Events.External;
 using Zenject;
 using UnityEngine;
 using Data.MetaData;
@@ -13,6 +12,7 @@ namespace Installers.Scenes
         [SerializeField] private GameObject explosionPrefab;
         private BulletSettings _bulletSettings;
         private EnemySpawnSettings _enemySpawnSettings;
+
         public override void InstallBindings()
         {
             BindComponents();
@@ -29,13 +29,7 @@ namespace Installers.Scenes
             Container.Bind<SaveSignals>().AsSingle();
             Container.Bind<PoolSignals>().AsSingle();
             Container.Bind<AudioSignals>().AsSingle();
-            Container.Bind<PlayerSignals>().AsSingle();
-
-            Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
-
-            Container.BindFactory<BulletManager, BulletManager.Factory>().FromComponentInNewPrefab(bulletPrefab);
-            Container.BindFactory<EnemyManager, EnemyManager.Factory>().FromComponentInNewPrefab(enemyPrefab);
-            Container.BindFactory<ExplosionManager, ExplosionManager.Factory>().FromComponentInNewPrefab(explosionPrefab);            
+            Container.Bind<PlayerSignals>().AsSingle();           
         }
 
         private void BindSettings()
@@ -46,8 +40,5 @@ namespace Installers.Scenes
             _enemySpawnSettings = Resources.Load<EnemySpawnSettings>("Data/MetaData/EnemySpawnSettings");
             Container.BindInstance(_enemySpawnSettings).AsSingle();
         }
-
-
-
     }
 }

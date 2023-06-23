@@ -17,4 +17,4 @@ MonoBehaviour:
   PlayerShootManagerSettings:
     ShootOffset: {x: 0, y: 0, z: 0}
   PlayerMovementSettings:
-    Speed: 1
+    Speed: 5

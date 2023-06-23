@@ -4,7 +4,6 @@ using Controllers;
 using Data.UnityObject;
 using Data.ValueObject;
 using Enums;
-using Events.External;
 using Signals;
 using UnityEngine;
 using Zenject;
@@ -51,13 +50,14 @@ namespace Managers
             _levelID = GetActiveLevel();
             _data = GetData();
         }
+
         private LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
+
         private int GetActiveLevel()
         {
             if (!ES3.FileExists()) return 0;
             return ES3.KeyExists("Level") ? ES3.Load<int>("Level") : 0;
         }
-
 
         #region Event Subscription
 
@@ -108,7 +108,6 @@ namespace Managers
             CoreGameSignals.onClearActiveLevel?.Invoke();
             CoreGameSignals.onRestart?.Invoke();
             SaveSignals.onSave(_levelID, SaveLoadStates.Level, SaveFiles.SaveFile);
-
         }
 
         private void OnRestartLevel()
@@ -122,7 +121,6 @@ namespace Managers
         {
             return _levelID;
         }
-
 
         private void OnInitializeLevel()
         {

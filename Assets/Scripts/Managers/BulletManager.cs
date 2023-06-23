@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using Events.External;
 using Enums;
 using Signals;
 
@@ -16,6 +15,7 @@ public class BulletManager : MonoBehaviour
         PoolSignals = poolSignals;
         CoreGameSignals = coreGameSignals;
     }
+
     #region Event Subscriptions
 
     private void OnEnable()
@@ -43,6 +43,7 @@ public class BulletManager : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
     public class Factory : PlaceholderFactory<BulletManager>, IPool
     {
         GameObject IPool.OnCreate()

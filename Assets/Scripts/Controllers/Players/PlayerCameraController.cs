@@ -1,6 +1,5 @@
 ﻿using System;
 using Data.MetaData;
-using Events.External;
 using UnityEngine;
 using Zenject;
 
@@ -32,7 +31,6 @@ namespace Controllers
 
         private void RegisterEvents()
         {
-            PlayerSignals.onPlayerMove += OnPlayerMove;
             //MainSceneEvents.GameLoaded += OnGameLoaded;
         }
 
@@ -47,7 +45,6 @@ namespace Controllers
 
         private void UnRegisterEvents()
         {
-            PlayerSignals.onPlayerMove -= OnPlayerMove;
         }
 
         [Serializable]

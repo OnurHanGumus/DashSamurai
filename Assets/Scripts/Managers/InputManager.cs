@@ -25,7 +25,7 @@ namespace Managers
 
         #region Serialized Variables
 
-        //[SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
+        [SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
 
 
         #endregion
@@ -100,18 +100,21 @@ namespace Managers
                 }
                 InputSignals.onClicked?.Invoke(/*_clickedTransform*/);
             }
-            //if (Input.GetMouseButton(0))
-            //{
-            //    if (!_clickedTransform.gameObject.CompareTag("Car"))
-            //    {
-            //        return;
-            //    }
-            //    InputSignals.onInputDragged?.Invoke(new Vector2()
-            //    {
-            //        x = joystick.Horizontal,
-            //        y = joystick.Vertical,
-            //    });
-            //}
+            
+            if (Input.GetMouseButton(0))
+            {
+                if (IsPointerOverUIElement())
+                {
+                    return;
+                }
+                InputSignals.onInputDragged?.Invoke(new Vector3()
+                {
+                    x = joystick.Horizontal,
+                    z = joystick.Vertical
+                });
+            }
+
+            
 
             if (Input.GetMouseButtonUp(0))
             {
@@ -125,7 +128,7 @@ namespace Managers
             eventData.position = Input.mousePosition;
             var results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, results);
-            return results.Count > 0;
+            return results.Count > 1;
             //return EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0);
         }
         private void OnEnableInput()

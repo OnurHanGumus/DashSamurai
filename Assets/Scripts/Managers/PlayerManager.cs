@@ -27,6 +27,7 @@ namespace Managers
         #region Serialized Variables
         [SerializeField] private PlayerMovementController movementController;
         [SerializeField] private PlayerPhysicsController shootController;
+        [SerializeField] private PlayerAnimationController animationController;
         #endregion
 
         #region Private Variables
@@ -61,6 +62,7 @@ namespace Managers
             InputSignals.onInputDragged += movementController.OnInputDragged;
 
             PlayerSignals.onPlayerStopped += movementController.OnPlayerStopped;
+            PlayerSignals.onChangeAnimation += animationController.OnChangeAnimation;
         }
 
         private void UnsubscribeEvents()
@@ -71,6 +73,8 @@ namespace Managers
             InputSignals.onInputDragged -= movementController.OnInputDragged;
 
             PlayerSignals.onPlayerStopped -= movementController.OnPlayerStopped;
+            PlayerSignals.onChangeAnimation -= animationController.OnChangeAnimation;
+
         }
 
         private void OnDisable()

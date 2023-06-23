@@ -11,6 +11,7 @@ namespace Controllers
     public class PlayerMovementController : MonoBehaviour
     {
         [Inject] private PlayerSettings PlayerSettings { get; set; }
+        [Inject] private PlayerSignals PlayerSignals { get; set; }
 
         private RoutineHelper _onPosUpdate;
         private Settings _mySettings;
@@ -88,7 +89,7 @@ namespace Controllers
             }
             transform.LookAt(transform.localPosition + _input);
 
-            Debug.Log(_input);
+            PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
         }
 
         public void OnPlayerStopped()

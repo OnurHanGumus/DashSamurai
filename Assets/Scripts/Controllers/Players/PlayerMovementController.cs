@@ -19,12 +19,14 @@ namespace Controllers
 
         #region Serialized Variables
         [SerializeField] private bool isPlayerStopped = true;
+        [SerializeField] private PlayerGroundDetector groundDetector;
 
         #endregion
         #region Private Variables
         private Rigidbody _rig;
         private PlayerManager _manager;
         private Vector3 _input = new Vector3();
+        private Vector3 _pastInput = new Vector3();
 
         private bool _isNotStarted = true;
 
@@ -76,7 +78,8 @@ namespace Controllers
                 return;
             }
 
-            isPlayerStopped = false;
+            
+
             _input = input;
 
             if (Mathf.Abs(input.x) >= Mathf.Abs(input.z))
@@ -87,14 +90,24 @@ namespace Controllers
             {
                 _input.x = 0;
             }
+
+            if (_input.Equals(_pastInput))
+            {
+                return;
+            }
+
+            _pastInput = _input;
             transform.LookAt(transform.localPosition + _input);
 
             PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Move);
+            isPlayerStopped = false;
         }
 
         public void OnPlayerStopped()
         {
             isPlayerStopped = true;
+            transform.position = groundDetector.CurrentGorund.transform.position;
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); 
         }
 
         public void OnRestartLevel()

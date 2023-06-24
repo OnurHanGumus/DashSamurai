@@ -15,4 +15,4 @@ MonoBehaviour:
   PlayerCameraControllerSettings:
     CameraOffset: {x: 0, y: 0, z: 0}
   PlayerMovementSettings:
-    Speed: 10
+    Speed: 15

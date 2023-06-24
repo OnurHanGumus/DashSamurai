@@ -6,6 +6,7 @@ namespace Enums
     public enum PlayerAnimationStates
     {
         Idle,
+        Move,
         Attack,
         Die,
     }

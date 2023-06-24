@@ -24,6 +24,7 @@ namespace Controllers
             if (other.CompareTag("Obstacle"))
             {
                 PlayerSignals.onPlayerStopped?.Invoke();
+                PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
             }
         }
     }

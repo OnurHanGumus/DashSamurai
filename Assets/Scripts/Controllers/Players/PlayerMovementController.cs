@@ -89,7 +89,7 @@ namespace Controllers
             }
             transform.LookAt(transform.localPosition + _input);
 
-            PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
+            PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Move);
         }
 
         public void OnPlayerStopped()

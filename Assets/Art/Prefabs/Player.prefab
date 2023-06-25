@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629147223}
   - component: {fileID: 1629147224}
+  - component: {fileID: 1629147225}
   m_Layer: 0
   m_Name: GroundDetector
   m_TagString: Untagged
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.37313715, y: 0.4090263, z: 0.26285335}
   m_Center: {x: 0, y: -0.20054604, z: 0}
+--- !u!114 &1629147225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629147222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f8a3f2cdf4afe4eb3d27c2eae7e915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentGorund: {fileID: 0}
 --- !u!1 &14848039423996837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,8 +2379,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58442664, y: 1.9872868, z: 0.20242716}
-  m_Center: {x: -1.3291586e-15, y: 0.6812533, z: 0.40646866}
+  m_Size: {x: 0.40170324, y: 1.9872868, z: 0.5173229}
+  m_Center: {x: 9.083124e-16, y: 0.6812533, z: 0.5639167}
 --- !u!114 &2136347546784464593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2395,7 +2409,7 @@ GameObject:
   - component: {fileID: 1281692510}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2461,7 +2475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementController: {fileID: 8549495318211459232}
-  shootController: {fileID: 0}
+  physicsController: {fileID: 2136347546784464593}
   animationController: {fileID: 1421526244}
 --- !u!114 &8549495318211459232
 MonoBehaviour:
@@ -2476,6 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerStopped: 1
+  groundDetector: {fileID: 1629147225}
 --- !u!54 &1281692510
 Rigidbody:
   m_ObjectHideFlags: 0

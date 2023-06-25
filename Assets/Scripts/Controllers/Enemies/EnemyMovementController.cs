@@ -25,7 +25,7 @@ namespace Components.Players
         #region Private Variables
         private Rigidbody _rig;
         private Transform _playerTransform;
-
+        private NavMeshAgent _navmeshAgent;
 
         #endregion
         #endregion
@@ -42,6 +42,7 @@ namespace Components.Players
         {
             _mySettings = EnemySettings.EnemyMovementSettings;
             _rig = GetComponent<Rigidbody>();
+            _navmeshAgent = GetComponent<NavMeshAgent>();
         }
 
         private void Start()
@@ -51,17 +52,24 @@ namespace Components.Players
 
         private void Update()
         {
-            MoveToDefaultTarget(_playerTransform);
+            //MoveToDefaultTarget(_playerTransform);
+            NavMeshMove(_playerTransform);
         }
 
-        public void MoveToDefaultTarget(Transform lookAtObject)
+        public void MoveToDefaultTarget(Transform target)
         {
-            Vector3 distance = lookAtObject.position - transform.position;
+            Vector3 distance = target.position - transform.position;
             int isReachedToOffset = (distance).magnitude > _mySettings.DistanceToPlayer ? 1 : 0;
             Vector3 direction = (distance).normalized;
 
-            transform.LookAt(lookAtObject, Vector3.up);
+            transform.LookAt(target, Vector3.up);
             _rig.velocity = direction * _mySettings.Speed * isReachedToOffset;
+        }
+
+        private void NavMeshMove(Transform target)
+        {
+            _navmeshAgent.destination = target.position;
+            ;
         }
 
         [Serializable]

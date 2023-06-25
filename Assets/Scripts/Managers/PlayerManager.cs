@@ -63,6 +63,7 @@ namespace Managers
 
             PlayerSignals.onPlayerStopped += movementController.OnPlayerStopped;
             PlayerSignals.onChangeAnimation += animationController.OnChangeAnimation;
+            PlayerSignals.onGetTransform += OnGetTransform;
         }
 
         private void UnsubscribeEvents()
@@ -74,7 +75,7 @@ namespace Managers
 
             PlayerSignals.onPlayerStopped -= movementController.OnPlayerStopped;
             PlayerSignals.onChangeAnimation -= animationController.OnChangeAnimation;
-
+            PlayerSignals.onGetTransform -= OnGetTransform;
         }
 
         private void OnDisable()
@@ -87,6 +88,12 @@ namespace Managers
         {
 
         }
+
+        private Transform OnGetTransform()
+        {
+            return transform;
+        }
+
         private void OnResetLevel()
         {
 

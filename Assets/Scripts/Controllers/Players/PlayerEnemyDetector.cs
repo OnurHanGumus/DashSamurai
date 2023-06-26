@@ -10,7 +10,7 @@ using Signals;
 
 namespace Controllers
 {
-    public class PlayerPhysicsController : MonoBehaviour
+    public class PlayerEnemyDetector : MonoBehaviour
     {
         [Inject] private PlayerSignals PlayerSignals { get; set; }
 
@@ -21,14 +21,7 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-
-            if (other.CompareTag("Obstacle"))
-            {
-                PlayerSignals.onPlayerStopped?.Invoke();
-                PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
-            }
-
-            else if (other.TryGetComponent(out IAttackable attackable))
+            if (other.TryGetComponent(out IAttackable attackable))
             {
                 attackable.OnWeaponTriggerEnter(1);
             }

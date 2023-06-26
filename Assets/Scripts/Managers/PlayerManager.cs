@@ -26,7 +26,7 @@ namespace Managers
 
         #region Serialized Variables
         [SerializeField] private PlayerMovementController movementController;
-        [SerializeField] private PlayerPhysicsController physicsController;
+        [SerializeField] private PlayerObstacleDetector physicsController;
         [SerializeField] private PlayerAnimationController animationController;
         #endregion
 

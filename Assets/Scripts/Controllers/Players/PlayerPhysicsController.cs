@@ -21,10 +21,16 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
+
             if (other.CompareTag("Obstacle"))
             {
                 PlayerSignals.onPlayerStopped?.Invoke();
                 PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
+            }
+
+            else if (other.TryGetComponent(out IAttackable attackable))
+            {
+                attackable.OnWeaponTriggerEnter(1);
             }
         }
     }

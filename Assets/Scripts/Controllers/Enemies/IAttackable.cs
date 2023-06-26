@@ -5,7 +5,7 @@ namespace Components.Enemies
 {
     public interface IAttackable
     {
-        void OnWeaponTriggerEnter();
+        void OnWeaponTriggerEnter(int value);
         EnemyInternalEvents GetInternalEvents();
     }
 }

@@ -2424,6 +2424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745107333265845443}
   - component: {fileID: 873994756359193012}
+  - component: {fileID: 1173876317}
   m_Layer: 0
   m_Name: Physics
   m_TagString: Untagged
@@ -2459,3 +2460,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5001984864687572378}
+--- !u!65 &1173876317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977994633112175926}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4348096, y: 1.69031, z: 0.44777665}
+  m_Center: {x: 0, y: 0.8409231, z: 0}

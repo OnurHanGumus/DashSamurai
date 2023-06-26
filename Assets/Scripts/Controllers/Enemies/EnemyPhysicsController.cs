@@ -24,9 +24,9 @@ namespace Controllers {
             _enemyHits = 2;
         }
 
-        void IAttackable.OnWeaponTriggerEnter()
+        void IAttackable.OnWeaponTriggerEnter(int value)
         {
-            _enemyHits--;
+            _enemyHits -= value;
 
             if (_enemyHits == 0)
             {

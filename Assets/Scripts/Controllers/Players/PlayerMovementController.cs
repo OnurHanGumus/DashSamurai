@@ -78,8 +78,6 @@ namespace Controllers
                 return;
             }
 
-            
-
             _input = input;
 
             if (Mathf.Abs(input.x) >= Mathf.Abs(input.z))

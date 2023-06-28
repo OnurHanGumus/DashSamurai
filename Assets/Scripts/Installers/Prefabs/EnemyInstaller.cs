@@ -1,7 +1,6 @@
 ﻿using Data.MetaData;
 using UnityEngine;
 using Zenject;
-using Events.InternalEvents;
 
 namespace Installers.Prefabs
 {
@@ -11,7 +10,7 @@ namespace Installers.Prefabs
 
         public override void InstallBindings()
         {
-            Container.Bind<EnemyInternalEvents>().AsSingle();
+            Container.Bind<EnemyInternalSignals>().AsSingle();
 
             _enemySettings = Resources.Load<EnemySettings>("Data/MetaData/EnemySettings");
 

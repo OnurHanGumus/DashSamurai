@@ -29,7 +29,8 @@ namespace Installers.Scenes
             Container.Bind<SaveSignals>().AsSingle();
             Container.Bind<PoolSignals>().AsSingle();
             Container.Bind<AudioSignals>().AsSingle();
-            Container.Bind<PlayerSignals>().AsSingle();           
+            Container.Bind<PlayerSignals>().AsSingle();
+            Container.Bind<EnemySignals>().AsSingle();
         }
 
         private void BindSettings()

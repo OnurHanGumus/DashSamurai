@@ -1,3 +1,4 @@
+using Components.Enemies;
 using Data.MetaData;
 using System;
 using UnityEngine;
@@ -45,6 +46,11 @@ namespace Components.Players
             _navmeshAgent = GetComponent<NavMeshAgent>();
         }
 
+        private void OnEnable()
+        {
+            _navmeshAgent.isStopped = false;
+        }
+
         private void Start()
         {
             _playerTransform = PlayerSignals.onGetTransform();
@@ -52,7 +58,6 @@ namespace Components.Players
 
         private void Update()
         {
-            //MoveToDefaultTarget(_playerTransform);
             NavMeshMove(_playerTransform);
         }
 
@@ -69,7 +74,11 @@ namespace Components.Players
         private void NavMeshMove(Transform target)
         {
             _navmeshAgent.destination = target.position;
-            ;
+        }
+
+        public void OnDeath(IAttackable attackable)
+        {
+            _navmeshAgent.isStopped = true;
         }
 
         [Serializable]

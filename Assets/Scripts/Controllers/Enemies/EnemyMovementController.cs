@@ -1,6 +1,7 @@
 using Components.Enemies;
 using Data.MetaData;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -79,6 +80,21 @@ namespace Components.Players
         public void OnDeath(IAttackable attackable)
         {
             _navmeshAgent.isStopped = true;
+        }
+
+        public void OnHitted()
+        {
+            _navmeshAgent.isStopped = true;
+            TakeDamageDelay();
+        }
+
+        private async Task TakeDamageDelay()
+        {
+            await Task.Delay(1500);
+            if (_navmeshAgent.isActiveAndEnabled)
+            {
+                _navmeshAgent.isStopped = false;
+            }
         }
 
         [Serializable]

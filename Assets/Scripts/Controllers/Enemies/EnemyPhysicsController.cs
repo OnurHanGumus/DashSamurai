@@ -9,15 +9,34 @@ using System.Threading.Tasks;
 namespace Controllers {
     public class EnemyPhysicsController : MonoBehaviour, IAttackable
     {
-        private int _enemyHits = 2;
-        [Inject] private LevelSignals LevelSignals { get; set;}
+        #region Self Variables
+
+        #region Inject Variables
+        [Inject] private LevelSignals LevelSignals { get; set; }
         [Inject] private EnemyInternalSignals EnemyInternalEvents { get; set; }
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
+        #endregion
+
+        #region Serialized Variables
         [SerializeField] private EnemyManager enemy;
+
+
+        #endregion
+        #region Private Variables
+        private int _enemyHits = 2;
+        private int _randomHittedAnimId = 0;
+        private bool _isDeath = false;
+        #endregion
+        #endregion
 
         public EnemyInternalSignals GetInternalEvents()
         {
             return EnemyInternalEvents;
+        }
+
+        private void OnEnable()
+        {
+            _isDeath = false;
         }
 
         private void OnDisable()
@@ -27,16 +46,28 @@ namespace Controllers {
 
         void IAttackable.OnWeaponTriggerEnter(int value)
         {
+            if (_isDeath)
+            {
+                return;
+            }
+
             _enemyHits -= value;
 
-            if (_enemyHits == 0)
+            if (_enemyHits <= 0)
             {
+                _isDeath = true;
                 EnemyInternalEvents.onDeath?.Invoke(this);
                 LevelSignals.onEnemyDied.Invoke();
                 EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Die);
                 //PoolSignals.onRemove?.Invoke(PoolEnums.Enemy, enemy);
                 DieDelay();
+            }
+            else
+            {
+                _randomHittedAnimId = Random.Range(0, 2);
 
+                EnemyInternalSignals.onHitted?.Invoke();
+                EnemyInternalSignals.onChangeAnimation?.Invoke((EnemyAnimationStates) _randomHittedAnimId);
             }
         }
 

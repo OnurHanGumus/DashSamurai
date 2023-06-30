@@ -52,7 +52,7 @@ public class EnemySpawnManager: ITickable, IInitializable
 
     private void Init()
     {
-        _spawnPoints = new List<Vector3>() { new Vector3(0,0,30), new Vector3(5, 0, 32), new Vector3(8, 0, 35) };
+        _spawnPoints = new List<Vector3>() { new Vector3(2,0.5f,-2), new Vector3(0, 0.5f, 0), new Vector3(-2, 0.5f, 2) };
     }
 
     public void Initialize()
@@ -61,6 +61,7 @@ public class EnemySpawnManager: ITickable, IInitializable
         _mySettings = EnemySpawnSettings.EnemyManagerSpawnSettings;
 
     }
+
     #region Event Subscriptions
 
     private void OnEnable()
@@ -102,14 +103,17 @@ public class EnemySpawnManager: ITickable, IInitializable
         _levelId = LevelSignals.onGetLevelId();
         _killedEnemyAmountToPassLevel = _mySettings._killedEnemyAmountToPassLevelList[_levelId];
     }
+
     private void OnLevelSuccessful()
     {
         isStarted = false;
     }
+
     private void OnLevelFailed()
     {
         isStarted = false;
     }
+
     private void OnRestart()
     {
         _killedEnemiesCount = 0;
@@ -123,6 +127,7 @@ public class EnemySpawnManager: ITickable, IInitializable
             CoreGameSignals.onLevelSuccessful?.Invoke();
         }
     }
+
     public void Tick()
     {
         if (!isStarted)
@@ -140,6 +145,7 @@ public class EnemySpawnManager: ITickable, IInitializable
         enemy.SetActive(true);
         _timer = _enemySpawnDelay;
     }
+
     [Serializable]
     public class Settings
     {

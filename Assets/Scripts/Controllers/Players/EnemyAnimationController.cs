@@ -12,6 +12,8 @@ public class EnemyAnimationController : MonoBehaviour
     #region Serialized Variables
 
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject rootPartToReset;
+    [SerializeField] private Vector3 rootPartToValues;
 
     #endregion
     #region Private Variables
@@ -20,16 +22,22 @@ public class EnemyAnimationController : MonoBehaviour
     #endregion
     #endregion
 
-    public UIData GetData() => Resources.Load<CD_UI>("Data/CD_UI").Data;
 
     private void Awake()
     {
         Init();
     }
+
     private void Init()
     {
-        _uiData = GetData();
+
     }
+
+    private void OnDisable()
+    {
+        rootPartToReset.transform.localPosition = rootPartToValues;
+    }
+
     public void OnChangeAnimation(EnemyAnimationStates nextAnimation)
     {
         animator.SetTrigger(nextAnimation.ToString());

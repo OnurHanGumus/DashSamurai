@@ -90,7 +90,7 @@ namespace Components.Players
 
         private async Task TakeDamageDelay()
         {
-            await Task.Delay(1500);
+            await Task.Delay(2000);
             if (_navmeshAgent.isActiveAndEnabled)
             {
                 _navmeshAgent.isStopped = false;

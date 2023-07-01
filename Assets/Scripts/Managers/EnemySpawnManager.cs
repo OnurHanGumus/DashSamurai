@@ -18,7 +18,7 @@ public class EnemySpawnManager: ITickable, IInitializable
     #endregion
 
     #region Serialized Variables
-    [SerializeField] private bool isStarted = false;
+    [SerializeField] private bool IsStarted = false;
 
     #endregion
     #region Private Variables
@@ -27,10 +27,11 @@ public class EnemySpawnManager: ITickable, IInitializable
     private CoreGameSignals CoreGameSignals { get; set; }
     private LevelSignals LevelSignals { get; set; }
     private int _levelId = 0;
-    private float _enemySpawnDelay = 3, _timer;
     private int _killedEnemiesCount = 0;
-    private int _killedEnemyAmountToPassLevel = 5;
+    private int _spawnedEnemyCount = 0;
+    private float _timer;
     private Settings _mySettings;
+    private bool _isReachedToSpawnNumber = false;
 
     #endregion
     #endregion
@@ -59,7 +60,6 @@ public class EnemySpawnManager: ITickable, IInitializable
     {
         //Start
         _mySettings = EnemySpawnSettings.EnemyManagerSpawnSettings;
-
     }
 
     #region Event Subscriptions
@@ -99,30 +99,39 @@ public class EnemySpawnManager: ITickable, IInitializable
 
     private void OnPlay()
     {
-        isStarted = true;
+        IsStarted = true;
         _levelId = LevelSignals.onGetLevelId();
-        _killedEnemyAmountToPassLevel = _mySettings._killedEnemyAmountToPassLevelList[_levelId];
+        _timer = _mySettings.Episodes[_levelId].WaveDuration;
+
+        SpawnEnemy();
     }
 
     private void OnLevelSuccessful()
     {
-        isStarted = false;
+        IsStarted = false;
     }
 
     private void OnLevelFailed()
     {
-        isStarted = false;
+        IsStarted = false;
     }
 
     private void OnRestart()
     {
         _killedEnemiesCount = 0;
+        _spawnedEnemyCount = 0;
+        _isReachedToSpawnNumber = false;
     }
 
     private void OnEnemyDie()
     {
         ++_killedEnemiesCount;
-        if (_killedEnemiesCount.Equals(_killedEnemyAmountToPassLevel))
+        if (!_isReachedToSpawnNumber)
+        {
+            return;
+        }
+
+        if (_killedEnemiesCount.Equals(_spawnedEnemyCount))
         {
             CoreGameSignals.onLevelSuccessful?.Invoke();
         }
@@ -130,25 +139,53 @@ public class EnemySpawnManager: ITickable, IInitializable
 
     public void Tick()
     {
-        if (!isStarted)
+        if (!IsStarted)
         {
             return;
         }
-       
-        _timer -= (Time.deltaTime);
-        if (_timer > 0)
+
+        if (_isReachedToSpawnNumber)
         {
             return;
         }
-        
-        GameObject enemy = PoolSignals.onGetObject(PoolEnums.Enemy, _spawnPoints[Random.Range(0, _spawnPoints.Count)]);
-        enemy.SetActive(true);
-        _timer = _enemySpawnDelay;
+
+        _timer -= Time.deltaTime;
+        LevelSignals.onTimerChanged?.Invoke((int) _timer);
+
+        if (_timer <= 1)
+        {
+            _isReachedToSpawnNumber = true;
+            return;
+        }
+    }
+
+    private async Task SpawnEnemy()
+    {
+        while (IsStarted)
+        {
+            if (_isReachedToSpawnNumber)
+            {
+                break;
+            }
+
+            await Task.Delay((int) (1000 * _mySettings.Episodes[_levelId].SpawnDelay.Evaluate((_mySettings.Episodes[_levelId].WaveDuration - _timer) / _mySettings.Episodes[_levelId].WaveDuration)));
+            GameObject enemy = PoolSignals.onGetObject(PoolEnums.Enemy, _spawnPoints[Random.Range(0, _spawnPoints.Count)]);
+            enemy.SetActive(true);
+            ++_spawnedEnemyCount;
+        }
     }
 
     [Serializable]
     public class Settings
     {
-        public List<int> _killedEnemyAmountToPassLevelList;
+        public List<EpisodeSpawnSettings> Episodes;
+
+        [System.Serializable]
+        public struct EpisodeSpawnSettings
+        {
+            public List<GameObject> SpawnableEnemies;
+            public AnimationCurve SpawnDelay;
+            public int WaveDuration;
+        }
     }
 }

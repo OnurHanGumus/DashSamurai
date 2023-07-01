@@ -15,6 +15,7 @@ public class LevelPanelController : MonoBehaviour
     #endregion
     #region SerializeField Variables
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI timeText;
     #endregion
     #region Private Variables
 
@@ -36,6 +37,11 @@ public class LevelPanelController : MonoBehaviour
         {
             scoreText.text = score.ToString();
         }
+    }
+
+    public void OnTimerChanged(int value)
+    {
+        timeText.text = "Remain: " + value;
     }
 
     public void OnRestartLevel()

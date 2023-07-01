@@ -13,4 +13,224 @@ MonoBehaviour:
   m_Name: EnemySpawnSettings
   m_EditorClassIdentifier: 
   EnemyManagerSpawnSettings:
-    _killedEnemyAmountToPassLevelList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    Episodes:
+    - SpawnableEnemies: []
+      SpawnDelay:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.17587472
+          outSlope: -0.17587472
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.5021615
+          value: 0.9116825
+          inSlope: -0.63171834
+          outSlope: -0.63171834
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.78239655
+          value: 0.6069095
+          inSlope: -2.0341206
+          outSlope: -2.0341206
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.98153687
+          value: 0.013336182
+          inSlope: -2.980679
+          outSlope: -2.980679
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      WaveDuration: 10
+    - SpawnableEnemies: []
+      SpawnDelay:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.17587472
+          outSlope: -0.17587472
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.5021615
+          value: 0.9116825
+          inSlope: -0.63171834
+          outSlope: -0.63171834
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.78239655
+          value: 0.6069095
+          inSlope: -2.0341206
+          outSlope: -2.0341206
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.98153687
+          value: 0.013336182
+          inSlope: -2.980679
+          outSlope: -2.980679
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      WaveDuration: 20
+    - SpawnableEnemies: []
+      SpawnDelay:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.17587472
+          outSlope: -0.17587472
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.5021615
+          value: 0.9116825
+          inSlope: -0.63171834
+          outSlope: -0.63171834
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.78239655
+          value: 0.6069095
+          inSlope: -2.0341206
+          outSlope: -2.0341206
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.98153687
+          value: 0.013336182
+          inSlope: -2.980679
+          outSlope: -2.980679
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      WaveDuration: 30
+    - SpawnableEnemies: []
+      SpawnDelay:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.17587472
+          outSlope: -0.17587472
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.5021615
+          value: 0.9116825
+          inSlope: -0.63171834
+          outSlope: -0.63171834
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.78239655
+          value: 0.6069095
+          inSlope: -2.0341206
+          outSlope: -2.0341206
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.98153687
+          value: 0.013336182
+          inSlope: -2.980679
+          outSlope: -2.980679
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      WaveDuration: 60
+    - SpawnableEnemies: []
+      SpawnDelay:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.17587472
+          outSlope: -0.17587472
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.5021615
+          value: 0.9116825
+          inSlope: -0.63171834
+          outSlope: -0.63171834
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.78239655
+          value: 0.6069095
+          inSlope: -2.0341206
+          outSlope: -2.0341206
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.98153687
+          value: 0.013336182
+          inSlope: -2.980679
+          outSlope: -2.980679
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      WaveDuration: 90

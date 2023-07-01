@@ -17,6 +17,7 @@ namespace Managers
         [Inject] private SaveSignals SaveSignals { get; set; }
         [Inject] private ScoreSignals ScoreSignals { get; set; }
         [Inject] private UISignals UISignals { get; set; }
+        [Inject] private LevelSignals LevelSignals { get; set; }
         #endregion
 
         #region Serialized Variables
@@ -56,6 +57,7 @@ namespace Managers
             UISignals.onOpenPanel += OnOpenPanel;
             UISignals.onClosePanel += OnClosePanel;
             UISignals.onSetChangedText += levelPanelController.OnScoreUpdateText;
+            LevelSignals.onTimerChanged += levelPanelController.OnTimerChanged;
             CoreGameSignals.onPlay += OnPlay;
             CoreGameSignals.onLevelFailed += OnLevelFailed;
             CoreGameSignals.onLevelSuccessful += OnLevelSuccessful;
@@ -68,6 +70,7 @@ namespace Managers
             UISignals.onOpenPanel -= OnOpenPanel;
             UISignals.onClosePanel -= OnClosePanel;
             UISignals.onSetChangedText -= levelPanelController.OnScoreUpdateText;
+            LevelSignals.onTimerChanged -= levelPanelController.OnTimerChanged;
             CoreGameSignals.onPlay -= OnPlay;
             CoreGameSignals.onLevelFailed -= OnLevelFailed;
             CoreGameSignals.onLevelSuccessful -= OnLevelSuccessful;
@@ -136,11 +139,13 @@ namespace Managers
             UISignals.onOpenPanel?.Invoke(UIPanels.PausePanel);
             Time.timeScale = 0f;
         }
+
         public void HighScoreButton()
         {
             UISignals.onOpenPanel?.Invoke(UIPanels.HighScorePanel);
             UISignals.onClosePanel?.Invoke(UIPanels.StartPanel);
         }
+
         public void OptionsButton()
         {
             UISignals.onOpenPanel?.Invoke(UIPanels.OptionsPanel);
@@ -159,7 +164,6 @@ namespace Managers
                 UISignals.onClosePanel?.Invoke(UIPanels.StorePanel);
             }
             _isStorePanelOpened = !_isStorePanelOpened;
-
         }
     }
 }

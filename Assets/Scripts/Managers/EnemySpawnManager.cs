@@ -163,12 +163,12 @@ public class EnemySpawnManager: ITickable, IInitializable
     {
         while (IsStarted)
         {
+            await Task.Delay((int) (1000 * _mySettings.Episodes[_levelId].SpawnDelay.Evaluate((_mySettings.Episodes[_levelId].WaveDuration - _timer) / _mySettings.Episodes[_levelId].WaveDuration)));
+
             if (_isReachedToSpawnNumber)
             {
                 break;
             }
-
-            await Task.Delay((int) (1000 * _mySettings.Episodes[_levelId].SpawnDelay.Evaluate((_mySettings.Episodes[_levelId].WaveDuration - _timer) / _mySettings.Episodes[_levelId].WaveDuration)));
             GameObject enemy = PoolSignals.onGetObject(PoolEnums.Enemy, _spawnPoints[Random.Range(0, _spawnPoints.Count)]);
             enemy.SetActive(true);
             ++_spawnedEnemyCount;

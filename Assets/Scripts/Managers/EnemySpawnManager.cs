@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System;
 using Random = UnityEngine.Random;
 using Data.MetaData;
+using UnityEngine.AI;
 
 public class EnemySpawnManager: ITickable, IInitializable
 {
@@ -22,7 +23,6 @@ public class EnemySpawnManager: ITickable, IInitializable
 
     #endregion
     #region Private Variables
-    private List<Vector3> _spawnPoints;
     private PoolSignals PoolSignals { get; set; }
     private CoreGameSignals CoreGameSignals { get; set; }
     private LevelSignals LevelSignals { get; set; }
@@ -53,7 +53,7 @@ public class EnemySpawnManager: ITickable, IInitializable
 
     private void Init()
     {
-        _spawnPoints = new List<Vector3>() { new Vector3(2,0.5f,-2), new Vector3(0, 0.5f, 0), new Vector3(-2, 0.5f, 2) };
+
     }
 
     public void Initialize()
@@ -169,10 +169,22 @@ public class EnemySpawnManager: ITickable, IInitializable
             {
                 break;
             }
-            GameObject enemy = PoolSignals.onGetObject(PoolEnums.Enemy, _spawnPoints[Random.Range(0, _spawnPoints.Count)]);
+            GameObject enemy = PoolSignals.onGetObject(PoolEnums.Enemy, GetRandomPoint(5f));
             enemy.SetActive(true);
             ++_spawnedEnemyCount;
         }
+    }
+
+    public Vector3 GetRandomPoint(float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 
     [Serializable]

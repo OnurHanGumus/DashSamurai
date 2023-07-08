@@ -59,7 +59,6 @@ namespace Controllers {
                 EnemyInternalEvents.onDeath?.Invoke(this);
                 LevelSignals.onEnemyDied.Invoke();
                 EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Die);
-                //PoolSignals.onRemove?.Invoke(PoolEnums.Enemy, enemy);
                 DieDelay();
             }
             else

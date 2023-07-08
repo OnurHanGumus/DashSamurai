@@ -32,7 +32,7 @@ namespace Installers.Scenes
             Container.Bind<PlayerSignals>().AsSingle();
             Container.Bind<EnemySignals>().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
+            //Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
         }
 
         private void BindSettings()

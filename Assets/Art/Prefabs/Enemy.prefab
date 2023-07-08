@@ -1246,7 +1246,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4798237952458272749}
   - component: {fileID: 2033194438403947991}
-  m_Layer: 0
+  - component: {fileID: 5217628879253229120}
+  m_Layer: 6
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1281,6 +1282,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5217628879253229120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710055276474898417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d84b67178b44c64c801f3bd6379574f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4762944419082372874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34704af39bbb2004facb61b4bf8fc58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 2132128035881241593}
 --- !u!1 &7325524495222692066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2594,7 @@ GameObject:
   - component: {fileID: 8745107333265845443}
   - component: {fileID: 873994756359193012}
   - component: {fileID: 1173876317}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

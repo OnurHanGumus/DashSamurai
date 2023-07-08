@@ -9,6 +9,8 @@ using UnityEngine.Events;
 public class PlayerSignals
 {
     public UnityAction onPlayerStopped = delegate { };
+    public UnityAction<int> onHitted = delegate { };
+    public UnityAction onDied = delegate { };
     public UnityAction<PlayerAnimationStates> onChangeAnimation = delegate { };
 
     public Func<Transform> onGetTransform = delegate { return null; };

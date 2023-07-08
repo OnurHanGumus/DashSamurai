@@ -85,18 +85,18 @@ namespace Components.Players
         public void OnHitted()
         {
             _navmeshAgent.isStopped = true;
-            TakeDamageDelay();
+            TakeDamageDelay(_mySettings.DelayAfterHitted);
         }
 
         public void OnAttack()
         {
             _navmeshAgent.isStopped = true;
-            TakeDamageDelay();
+            TakeDamageDelay(2.3f);
         }
 
-        private async Task TakeDamageDelay()
+        private async Task TakeDamageDelay(float value)
         {
-            await Task.Delay((int)(_mySettings.DelayAfterHitted * 1000));
+            await Task.Delay((int)(value * 1000));
             if (_navmeshAgent.isActiveAndEnabled)
             {
                 _navmeshAgent.isStopped = false;

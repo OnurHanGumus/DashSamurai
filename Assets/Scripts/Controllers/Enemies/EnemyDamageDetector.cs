@@ -10,9 +10,8 @@ using Signals;
 
 namespace Controllers
 {
-    public class PlayerDetector : MonoBehaviour
+    public class EnemyDamageDetector : MonoBehaviour
     {
-        [Inject] private PlayerSignals PlayerSignals { get; set; }
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
 
         private void Awake()
@@ -22,9 +21,9 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.TryGetComponent(out IAttackable attackable))
             {
-                EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Attack1);
+                attackable.OnWeaponTriggerEnter(10);
             }
         }
     }

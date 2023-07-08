@@ -2049,7 +2049,6 @@ GameObject:
   - component: {fileID: 5001984864687572378}
   - component: {fileID: 700744696397646573}
   - component: {fileID: 629601174}
-  - component: {fileID: 629601168}
   - component: {fileID: 607578124}
   - component: {fileID: 4972634579616153232}
   m_Layer: 0
@@ -2122,7 +2121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationController: {fileID: 430340565}
-  movementController: {fileID: 629601168}
+  movementController: {fileID: 700744696397646573}
 --- !u!114 &700744696397646573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,18 +2150,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 84
   m_CollisionDetection: 3
---- !u!114 &629601168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7009404533559161122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9717fae8aff9024496cf999081c9c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &607578124
 NavMeshAgent:
   m_ObjectHideFlags: 0

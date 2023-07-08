@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
-
+using System.Collections;
 namespace Components.Players
 {
     public class EnemyMovementController : MonoBehaviour
@@ -28,6 +28,7 @@ namespace Components.Players
         private Rigidbody _rig;
         private Transform _playerTransform;
         private NavMeshAgent _navmeshAgent;
+        private bool _isDead = false;
 
         #endregion
         #endregion
@@ -60,6 +61,7 @@ namespace Components.Players
         private void Update()
         {
             NavMeshMove(_playerTransform);
+            ManuelRotation();
         }
 
         public void MoveToDefaultTarget(Transform target)
@@ -77,8 +79,22 @@ namespace Components.Players
             _navmeshAgent.destination = target.position;
         }
 
+        private void ManuelRotation()
+        {
+            if (_isDead)
+            {
+                return;
+            }
+
+            if (_navmeshAgent.isStopped)
+            {
+                transform.LookAt(_playerTransform);
+            }
+        }
+
         public void OnDeath(IAttackable attackable)
         {
+            _isDead = true;
             _navmeshAgent.isStopped = true;
         }
 

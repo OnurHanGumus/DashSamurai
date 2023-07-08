@@ -47,6 +47,7 @@ public class EnemyManager : MonoBehaviour
         EnemyInternalSignals.onChangeAnimation += animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath += movementController.OnDeath;
         EnemyInternalSignals.onHitted += movementController.OnHitted;
+        EnemyInternalSignals.onAttack += movementController.OnAttack;
     }
 
     private void UnsubscribeEvents()
@@ -56,6 +57,7 @@ public class EnemyManager : MonoBehaviour
         EnemyInternalSignals.onChangeAnimation -= animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath -= movementController.OnDeath;
         EnemyInternalSignals.onHitted -= movementController.OnHitted;
+        EnemyInternalSignals.onAttack -= movementController.OnAttack;
     }
 
     private void OnDisable()

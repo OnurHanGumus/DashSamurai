@@ -88,9 +88,15 @@ namespace Components.Players
             TakeDamageDelay();
         }
 
+        public void OnAttack()
+        {
+            _navmeshAgent.isStopped = true;
+            TakeDamageDelay();
+        }
+
         private async Task TakeDamageDelay()
         {
-            await Task.Delay(2000);
+            await Task.Delay((int)(_mySettings.DelayAfterHitted * 1000));
             if (_navmeshAgent.isActiveAndEnabled)
             {
                 _navmeshAgent.isStopped = false;
@@ -102,6 +108,7 @@ namespace Components.Players
         {
             [SerializeField] public float Speed = 1f;
             [SerializeField] public float DistanceToPlayer = 0.5f;
+            [SerializeField] public float DelayAfterHitted = 1.5f;
         }
     }
 }

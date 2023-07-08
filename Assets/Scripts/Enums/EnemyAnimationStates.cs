@@ -10,7 +10,7 @@ namespace Enums
         Hit3,
         Idle,
         Move,
-        Attack,
+        Attack1,
         Die,
     }
 }

@@ -115,6 +115,10 @@ namespace Components.Players
             await Task.Delay((int)(value * 1000));
             if (_navmeshAgent.isActiveAndEnabled)
             {
+                if (_isDead)
+                {
+                    return;
+                }
                 _navmeshAgent.isStopped = false;
             }
         }

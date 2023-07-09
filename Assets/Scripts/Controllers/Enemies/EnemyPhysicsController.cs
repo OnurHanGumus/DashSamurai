@@ -65,7 +65,9 @@ namespace Controllers {
             {
                 _randomHittedAnimId = Random.Range(0, 2);
 
+
                 EnemyInternalSignals.onHitted?.Invoke();
+                EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
                 EnemyInternalSignals.onChangeAnimation?.Invoke((EnemyAnimationStates) _randomHittedAnimId);
             }
         }

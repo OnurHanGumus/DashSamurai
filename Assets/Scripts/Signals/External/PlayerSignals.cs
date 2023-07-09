@@ -12,6 +12,7 @@ public class PlayerSignals
     public UnityAction<int> onHitted = delegate { };
     public UnityAction onDied = delegate { };
     public UnityAction<PlayerAnimationStates> onChangeAnimation = delegate { };
+    public UnityAction<PlayerAnimationStates> onResetTrigger = delegate { };
 
     public Func<Transform> onGetTransform = delegate { return null; };
 }

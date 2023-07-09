@@ -13,7 +13,6 @@ namespace Controllers
         [Inject] private PlayerSettings PlayerSettings { get; set; }
         [Inject] private PlayerSignals PlayerSignals { get; set; }
 
-        private RoutineHelper _onPosUpdate;
         private Settings _mySettings;
         #region Self Variables
 
@@ -29,6 +28,7 @@ namespace Controllers
         private Vector3 _pastInput = new Vector3();
 
         private bool _isNotStarted = true;
+        private float _currentTime = 0f;
 
         #endregion
         #endregion
@@ -48,6 +48,8 @@ namespace Controllers
 
         private void FixedUpdate()
         {
+            _currentTime += Time.deltaTime;
+
             Move();
         }
 
@@ -58,7 +60,7 @@ namespace Controllers
                 return;
             }
 
-            _rig.velocity = _input * _mySettings.Speed * (isPlayerStopped? 0:1);
+            _rig.velocity = _input * _mySettings.Speed *_mySettings.SpeedCurve.Evaluate(_currentTime) * (isPlayerStopped? 0:1);
         }
 
         public void OnPlay()
@@ -98,11 +100,13 @@ namespace Controllers
             transform.LookAt(transform.localPosition + _input);
 
             PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Move);
+            _currentTime = 0f;
             isPlayerStopped = false;
         }
 
         public void OnPlayerStopped()
         {
+            //PlayerSignals.onResetTrigger.Invoke(Enums.PlayerAnimationStates.Move);
             isPlayerStopped = true;
             transform.position = groundDetector.CurrentGorund.transform.position;
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); 
@@ -117,6 +121,7 @@ namespace Controllers
         public class Settings
         {
             [SerializeField] public float Speed = 1f;
+            [SerializeField] public AnimationCurve SpeedCurve;
         }
     }
 }

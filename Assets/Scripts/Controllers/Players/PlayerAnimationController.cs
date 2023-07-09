@@ -26,13 +26,20 @@ public class PlayerAnimationController : MonoBehaviour
     {
         Init();
     }
+
     private void Init()
     {
         _uiData = GetData();
     }
+
     public void OnChangeAnimation(PlayerAnimationStates nextAnimation)
     {
         animator.SetTrigger(nextAnimation.ToString());
+    }
+
+    public void OnResetTrigger(PlayerAnimationStates resetAnimation)
+    {
+        animator.ResetTrigger(resetAnimation.ToString());
     }
 
     public void OnRestartLevel()

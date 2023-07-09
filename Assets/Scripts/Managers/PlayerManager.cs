@@ -63,6 +63,7 @@ namespace Managers
 
             PlayerSignals.onPlayerStopped += movementController.OnPlayerStopped;
             PlayerSignals.onChangeAnimation += animationController.OnChangeAnimation;
+            PlayerSignals.onResetTrigger += animationController.OnResetTrigger;
             PlayerSignals.onGetTransform += OnGetTransform;
         }
 
@@ -75,6 +76,7 @@ namespace Managers
 
             PlayerSignals.onPlayerStopped -= movementController.OnPlayerStopped;
             PlayerSignals.onChangeAnimation -= animationController.OnChangeAnimation;
+            PlayerSignals.onResetTrigger -= animationController.OnResetTrigger;
             PlayerSignals.onGetTransform -= OnGetTransform;
         }
 

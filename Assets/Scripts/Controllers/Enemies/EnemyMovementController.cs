@@ -51,6 +51,7 @@ namespace Components.Players
         private void OnEnable()
         {
             _navmeshAgent.isStopped = false;
+            _isDead = false;
         }
 
         private void Start()

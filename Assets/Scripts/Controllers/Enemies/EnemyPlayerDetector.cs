@@ -13,10 +13,7 @@ namespace Controllers
 {
     public class EnemyPlayerDetector : MonoBehaviour
     {
-        [Inject] private PlayerSignals PlayerSignals { get; set; }
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
-
-        [SerializeField] private Collider collider;
 
         private bool _isPlayerInRange = false;
 
@@ -27,19 +24,28 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.TryGetComponent(out IAttackable attackable))
             {
+                if (attackable.IsMoving)
+                {
+                    return;
+                }
                 AttackAnimationDelay();
             }
         }
 
         private async Task AttackAnimationDelay()
         {
-            EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Attack1);
-            EnemyInternalSignals.onAttack?.Invoke();
-            await Task.Delay(2300);
-            collider.gameObject.SetActive(false);
-            collider.gameObject.SetActive(true);
+            EnemyInternalSignals.onChangeState?.Invoke(EnemyStateEnums.Attack);
+            await Task.Delay(TimeSpan.FromSeconds(2.3f));
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                EnemyInternalSignals.onChangeState?.Invoke(EnemyStateEnums.Move);
+            }
         }
     }
 }

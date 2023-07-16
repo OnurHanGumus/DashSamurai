@@ -102,12 +102,14 @@ namespace Controllers
             PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Move);
             _currentTime = 0f;
             isPlayerStopped = false;
+            _manager.IsMoving = true;
         }
 
         public void OnPlayerStopped()
         {
             //PlayerSignals.onResetTrigger.Invoke(Enums.PlayerAnimationStates.Move);
             isPlayerStopped = true;
+            _manager.IsMoving = false;
             transform.position = groundDetector.CurrentGorund.transform.position;
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); 
         }

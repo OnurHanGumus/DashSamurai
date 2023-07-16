@@ -25665,14 +25665,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8164498713662691749, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164498714883648035, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8549495318211459234, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -30231,6 +30223,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776155575}
   m_CullTransparentMesh: 0
+--- !u!4 &1776886806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8549495318211459234, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
+  m_PrefabInstance: {fileID: 1421526240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1778884632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30517,7 +30514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects:
   - PoolEnums: 0
-    Prefab: {fileID: 7810981276558863847, guid: cb5e6ac277697744e9e9e529f5cf1ce9, type: 3}
+    Prefab: {fileID: 7032526788644188727, guid: 1ea33d2b35ad6a744bc9924632bf4f92, type: 3}
     Amounts: 20
 --- !u!1001 &1798364581
 PrefabInstance:
@@ -31125,6 +31122,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5272055142477836822, guid: 20fd5c47de99b164bb3689d203a293d4, type: 3}
   enemyPrefab: {fileID: 7009404533559161122, guid: 24c10dd4ad4848e4187f14e8013add2d, type: 3}
   explosionPrefab: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
+  playerTransform: {fileID: 1776886806}
 --- !u!1001 &1817630779
 PrefabInstance:
   m_ObjectHideFlags: 0

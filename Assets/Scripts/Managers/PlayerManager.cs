@@ -21,7 +21,7 @@ namespace Managers
         #endregion
 
         #region Public Variables
-
+        public bool IsMoving = false;
         #endregion
 
         #region Serialized Variables

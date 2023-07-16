@@ -10,6 +10,7 @@ namespace Installers.Scenes
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private GameObject explosionPrefab;
+        [SerializeField] private Transform playerTransform;
         private BulletSettings _bulletSettings;
         private EnemySpawnSettings _enemySpawnSettings;
 
@@ -33,6 +34,7 @@ namespace Installers.Scenes
             Container.Bind<EnemySignals>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
+            Container.BindInstance(playerTransform).WithId("Player").AsSingle();
         }
 
         private void BindSettings()

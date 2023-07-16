@@ -13,12 +13,13 @@ namespace Controllers {
 
         #region Inject Variables
         [Inject] private LevelSignals LevelSignals { get; set; }
-        [Inject] private EnemyInternalSignals EnemyInternalEvents { get; set; }
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
+
+        public bool IsMoving { get => false; }
         #endregion
 
         #region Serialized Variables
-        [SerializeField] private EnemyManager enemy;
+        [SerializeField] private EnemyManager2 enemy;
 
 
         #endregion
@@ -28,11 +29,6 @@ namespace Controllers {
         private bool _isDeath = false;
         #endregion
         #endregion
-
-        public EnemyInternalSignals GetInternalEvents()
-        {
-            return EnemyInternalEvents;
-        }
 
         private void OnEnable()
         {
@@ -56,7 +52,7 @@ namespace Controllers {
             if (_enemyHits <= 0)
             {
                 _isDeath = true;
-                EnemyInternalEvents.onDeath?.Invoke(this);
+                EnemyInternalSignals.onDeath?.Invoke(this);
                 LevelSignals.onEnemyDied.Invoke();
                 EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Die);
                 DieDelay();
@@ -64,7 +60,6 @@ namespace Controllers {
             else
             {
                 _randomHittedAnimId = Random.Range(0, 2);
-
 
                 EnemyInternalSignals.onHitted?.Invoke();
                 EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
@@ -74,7 +69,7 @@ namespace Controllers {
 
         private async Task DieDelay()
         {
-            await Task.Delay(1000);
+            await Task.Delay(System.TimeSpan.FromSeconds(1));
             enemy.gameObject.SetActive(false);
         }
     }

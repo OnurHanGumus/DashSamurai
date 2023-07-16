@@ -2147,10 +2147,9 @@ GameObject:
   - component: {fileID: 7211072239362333482}
   - component: {fileID: 7211072239362333480}
   - component: {fileID: 7211072239362333483}
-  - component: {fileID: 7211072239362333493}
-  - component: {fileID: 7211072239362333492}
   - component: {fileID: 7211072239362333495}
   - component: {fileID: 7211072239362333494}
+  - component: {fileID: 1250468582583715365}
   m_Layer: 0
   m_Name: EnemyStateMachine
   m_TagString: Untagged
@@ -2227,7 +2226,7 @@ NavMeshAgent:
   m_Speed: 1
   m_Acceleration: 1
   avoidancePriority: 50
-  m_AngularSpeed: 100
+  m_AngularSpeed: 300
   m_StoppingDistance: 0.9
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2236,32 +2235,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!114 &7211072239362333493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032526788644188727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9717fae8aff9024496cf999081c9c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7211072239362333492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032526788644188727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a4563fcaa7d014aa8913031fe68047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationController: {fileID: 7211072238364108999}
-  movementController: {fileID: 7211072239362333493}
 --- !u!114 &7211072239362333495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,6 +2247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef411b0391446508b1b5b9010e4a521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 7211072238364108999}
+  navMeshAgent: {fileID: 7211072239362333483}
+  myTransform: {fileID: 7697598950236121229}
 --- !u!114 &7211072239362333494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,6 +2268,19 @@ MonoBehaviour:
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!114 &1250468582583715365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032526788644188727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b5f26a066b7bb46a2a5c30f2f50ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStateEnum: 0
 --- !u!1 &7084314732222076365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,7 +2469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58cac00c336b2346994c1a545885e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7211072239362333492}
+  enemy: {fileID: 1250468582583715365}
 --- !u!65 &7211072238884831197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2505,7 +2494,7 @@ GameObject:
   - component: {fileID: 7211072239390189350}
   - component: {fileID: 7211072239390189344}
   - component: {fileID: 7211072239390189345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2552,7 +2541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34704af39bbb2004facb61b4bf8fc58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 7211072239390189344}
 --- !u!1 &7279627782265914968
 GameObject:
   m_ObjectHideFlags: 0

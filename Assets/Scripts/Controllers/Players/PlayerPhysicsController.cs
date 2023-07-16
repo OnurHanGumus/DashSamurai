@@ -5,6 +5,7 @@ using Enums;
 using Signals;
 using Components.Enemies;
 using System.Threading.Tasks;
+using Managers;
 
 namespace Controllers {
     public class PlayerPhysicsController : MonoBehaviour, IAttackable
@@ -14,12 +15,12 @@ namespace Controllers {
         #region Inject Variables
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
         [Inject] private PlayerSignals PlayerSignals { get; set; }
+        public bool IsMoving { get => manager.IsMoving; }
 
         #endregion
 
         #region Serialized Variables
-
-
+        [SerializeField] private PlayerManager manager;
         #endregion
         #region Private Variables
         private int _enemyHits = 2;
@@ -31,6 +32,11 @@ namespace Controllers {
         void IAttackable.OnWeaponTriggerEnter(int value)
         {
             if (_isDeath)
+            {
+                return;
+            }
+
+            else if (manager.IsMoving)
             {
                 return;
             }

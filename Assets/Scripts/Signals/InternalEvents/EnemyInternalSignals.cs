@@ -9,4 +9,5 @@ public class EnemyInternalSignals
     public UnityAction onAttack = delegate { };
     public UnityAction<EnemyAnimationStates> onChangeAnimation = delegate { };
     public UnityAction<EnemyAnimationStates> onResetAnimation = delegate { };
+    public UnityAction<EnemyStateEnums> onChangeState = delegate { };
 }

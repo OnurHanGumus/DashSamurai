@@ -67,7 +67,6 @@ public class EnemySpawnManager: ITickable, IInitializable
     private void OnEnable()
     {
         SubscribeEvents();
-
     }
 
     private void SubscribeEvents()

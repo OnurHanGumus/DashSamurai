@@ -65,16 +65,6 @@ namespace Components.Players
             ManuelRotation();
         }
 
-        public void MoveToDefaultTarget(Transform target)
-        {
-            Vector3 distance = target.position - transform.position;
-            int isReachedToOffset = (distance).magnitude > _mySettings.DistanceToPlayer ? 1 : 0;
-            Vector3 direction = (distance).normalized;
-
-            transform.LookAt(target, Vector3.up);
-            _rig.velocity = direction * _mySettings.Speed * isReachedToOffset;
-        }
-
         private void NavMeshMove(Transform target)
         {
             _navmeshAgent.destination = target.position;

@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyStateEnums
+public struct Position : IComponentData
 {
-    Any,
-    Move,
-    Attack,
-    Dead,
+    public float x, y;
 }

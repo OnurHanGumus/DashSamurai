@@ -16,6 +16,9 @@ namespace Controllers {
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
 
         public bool IsMoving { get => false; }
+        public bool IsHitted { get; set; }
+        public bool IsDeath { get; set; }
+
         #endregion
 
         #region Serialized Variables
@@ -24,15 +27,14 @@ namespace Controllers {
 
         #endregion
         #region Private Variables
-        private int _enemyHits = 2;
+        private int _enemyHits = 100;
         private int _randomHittedAnimId = 0;
-        private bool _isDeath = false;
         #endregion
         #endregion
 
         private void OnEnable()
         {
-            _isDeath = false;
+            IsDeath = false;
         }
 
         private void OnDisable()
@@ -42,7 +44,7 @@ namespace Controllers {
 
         void IAttackable.OnWeaponTriggerEnter(int value)
         {
-            if (_isDeath)
+            if (IsDeath)
             {
                 return;
             }
@@ -51,7 +53,7 @@ namespace Controllers {
 
             if (_enemyHits <= 0)
             {
-                _isDeath = true;
+                IsDeath = true;
                 EnemyInternalSignals.onDeath?.Invoke(this);
                 LevelSignals.onEnemyDied.Invoke();
                 EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Die);
@@ -61,7 +63,7 @@ namespace Controllers {
             {
                 _randomHittedAnimId = Random.Range(0, 2);
 
-                EnemyInternalSignals.onHitted?.Invoke();
+                IsHitted = true;
                 EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
                 EnemyInternalSignals.onChangeAnimation?.Invoke((EnemyAnimationStates) _randomHittedAnimId);
             }

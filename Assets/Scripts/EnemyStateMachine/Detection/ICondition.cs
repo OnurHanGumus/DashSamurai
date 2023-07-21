@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyStateEnums
+public interface ICondition
 {
-    Any,
-    Move,
-    Attack,
-    Dead,
+    void IsSatisfied();
 }

@@ -8,6 +8,7 @@ using Zenject;
 using UnityEngine.AI;
 using Components.Enemies;
 using System.Threading.Tasks;
+using System.Threading;
 
 public class EnemyManager2 : MonoBehaviour
 {
@@ -20,16 +21,17 @@ public class EnemyManager2 : MonoBehaviour
     [Inject] private StateMachine StateMachine;
 
     #endregion
+    #region Public Variables
+    public EnemyStateEnums CurrentStateEnum;
 
+    #endregion
     #region Serialized Variables
 
-    [SerializeField] private EnemyStateEnums currentStateEnum;
 
 
     #endregion
     #region Private Variables
-    private bool _isDead, 
-        _isHitted = false;
+    private bool _isDead;
 
     #endregion
     #endregion
@@ -54,10 +56,10 @@ public class EnemyManager2 : MonoBehaviour
     private void OnEnable()
     {
         SubscribeEvents();
-        _isHitted = false;
         _isDead = false;
-        currentStateEnum = EnemyStateEnums.Move;
+        CurrentStateEnum = EnemyStateEnums.Move;
         StateMachine.InitMachine(EnemyStateEnums.Move);
+        EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
     }
 
     private void SubscribeEvents()
@@ -66,8 +68,6 @@ public class EnemyManager2 : MonoBehaviour
 
         EnemyInternalSignals.onChangeAnimation += animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath += OnDied;
-        EnemyInternalSignals.onHitted += OnHitted;
-        EnemyInternalSignals.onChangeState += OnChangeState;
     }
 
     private void UnsubscribeEvents()
@@ -76,55 +76,25 @@ public class EnemyManager2 : MonoBehaviour
 
         EnemyInternalSignals.onChangeAnimation -= animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath -= OnDied;
-        EnemyInternalSignals.onHitted -= OnHitted;
-        EnemyInternalSignals.onChangeState -= OnChangeState;
     }
 
     private void OnDisable()
     {
         UnsubscribeEvents();
         StateMachine.OnResetCurrentState();
+        StopAllCoroutines();
     }
 
     #endregion
 
     private void Update()
     {
-        if (_isDead)
-        {
-            return;
-        }
         StateMachine.Tick();
     }
 
     private void OnDied(IAttackable attackable)
     {
         _isDead = true;
-    }
-
-    public void OnHitted()
-    {
-        OnChangeState(EnemyStateEnums.Any);
-        _isHitted = true;
-        TakeDamageDelay(2f);
-    }
-
-    private async Task TakeDamageDelay(float value)
-    {
-        await Task.Delay(System.TimeSpan.FromSeconds(value));
-        _isHitted = false;
-        OnChangeState(EnemyStateEnums.Move);
-    }
-
-    public void OnChangeState(EnemyStateEnums newState)
-    {
-        if (_isDead || _isHitted)
-        {
-            return;
-        }
-
-        StateMachine.ChangeState(newState);
-        currentStateEnum = newState;
     }
 
     private void OnRestartLevel()

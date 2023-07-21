@@ -1,5 +1,6 @@
 ﻿using Components.Enemies;
 using Enums;
+using System.Threading.Tasks;
 using UnityEngine.Events;
 
 public class EnemyInternalSignals

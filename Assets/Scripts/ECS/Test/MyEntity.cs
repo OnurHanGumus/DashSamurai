@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public enum EnemyStateEnums
+public class MyEntity
 {
-    Any,
-    Move,
-    Attack,
-    Dead,
+    private int _id = 123;
 }

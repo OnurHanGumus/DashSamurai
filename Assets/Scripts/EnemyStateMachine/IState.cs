@@ -6,5 +6,9 @@ public interface IState
 
     void OnExitState();
 
+    float TimeDelayToExit();
+
+    void ConditionCheck();
+
     void OnReset();
 }

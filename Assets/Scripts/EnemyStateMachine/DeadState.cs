@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-public class AnyState :IState
+public class DeadState :IState
 {
     #region Self Variables
 
@@ -22,16 +22,13 @@ public class AnyState :IState
 
     #region Private Variables
     private NavMeshAgent _navmeshAgent;
-    private Conditions _conditions;
-    private float _exitDelay = 0f;
 
     #endregion
     #endregion
 
-    public AnyState(NavMeshAgent agent, Conditions conditions)
+    public DeadState(NavMeshAgent agent)
     {
         _navmeshAgent = agent;
-        _conditions = conditions;
     }
 
     public bool IsItReadyToExit()
@@ -41,42 +38,35 @@ public class AnyState :IState
 
     public void OnEnterState()
     {
-        Debug.Log("enter any");
+        Debug.Log("enter dead");
 
         StopMovement();
-        _exitDelay = 0.8f;
     }
 
     public void OnExitState()
     {
-        Debug.Log("exit any");
+        Debug.Log("exit dead");
 
-        _exitDelay = 0f;
     }
 
     public void OnReset()
     {
-        _exitDelay = 0f;
+
     }
 
     public void Tick()
     {
-        Timer();
-    }
 
-    private void Timer()
-    {
-        _exitDelay -= Time.deltaTime;
     }
 
     public void ConditionCheck()
     {
-        _conditions.IsSatisfied();
+        
     }
 
     public float TimeDelayToExit()
     {
-        return _exitDelay;
+        return 0;
     }
 
     private void StopMovement()

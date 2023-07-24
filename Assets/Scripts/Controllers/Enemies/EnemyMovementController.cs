@@ -43,7 +43,7 @@ namespace Components.Players
 
         private void Init()
         {
-            _mySettings = EnemySettings.EnemyMovementSettings;
+            //_mySettings = EnemySettings.EnemyMovementSettings;
             _rig = GetComponent<Rigidbody>();
             _navmeshAgent = GetComponent<NavMeshAgent>();
         }

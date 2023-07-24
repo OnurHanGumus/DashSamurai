@@ -38,14 +38,11 @@ public class DeadState :IState
 
     public void OnEnterState()
     {
-        Debug.Log("enter dead");
-
         StopMovement();
     }
 
     public void OnExitState()
     {
-        Debug.Log("exit dead");
 
     }
 

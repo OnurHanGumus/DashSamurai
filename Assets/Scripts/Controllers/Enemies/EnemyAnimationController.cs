@@ -48,7 +48,7 @@ public class EnemyAnimationController : MonoBehaviour
         animator.ResetTrigger(resetAnimation.ToString());
     }
 
-    public void OnRestartLevel()
+    public void OnRestartAnimator()
     {
         animator.Rebind();
         animator.Update(0f);

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Data.MetaData;
 
 public class AttackState :IState
 {
@@ -28,24 +29,27 @@ public class AttackState :IState
     private bool _isAttacking = false;
     private float _attackDelay = 0f;
     private Conditions _conditions;
-    //private float _remainTime;
-
+    private EnemySettings _settings;
 
     #endregion
     #endregion
 
-    public AttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, EnemyInternalSignals enemyInternalSignals, Conditions conditions)
+    public AttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, EnemyInternalSignals enemyInternalSignals, Conditions conditions, EnemySettings settings)
     {
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
         _myTransform = myTransform;
         EnemyInternalSignals = enemyInternalSignals;
         _conditions = conditions;
+        _settings = settings;
     }
 
     public void OnEnterState()
     {
-        Debug.Log("enter attack");
+        _attackDelay = _settings.AttackDelay;
+        EnemyInternalSignals.onResetAnimation?.Invoke(Enums.EnemyAnimationStates.Move);
+
+        EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Attack1);
 
         _isAttacking = true;
         if (_navmeshAgent.isActiveAndEnabled)
@@ -57,14 +61,12 @@ public class AttackState :IState
     public void OnExitState()
     {
         _isAttacking = false;
-        Debug.Log("exit attack");
-
     }
 
     public void Tick()
     {
         AttackDelay();
-        if (_attackDelay > 1.5f)
+        if (_attackDelay > _settings.AttackRotatableTime)
         {
             ManuelRotation();
         }
@@ -87,10 +89,10 @@ public class AttackState :IState
             return;
         }
 
-        if (_attackDelay <= 0)
+        if (_attackDelay <= 0f)
         {
             EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Attack1);
-            _attackDelay = 1.8f;
+            _attackDelay = _settings.AttackDelay;
         }
     }
 
@@ -102,11 +104,7 @@ public class AttackState :IState
 
     public float TimeDelayToExit()
     {
-        _isAttacking = false;
-        //_remainTime = _attackDelay;
-        //_attackDelay = 0;
-        Debug.Log("Time to exit:" + _attackDelay);
-        return _attackDelay;
+        return 0;
     }
 
     public void ConditionCheck()

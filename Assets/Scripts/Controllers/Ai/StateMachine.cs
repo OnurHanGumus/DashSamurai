@@ -36,42 +36,17 @@ public class StateMachine
         {
             return;
         }
-
         _isBusy = true;
-
-        if (checkForDelay)
-        {
-            float duration;
-            duration = GetRemainTimeToChangeState();
-            await Task.Delay(System.TimeSpan.FromSeconds(duration));
-        }
 
         _manager.CurrentStateEnum = newState;
         ChangeState(newState);
+
+        float duration;
+        duration = GetRemainTimeToChangeState();
+        await Task.Delay(System.TimeSpan.FromSeconds(duration));
+
         _isBusy = false;
     }
-
-    //private async Task ChangeStateControl(EnemyStateEnums newState, bool checkForDelay = true)
-    //{
-    //    Debug.Log(_isBusy);
-
-    //    if (_isBusy)
-    //    {
-    //        return;
-    //    }
-    //    Debug.Log(newState);
-    //    _isBusy = true;
-
-    //    float duration;
-    //    duration = GetRemainTimeToChangeState();
-
-    //    _manager.CurrentStateEnum = newState;
-    //    ChangeState(newState);
-
-
-    //    await Task.Delay(System.TimeSpan.FromSeconds(duration));
-    //    _isBusy = false;
-    //}
 
 
     public void ChangeState(EnemyStateEnums newState)

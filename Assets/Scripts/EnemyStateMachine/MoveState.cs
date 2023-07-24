@@ -21,7 +21,7 @@ public class MoveState : IState
 
     #region Private Variables
     private NavMeshAgent _navmeshAgent;
-    private Transform _playerTransform, _myTransform;
+    private Transform _playerTransform;
     private EnemyInternalSignals _enemyInternalSignals;
     private Conditions _conditions;
 
@@ -29,11 +29,10 @@ public class MoveState : IState
     #endregion
     #endregion
 
-    public MoveState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemyInternalSignals enemyInternalSignals)
+    public MoveState(NavMeshAgent agent, Transform playerTransform, Conditions conditions, EnemyInternalSignals enemyInternalSignals)
     {
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
-        _myTransform = myTransform;
         _conditions = conditions;
         _enemyInternalSignals = enemyInternalSignals;
     }
@@ -45,7 +44,6 @@ public class MoveState : IState
 
     public void OnEnterState()
     {
-        Debug.Log("enter move");
         if (_navmeshAgent.isActiveAndEnabled)
         {
             _navmeshAgent.isStopped = false;
@@ -56,7 +54,6 @@ public class MoveState : IState
 
     public void OnExitState()
     {
-        Debug.Log("exit move");
 
     }
 

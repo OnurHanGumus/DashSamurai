@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Data.MetaData;
 
 public class AnyState :IState
 {
@@ -24,14 +25,16 @@ public class AnyState :IState
     private NavMeshAgent _navmeshAgent;
     private Conditions _conditions;
     private float _exitDelay = 0f;
+    EnemySettings _settings;
 
     #endregion
     #endregion
 
-    public AnyState(NavMeshAgent agent, Conditions conditions)
+    public AnyState(NavMeshAgent agent, Conditions conditions, EnemySettings settings)
     {
         _navmeshAgent = agent;
         _conditions = conditions;
+        _settings = settings;
     }
 
     public bool IsItReadyToExit()
@@ -41,16 +44,12 @@ public class AnyState :IState
 
     public void OnEnterState()
     {
-        Debug.Log("enter any");
-
         StopMovement();
-        _exitDelay = 0.8f;
+        _exitDelay = _settings.AnyStateExitDelay;
     }
 
     public void OnExitState()
     {
-        Debug.Log("exit any");
-
         _exitDelay = 0f;
     }
 

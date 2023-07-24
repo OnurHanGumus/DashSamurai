@@ -60,12 +60,14 @@ public class EnemyManager2 : MonoBehaviour
         CurrentStateEnum = EnemyStateEnums.Move;
         StateMachine.InitMachine(EnemyStateEnums.Move);
         EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
+        EnemyInternalSignals.onResetAnimation?.Invoke(Enums.EnemyAnimationStates.Move);
     }
 
     private void SubscribeEvents()
     {
         CoreGameSignals.onRestart += OnRestartLevel;
 
+        EnemyInternalSignals.onResetAnimation += animationController.OnResetTrigger;
         EnemyInternalSignals.onChangeAnimation += animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath += OnDied;
     }
@@ -74,6 +76,7 @@ public class EnemyManager2 : MonoBehaviour
     {
         CoreGameSignals.onRestart -= OnRestartLevel;
 
+        EnemyInternalSignals.onResetAnimation -= animationController.OnResetTrigger;
         EnemyInternalSignals.onChangeAnimation -= animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath -= OnDied;
     }
@@ -82,7 +85,6 @@ public class EnemyManager2 : MonoBehaviour
     {
         UnsubscribeEvents();
         StateMachine.OnResetCurrentState();
-        StopAllCoroutines();
     }
 
     #endregion

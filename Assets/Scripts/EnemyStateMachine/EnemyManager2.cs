@@ -26,7 +26,7 @@ public class EnemyManager2 : MonoBehaviour
 
     #endregion
     #region Serialized Variables
-
+    [SerializeField] public float speedPercent;
 
 
     #endregion

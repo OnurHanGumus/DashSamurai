@@ -100,7 +100,7 @@ namespace Installers.Prefabs
 
         private void BindStates()
         {
-            moveState = new MoveState(navMeshAgent, playerTransform, conditionInMoveState, enemyInternalSignals);
+            moveState = new MoveState(manager, navMeshAgent, playerTransform, conditionInMoveState, enemyInternalSignals, _enemySettings);
             anyState = new AnyState(navMeshAgent, conditionInAnyState, _enemySettings);
             attackState = new AttackState(navMeshAgent, playerTransform, myTransform, enemyInternalSignals, conditionInAttackState, _enemySettings);
             deadState = new DeadState(navMeshAgent);

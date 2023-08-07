@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783645a0c88996446b2217df115ca128, type: 3}
   m_Name: EnemySettings
   m_EditorClassIdentifier: 
-  EnemyMovementSettings:
-    Speed: 1
-    DistanceToPlayer: 0.5
-    DelayAfterHitted: 1
+  AttackDelay: 2.5
+  AttackRotatableTime: 1.2
+  AttackDistance: 1
+  MoveToAttackDistance: 1.5
+  AnyStateExitDelay: 1
+  MoveSpeed: 1.1

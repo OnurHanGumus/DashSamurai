@@ -1,3 +1,4 @@
+using Data.MetaData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,21 +21,25 @@ public class MoveState : IState
     #endregion
 
     #region Private Variables
+    private EnemyManager2 _manager;
     private NavMeshAgent _navmeshAgent;
     private Transform _playerTransform;
     private EnemyInternalSignals _enemyInternalSignals;
     private Conditions _conditions;
+    private EnemySettings _mySettings;
 
 
     #endregion
     #endregion
 
-    public MoveState(NavMeshAgent agent, Transform playerTransform, Conditions conditions, EnemyInternalSignals enemyInternalSignals)
+    public MoveState(EnemyManager2 manager, NavMeshAgent agent, Transform playerTransform, Conditions conditions, EnemyInternalSignals enemyInternalSignals, EnemySettings mySettings)
     {
+        _manager = manager;
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
         _conditions = conditions;
         _enemyInternalSignals = enemyInternalSignals;
+        _mySettings = mySettings;
     }
 
     public bool IsItReadyToExit()
@@ -75,6 +80,7 @@ public class MoveState : IState
     private void NavMeshMove(Transform target)
     {
         _navmeshAgent.destination = target.position;
+        _navmeshAgent.speed = _mySettings.MoveSpeed * _manager.speedPercent;
     }
 
     public void ConditionCheck()

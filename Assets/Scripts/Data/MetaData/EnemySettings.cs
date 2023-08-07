@@ -11,6 +11,9 @@ namespace Data.MetaData
         [SerializeField] public float AttackRotatableTime = 1.2f;
 
         [SerializeField] public float AttackDistance = 1f;
+        [SerializeField] public float MoveToAttackDistance = 1.5f;
         [SerializeField] public float AnyStateExitDelay = 1f;
+
+        [SerializeField] public float MoveSpeed = 1f;
     }
 }

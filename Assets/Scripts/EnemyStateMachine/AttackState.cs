@@ -74,9 +74,10 @@ public class AttackState :IState
 
     private void ManuelRotation()
     {
+
         if (_navmeshAgent.isStopped)
         {
-            _myTransform.LookAt(_playerTransform);
+            _myTransform.LookAt(new Vector3(_playerTransform.position.x, _myTransform.position.y, _playerTransform.position.z));
         }
     }
 

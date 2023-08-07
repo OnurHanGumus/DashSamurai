@@ -19,7 +19,7 @@ public class AnyCondition : ICondition
 
     public void IsSatisfied()
     {
-        _condition =
+        _condition = _physicsController.IsDeath == false &&
             _physicsController.IsHitted;
 
         if (!_condition)

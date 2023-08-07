@@ -61,7 +61,7 @@ namespace Controllers {
             }
             else
             {
-                _randomHittedAnimId = Random.Range(0, 2);
+                _randomHittedAnimId = Random.Range(0, 1);
 
                 IsHitted = true;
                 EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);

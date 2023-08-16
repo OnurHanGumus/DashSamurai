@@ -6,5 +6,7 @@ namespace Enums
     public enum PoolEnums
     {
         Enemy,
+        Wizard,
+        Mage,
     }
 }

@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
-using Enums;
 using Signals;
-using Components.Enemies;
 using System.Threading.Tasks;
+using Components.Enemies;
+using Data.MetaData;
 
-namespace Controllers {
+namespace Controllers
+{
     public class EnemyPhysicsController : MonoBehaviour, IAttackable
     {
         #region Self Variables
@@ -14,7 +15,7 @@ namespace Controllers {
         #region Inject Variables
         [Inject] private LevelSignals LevelSignals { get; set; }
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
-
+        [Inject] private EnemySettings _mySettings;
         public bool IsMoving { get => false; }
         public bool IsHitted { get; set; }
         public bool IsDeath { get; set; }
@@ -22,12 +23,12 @@ namespace Controllers {
         #endregion
 
         #region Serialized Variables
-        [SerializeField] private EnemyManager2 enemy;
+        [SerializeField] private GameObject enemy;
 
 
         #endregion
         #region Private Variables
-        private int _enemyHits = 100;
+        private int _enemyHits;
         private int _randomHittedAnimId = 0;
         #endregion
         #endregion
@@ -35,11 +36,7 @@ namespace Controllers {
         private void OnEnable()
         {
             IsDeath = false;
-        }
-
-        private void OnDisable()
-        {
-            _enemyHits = 2;
+            _enemyHits = 200;
         }
 
         void IAttackable.OnWeaponTriggerEnter(int value)
@@ -55,24 +52,21 @@ namespace Controllers {
             {
                 IsDeath = true;
                 EnemyInternalSignals.onDeath?.Invoke(this);
-                LevelSignals.onEnemyDied.Invoke();
-                EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Die);
+                LevelSignals.onEnemyDied?.Invoke();
+                //LevelSignals.onEnemyDied.Invoke();
+
                 DieDelay();
             }
             else
             {
-                _randomHittedAnimId = Random.Range(0, 1);
-
                 IsHitted = true;
-                EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
-                EnemyInternalSignals.onChangeAnimation?.Invoke((EnemyAnimationStates) _randomHittedAnimId);
             }
         }
 
         private async Task DieDelay()
         {
-            await Task.Delay(System.TimeSpan.FromSeconds(1));
-            enemy.gameObject.SetActive(false);
+            await Task.Delay(System.TimeSpan.FromSeconds(_mySettings.AnyStateExitDelay));
+            enemy.SetActive(false);
         }
     }
 }

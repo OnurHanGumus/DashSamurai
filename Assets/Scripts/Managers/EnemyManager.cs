@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour
     {
         CoreGameSignals.onRestart += OnRestartLevel;
 
-        EnemyInternalSignals.onChangeAnimation += animationController.OnChangeAnimation;
+        EnemyInternalSignals.onChangeAnimation += animationController.ChangeAnimation;
         EnemyInternalSignals.onDeath += movementController.OnDeath;
         EnemyInternalSignals.onHitted += movementController.OnHitted;
         EnemyInternalSignals.onAttack += movementController.OnAttack;
@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
     {
         CoreGameSignals.onRestart -= OnRestartLevel;
 
-        EnemyInternalSignals.onChangeAnimation -= animationController.OnChangeAnimation;
+        EnemyInternalSignals.onChangeAnimation -= animationController.ChangeAnimation;
         EnemyInternalSignals.onDeath -= movementController.OnDeath;
         EnemyInternalSignals.onHitted -= movementController.OnHitted;
         EnemyInternalSignals.onAttack -= movementController.OnAttack;

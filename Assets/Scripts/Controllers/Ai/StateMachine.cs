@@ -13,6 +13,7 @@ public class StateMachine
     private IState[] _stateList;
 
     private bool _isBusy = false;
+    private int _activeProcessCount = 0;
     private EnemyManager2 _manager;
 
     [Inject]
@@ -36,18 +37,25 @@ public class StateMachine
         {
             return;
         }
-        _isBusy = true;
 
+        ++_activeProcessCount;
+
+        _isBusy = true;
         _manager.CurrentStateEnum = newState;
+
         ChangeState(newState);
 
         float duration;
         duration = GetRemainTimeToChangeState();
         await Task.Delay(System.TimeSpan.FromSeconds(duration));
+        --_activeProcessCount;
 
+        if (_activeProcessCount > 0)
+        {
+            return;
+        }
         _isBusy = false;
     }
-
 
     public void ChangeState(EnemyStateEnums newState)
     {

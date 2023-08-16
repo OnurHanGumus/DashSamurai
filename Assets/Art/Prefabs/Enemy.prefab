@@ -909,7 +909,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7526621132940937717}
-  - component: {fileID: 430340565}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -932,21 +931,6 @@ Transform:
   m_Father: {fileID: 5803188353528402544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &430340565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2930357319611786635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88912b0f83502c46bbfaa254125f1c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4972634579616153232}
-  rootPartToReset: {fileID: 3318346952753896884}
-  rootPartToValues: {x: 0, y: 0.6674056, z: 0}
 --- !u!1 &3318346952753896884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2092,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef411b0391446508b1b5b9010e4a521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  myTransform: {fileID: 0}
+  manager: {fileID: 0}
+  physicsController: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &5001984864687572378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,7 +2109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4563fcaa7d014aa8913031fe68047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationController: {fileID: 430340565}
   movementController: {fileID: 700744696397646573}
 --- !u!114 &700744696397646573
 MonoBehaviour:
@@ -2282,7 +2270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34704af39bbb2004facb61b4bf8fc58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 2132128035881241593}
 --- !u!1 &7325524495222692066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,7 +2602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58cac00c336b2346994c1a545885e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 5001984864687572378}
+  enemy: {fileID: 0}
 --- !u!65 &1173876317
 BoxCollider:
   m_ObjectHideFlags: 0

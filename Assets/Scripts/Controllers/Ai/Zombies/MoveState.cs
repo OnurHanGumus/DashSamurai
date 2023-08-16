@@ -1,4 +1,5 @@
 using Data.MetaData;
+using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class MoveState : IState
 
     #region Private Variables
     private EnemyManager2 _manager;
+    private EnemyAnimationController _animationController;
     private NavMeshAgent _navmeshAgent;
     private Transform _playerTransform;
     private EnemyInternalSignals _enemyInternalSignals;
@@ -32,14 +34,14 @@ public class MoveState : IState
     #endregion
     #endregion
 
-    public MoveState(EnemyManager2 manager, NavMeshAgent agent, Transform playerTransform, Conditions conditions, EnemyInternalSignals enemyInternalSignals, EnemySettings mySettings)
+    public MoveState(NavMeshAgent agent, EnemyManager2 manager, Transform playerTransform, Conditions conditions, EnemyAnimationController animationControler, EnemySettings enemySettings)
     {
-        _manager = manager;
         _navmeshAgent = agent;
+        _manager = manager;
         _playerTransform = playerTransform;
         _conditions = conditions;
-        _enemyInternalSignals = enemyInternalSignals;
-        _mySettings = mySettings;
+        _animationController = animationControler;
+        _mySettings = enemySettings;
     }
 
     public bool IsItReadyToExit()
@@ -54,7 +56,14 @@ public class MoveState : IState
             _navmeshAgent.isStopped = false;
         }
 
-        _enemyInternalSignals.onChangeAnimation?.Invoke(Enums.EnemyAnimationStates.Move);
+        SetAnimations();
+    }
+
+    private void SetAnimations()
+    {
+        _animationController.ResetTrigger(EnemyAnimationStates.Attack1);
+        _animationController.ResetTrigger(EnemyAnimationStates.Move);
+        _animationController.ChangeAnimation(EnemyAnimationStates.Move);
     }
 
     public void OnExitState()

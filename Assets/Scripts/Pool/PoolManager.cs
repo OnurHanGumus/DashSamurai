@@ -58,12 +58,14 @@ public class PoolManager : MonoBehaviour
     private void SubscribeEvents()
     {
         PoolSignals.onGetObject += OnGetObject;
+        PoolSignals.onGetObjectExpanded += OnGetObject;
         CoreGameSignals.onRestart += OnReset;
     }
 
     private void UnsubscribeEvents()
     {
         PoolSignals.onGetObject -= OnGetObject;
+        PoolSignals.onGetObjectExpanded -= OnGetObject;
         CoreGameSignals.onRestart -= OnReset;
     }
 
@@ -97,6 +99,21 @@ public class PoolManager : MonoBehaviour
             if (!_poolDictionary[type][i].activeInHierarchy)
             {
                 _poolDictionary[type][i].transform.position = position;
+
+                return _poolDictionary[type][i];
+            }
+        }
+        return ExplandPool(type, position);
+    }
+
+    public GameObject OnGetObject(PoolEnums type, Vector3 position, Quaternion quaternion)
+    {
+        for (int i = 0; i < _poolDictionary[type].Count; i++)
+        {
+            if (!_poolDictionary[type][i].activeInHierarchy)
+            {
+                _poolDictionary[type][i].transform.position = position;
+                _poolDictionary[type][i].transform.rotation = quaternion;
 
                 return _poolDictionary[type][i];
             }

@@ -59,25 +59,19 @@ public class EnemyManager2 : MonoBehaviour
         _isDead = false;
         CurrentStateEnum = EnemyStateEnums.Move;
         StateMachine.InitMachine(EnemyStateEnums.Move);
-        EnemyInternalSignals.onResetAnimation?.Invoke(EnemyAnimationStates.Attack1);
-        EnemyInternalSignals.onResetAnimation?.Invoke(Enums.EnemyAnimationStates.Move);
+        //navMeshAgent.avoidancePriority = Random.Range(0, 100);
+        NavMesh.avoidancePredictionTime = 0.5f;
     }
 
     private void SubscribeEvents()
     {
         CoreGameSignals.onRestart += OnRestartLevel;
-
-        EnemyInternalSignals.onResetAnimation += animationController.OnResetTrigger;
-        EnemyInternalSignals.onChangeAnimation += animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath += OnDied;
     }
 
     private void UnsubscribeEvents()
     {
         CoreGameSignals.onRestart -= OnRestartLevel;
-
-        EnemyInternalSignals.onResetAnimation -= animationController.OnResetTrigger;
-        EnemyInternalSignals.onChangeAnimation -= animationController.OnChangeAnimation;
         EnemyInternalSignals.onDeath -= OnDied;
     }
 

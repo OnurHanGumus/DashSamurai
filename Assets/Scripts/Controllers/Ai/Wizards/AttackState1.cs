@@ -1,13 +1,15 @@
-using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Enums;
 using Data.MetaData;
+using System;
+using Signals;
 
-public class AttackState :IState
+public class AttackState1 : IState
 {
     #region Self Variables
 
@@ -25,31 +27,39 @@ public class AttackState :IState
     #region Private Variables
     private NavMeshAgent _navmeshAgent;
     private Transform _playerTransform, _myTransform;
-    private EnemyInternalSignals EnemyInternalSignals { get; set; }
-    private bool _isAttacking = false;
+    private bool _isAttacking = false, _isBlocked = false;
     private float _attackDelay = 0f;
     private Conditions _conditions;
     private EnemySettings _settings;
+    private EnemyAnimationController _animationController;
+    private Transform _mageInitTransform;
+    private PoolSignals PoolSignals { get; set; }
+    GameObject magic;
 
     #endregion
     #endregion
 
-    public AttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, EnemyInternalSignals enemyInternalSignals, Conditions conditions, EnemySettings settings)
+    public AttackState1(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, PoolSignals poolSignals, Transform mageInitPos)
     {
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
         _myTransform = myTransform;
-        EnemyInternalSignals = enemyInternalSignals;
         _conditions = conditions;
         _settings = settings;
+        _animationController = animationController;
+        PoolSignals = poolSignals;
+        _mageInitTransform = mageInitPos;
     }
 
     public void OnEnterState()
     {
-        _attackDelay = _settings.AttackDelay;
-        EnemyInternalSignals.onResetAnimation?.Invoke(Enums.EnemyAnimationStates.Move);
+        _isBlocked = false;
 
-        EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Attack1);
+        _attackDelay = _settings.AttackDelay;
+
+        _animationController.ResetTrigger(EnemyAnimationStates.Move);
+        _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
+        ThrowMage(0.8f);
 
         _isAttacking = true;
         if (_navmeshAgent.isActiveAndEnabled)
@@ -61,6 +71,7 @@ public class AttackState :IState
     public void OnExitState()
     {
         _isAttacking = false;
+        _isBlocked = true;
     }
 
     public void Tick()
@@ -74,7 +85,6 @@ public class AttackState :IState
 
     private void ManuelRotation()
     {
-
         if (_navmeshAgent.isStopped)
         {
             _myTransform.LookAt(new Vector3(_playerTransform.position.x, _myTransform.position.y, _playerTransform.position.z));
@@ -92,8 +102,10 @@ public class AttackState :IState
 
         if (_attackDelay <= 0f)
         {
-            EnemyInternalSignals.onChangeAnimation?.Invoke(EnemyAnimationStates.Attack1);
+            _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
             _attackDelay = _settings.AttackDelay;
+
+            ThrowMage(0.8f);
         }
     }
 
@@ -111,5 +123,16 @@ public class AttackState :IState
     public void ConditionCheck()
     {
         _conditions.IsSatisfied();
+    }
+
+    private async Task ThrowMage(float delay)
+    {
+        await Task.Delay(TimeSpan.FromSeconds(delay));
+        if (_isBlocked)
+        {
+            return;
+        }
+        magic = PoolSignals.onGetObjectExpanded?.Invoke(PoolEnums.Mage, _mageInitTransform.position, Quaternion.LookRotation((_playerTransform.position - _myTransform.position).normalized));
+        magic.SetActive(true);
     }
 }

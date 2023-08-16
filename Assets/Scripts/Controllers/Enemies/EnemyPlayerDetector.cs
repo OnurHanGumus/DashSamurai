@@ -15,13 +15,6 @@ namespace Controllers
     {
         [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
 
-        private bool _isPlayerInRange = false;
-
-        private void Awake()
-        {
-
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IAttackable attackable))

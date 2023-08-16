@@ -29,7 +29,7 @@ public class MoveCondition : ICondition
     {
         _condition = _physicsController.IsDeath == false &&
             _manager.CurrentStateEnum != EnemyStateEnums.Move &&
-            Mathf.Abs((_playerTransform.transform.position - _myTransform.position).sqrMagnitude) > _settings.MoveToAttackDistance;
+            Mathf.Abs((_playerTransform.transform.position - _myTransform.position).sqrMagnitude) > _settings.AttackToMoveDistance;
 
         if (!_condition)
         {

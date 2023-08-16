@@ -1,12 +1,14 @@
+using Data.MetaData;
+using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
-using Data.MetaData;
+using Random = UnityEngine.Random;
 
-public class AnyState :IState
+public class AnyState : IState
 {
     #region Self Variables
 
@@ -23,16 +25,19 @@ public class AnyState :IState
 
     #region Private Variables
     private NavMeshAgent _navmeshAgent;
+    private EnemyAnimationController _animationController;
     private Conditions _conditions;
     private float _exitDelay = 0f;
     EnemySettings _settings;
+    private int _randomHittedAnimId;
 
     #endregion
     #endregion
 
-    public AnyState(NavMeshAgent agent, Conditions conditions, EnemySettings settings)
+    public AnyState(NavMeshAgent agent, EnemyAnimationController animationController, Conditions conditions, EnemySettings settings)
     {
         _navmeshAgent = agent;
+        _animationController = animationController;
         _conditions = conditions;
         _settings = settings;
     }
@@ -46,6 +51,11 @@ public class AnyState :IState
     {
         StopMovement();
         _exitDelay = _settings.AnyStateExitDelay;
+        _randomHittedAnimId = Random.Range(0, 1);
+
+        _animationController.ResetTrigger(EnemyAnimationStates.Attack1);
+        _animationController.ResetTrigger(EnemyAnimationStates.Move);
+        _animationController.ChangeAnimation((EnemyAnimationStates)_randomHittedAnimId);
     }
 
     public void OnExitState()
@@ -80,7 +90,7 @@ public class AnyState :IState
 
     private void StopMovement()
     {
-        if(_navmeshAgent.isActiveAndEnabled)
+        if (_navmeshAgent.isActiveAndEnabled)
             _navmeshAgent.isStopped = true;
     }
 }

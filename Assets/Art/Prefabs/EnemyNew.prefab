@@ -2236,7 +2236,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7632612023604688660}
-  - component: {fileID: 7632612023604688663}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -2259,21 +2258,6 @@ Transform:
   m_Father: {fileID: 7434878637531527005}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7632612023604688663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7632612023604688661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88912b0f83502c46bbfaa254125f1c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7632612024468751608}
-  rootPartToReset: {fileID: 7485935510003820814}
-  rootPartToValues: {x: 0, y: 0.6674056, z: 0}
 --- !u!1 &7632612023855782268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,7 +2335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58cac00c336b2346994c1a545885e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7632612024468751588}
+  enemy: {fileID: 0}
 --- !u!65 &7632612024125726733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2423,7 +2407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34704af39bbb2004facb61b4bf8fc58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 7632612024429770992}
 --- !u!1 &7732168854318872307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a4563fcaa7d014aa8913031fe68047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationController: {fileID: 7632612023604688663}
   movementController: {fileID: 7632612024468751589}
 --- !u!114 &7632612024468751591
 MonoBehaviour:
@@ -2595,6 +2577,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef411b0391446508b1b5b9010e4a521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  myTransform: {fileID: 0}
+  manager: {fileID: 0}
+  physicsController: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &7632612024468751590
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,7 +33,12 @@ namespace Installers.Scenes
             Container.Bind<PlayerSignals>().AsSingle();
             Container.Bind<EnemySignals>().AsSingle();
 
-            //Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
+            //Container.Bind<DenemeController>().AsSingle();
+            //Container.BindInterfacesTo<DenemeController>().with.FromResolve();
+            //Container.Bind<IDeneme>().WithId("DenemeController").To<DenemeController>().AsSingle();
+            //Container.Bind<IDeneme>().WithId("DenemeController2").To<DenemeController2>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
             Container.BindInstance(playerTransform).WithId("Player").AsSingle();
         }
 

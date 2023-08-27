@@ -28253,11 +28253,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617350618}
   m_CullTransparentMesh: 1
---- !u!4 &1619954418 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8099404252649675309, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
-  m_PrefabInstance: {fileID: 7924484456268703114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1621796886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37401,17 +37396,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4310614304489658, guid: 5cbae0602ce9acf41a98fda3a353569a, type: 3}
   m_PrefabInstance: {fileID: 2145670947}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4676263212909361872 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3250473294485282631, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
-  m_PrefabInstance: {fileID: 7924484456268703114}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62cd2da39bffb734f89872394b557220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7924484456268703114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37419,14 +37403,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3250473294485282631, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250473294485282631, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
-      propertyPath: mageInitTransform
-      value: 
-      objectReference: {fileID: 1619954418}
     - target: {fileID: 6239125712762991086, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -37471,17 +37447,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6364801574381765205, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
-      propertyPath: _monoInstallers.Array.data[0]
-      value: 
-      objectReference: {fileID: 4676263212909361872}
     - target: {fileID: 6763847448731200340, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
       propertyPath: m_Name
       value: Wizard
-      objectReference: {fileID: 0}
-    - target: {fileID: 6763847448731200340, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e81f5170fad344397d5b883f78dd2a, type: 3}

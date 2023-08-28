@@ -1,9 +1,8 @@
 using System;
 
 [Serializable]
-public enum PoolEnums
+public enum EnemyTypeEnums
 {
     Zombie,
     Wizard,
-    Mage,
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   AttackToMoveDistance: 5.2
   AnyStateExitDelay: 1
   MoveSpeed: 1.1
+  Health: 2

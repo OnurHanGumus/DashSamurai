@@ -48,7 +48,7 @@ public class AttackState : IState
     {
         _attackDelay = _settings.AttackDelay;
 
-        _animationController.ResetTrigger(Enums.EnemyAnimationStates.Move);
+        _animationController.ResetTrigger(EnemyAnimationStates.Move);
         _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
 
         _isAttacking = true;

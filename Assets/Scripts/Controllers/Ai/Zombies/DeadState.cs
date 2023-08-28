@@ -10,6 +10,7 @@ public class DeadState :IState
     #region Self Variables
 
     #region Inject Variables
+    [Inject] private EnemyAnimationController EnemyAnimationController;
 
     #endregion
 
@@ -39,6 +40,15 @@ public class DeadState :IState
     public void OnEnterState()
     {
         StopMovement();
+        SetAnimations();
+    }
+
+    private void SetAnimations()
+    {
+        EnemyAnimationController.ResetTrigger(EnemyAnimationStates.Hit1);
+        EnemyAnimationController.ResetTrigger(EnemyAnimationStates.Hit2);
+
+        EnemyAnimationController.ChangeAnimation(EnemyAnimationStates.Die);
     }
 
     public void OnExitState()

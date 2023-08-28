@@ -27,7 +27,8 @@ public class EnemyManager2 : MonoBehaviour
     #endregion
     #region Serialized Variables
     [SerializeField] public float speedPercent;
-
+    [SerializeField] private Vector3 playerMeshInitPos;
+    [SerializeField] private Transform playerMesh;
 
     #endregion
     #region Private Variables
@@ -49,13 +50,13 @@ public class EnemyManager2 : MonoBehaviour
 
     private void Init()
     {
-
     }
 
     #region Event Subscriptions
     private void OnEnable()
     {
         SubscribeEvents();
+        SetPlayerMeshInitPos();
         _isDead = false;
         CurrentStateEnum = EnemyStateEnums.Move;
         StateMachine.InitMachine(EnemyStateEnums.Move);
@@ -78,10 +79,16 @@ public class EnemyManager2 : MonoBehaviour
     private void OnDisable()
     {
         UnsubscribeEvents();
+        SetPlayerMeshInitPos();
         StateMachine.OnResetCurrentState();
     }
 
     #endregion
+    private void SetPlayerMeshInitPos()
+    {
+        animationController.ResetAnimator();
+        playerMesh.localPosition = playerMeshInitPos;
+    }
 
     private void Update()
     {

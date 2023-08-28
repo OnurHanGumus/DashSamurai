@@ -24,7 +24,7 @@ namespace Managers
 
         [SerializeField] private UIPanelActivenessController uiPanelController;
         [SerializeField] private GameOverPanelController gameOverPanelController;
-        [SerializeField] private LevelPanelController levelPanelController;
+        [SerializeField] private WavePanelController levelPanelController;
         [SerializeField] private HighScorePanelController highScorePanelController;
 
         #endregion
@@ -56,12 +56,12 @@ namespace Managers
         {
             UISignals.onOpenPanel += OnOpenPanel;
             UISignals.onClosePanel += OnClosePanel;
-            UISignals.onSetChangedText += levelPanelController.OnScoreUpdateText;
-            LevelSignals.onTimerChanged += levelPanelController.OnTimerChanged;
+            //UISignals.onSetChangedText += levelPanelController.OnScoreUpdateText;
+            //LevelSignals.onTimerChanged += levelPanelController.OnTimerChanged;
             CoreGameSignals.onPlay += OnPlay;
             CoreGameSignals.onLevelFailed += OnLevelFailed;
             CoreGameSignals.onLevelSuccessful += OnLevelSuccessful;
-            CoreGameSignals.onRestart += levelPanelController.OnRestartLevel;
+            //CoreGameSignals.onRestart += levelPanelController.OnRestartLevel;
             ScoreSignals.onHighScoreChanged += highScorePanelController.OnUpdateText;
         }
 
@@ -69,12 +69,12 @@ namespace Managers
         {
             UISignals.onOpenPanel -= OnOpenPanel;
             UISignals.onClosePanel -= OnClosePanel;
-            UISignals.onSetChangedText -= levelPanelController.OnScoreUpdateText;
-            LevelSignals.onTimerChanged -= levelPanelController.OnTimerChanged;
+            //UISignals.onSetChangedText -= levelPanelController.OnScoreUpdateText;
+            //LevelSignals.onTimerChanged -= levelPanelController.OnTimerChanged;
             CoreGameSignals.onPlay -= OnPlay;
             CoreGameSignals.onLevelFailed -= OnLevelFailed;
             CoreGameSignals.onLevelSuccessful -= OnLevelSuccessful;
-            CoreGameSignals.onRestart -= levelPanelController.OnRestartLevel;
+            //CoreGameSignals.onRestart -= levelPanelController.OnRestartLevel;
             ScoreSignals.onHighScoreChanged -= highScorePanelController.OnUpdateText;
         }
 

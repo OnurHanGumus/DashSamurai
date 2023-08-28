@@ -36,7 +36,7 @@ namespace Controllers
         private void OnEnable()
         {
             IsDeath = false;
-            _enemyHits = 200;
+            _enemyHits = _mySettings.Health;
         }
 
         void IAttackable.OnWeaponTriggerEnter(int value)

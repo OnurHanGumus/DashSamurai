@@ -11,6 +11,7 @@ namespace Signals
         public Func<int> onGetCurrentModdedLevel = delegate { return 0; };
         public Func<int> onGetLevelId = delegate { return 0; };
         public UnityAction onEnemyDied = delegate { };
+        public UnityAction onEnemiesCleared = delegate { };
         public UnityAction<int> onTimerChanged = delegate { };
 
     }

@@ -2245,6 +2245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentStateEnum: 1
   speedPercent: 1
+  playerMeshInitPos: {x: 0, y: 0.6674056, z: 0}
+  playerMesh: {fileID: 6941798679677008338}
 --- !u!1 &6779610718592945326
 GameObject:
   m_ObjectHideFlags: 0

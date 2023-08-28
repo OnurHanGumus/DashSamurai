@@ -15,6 +15,7 @@ MonoBehaviour:
   AttackDelay: 2.5
   AttackRotatableTime: 1.2
   AttackDistance: 1
-  MoveToAttackDistance: 1.5
+  AttackToMoveDistance: 1.5
   AnyStateExitDelay: 1
   MoveSpeed: 1.1
+  Health: 2

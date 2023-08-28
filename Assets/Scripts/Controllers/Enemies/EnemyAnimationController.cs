@@ -30,4 +30,10 @@ public class EnemyAnimationController
     {
         _animator.ResetTrigger(resetAnimation.ToString());
     }
+
+    public void ResetAnimator()
+    {
+        _animator.Rebind();
+        _animator.Update(0f);
+    }
 }

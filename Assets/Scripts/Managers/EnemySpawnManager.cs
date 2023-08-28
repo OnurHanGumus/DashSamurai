@@ -1,131 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Enums;
 using Zenject;
 using Signals;
 using System.Threading.Tasks;
 using System;
 using Random = UnityEngine.Random;
-using Data.MetaData;
-using UnityEngine.AI;
+using Enums;
 
-public class EnemySpawnManager: ITickable, IInitializable
+public class EnemySpawnManager : IInitializable
 {
     #region Self Variables
     #region Injected Variables
-    [Inject] private EnemySpawnSettings EnemySpawnSettings { get; set; }
+    [Inject] public CD_EnemySpawn MySettings { get; set; }
+    [Inject] private ITypeSelector EnemyTypeSelector { get; set; }
+    [Inject] private IPointSelector SpawnPointSelector { get; set; }
+    [Inject] private ITimer WaveTimer { get; set; }
+    [Inject] private CoreGameSignals CoreGameSignals { get; set; }
 
     #endregion
 
+    #region Public Variables
+    public int WaveId = 0;
+
+    #endregion
     #region Serialized Variables
-    [SerializeField] private bool IsStarted = false;
 
     #endregion
     #region Private Variables
     private PoolSignals PoolSignals { get; set; }
-    private CoreGameSignals CoreGameSignals { get; set; }
     private LevelSignals LevelSignals { get; set; }
-    private int _levelId = 0;
     private int _killedEnemiesCount = 0;
     private int _spawnedEnemyCount = 0;
-    private float _timer;
-    private Settings _mySettings;
-    private bool _isReachedToSpawnNumber = false;
-
+    private float _currentSpawnDelay = 0f;
+    private EnemyTypeEnums _randomEnemyType;
     #endregion
     #endregion
 
-    public EnemySpawnManager(PoolSignals poolSignals, CoreGameSignals coreGameSignals, LevelSignals levelSignals)
+    public EnemySpawnManager(PoolSignals poolSignals, LevelSignals levelSignals)
     {
         //Debug.Log("Const"); //Awake
         PoolSignals = poolSignals;
-        CoreGameSignals = coreGameSignals;
         LevelSignals = levelSignals;
-        Awake();
+
+        AwakeInit();
     }
 
-    private void Awake()
-    {
-        Init();
-        SubscribeEvents();
-    }
-
-    private void Init()
+    private void AwakeInit()
     {
 
-    }
-
-    public void Initialize()
-    {
-        //Start
-        _mySettings = EnemySpawnSettings.EnemyManagerSpawnSettings;
     }
 
     #region Event Subscriptions
+    private void SubscribeEvents()
+    {
 
-    private void OnEnable()
+        CoreGameSignals.onPlay += OnWaveStarted;
+        LevelSignals.onEnemyDied += OnEnemyDie;
+    }
+    #endregion
+
+    public void Initialize() //Start
     {
         SubscribeEvents();
     }
 
-    private void SubscribeEvents()
+    private void OnWaveStarted()
     {
-        CoreGameSignals.onPlay += OnPlay;
-        CoreGameSignals.onLevelSuccessful += OnLevelSuccessful;
-        CoreGameSignals.onLevelFailed += OnLevelFailed;
-        CoreGameSignals.onRestart += OnRestart;
+        Reset();
 
-        LevelSignals.onEnemyDied += OnEnemyDie;
-    }
-
-    private void UnsubscribeEvents()
-    {
-        CoreGameSignals.onPlay -= OnPlay;
-        CoreGameSignals.onLevelSuccessful -= OnLevelSuccessful;
-        CoreGameSignals.onLevelFailed -= OnLevelFailed;
-        CoreGameSignals.onRestart -= OnRestart;
-
-        LevelSignals.onEnemyDied -= OnEnemyDie;
-
-    }
-
-    private void OnDisable()
-    {
-        UnsubscribeEvents();
-    }
-    #endregion
-
-    private void OnPlay()
-    {
-        IsStarted = true;
-        _levelId = LevelSignals.onGetLevelId();
-        _timer = _mySettings.Episodes[_levelId].WaveDuration;
+        WaveId = 0;
+        EnemyTypeSelector.SetRange();
 
         SpawnEnemy();
-    }
-
-    private void OnLevelSuccessful()
-    {
-        IsStarted = false;
-    }
-
-    private void OnLevelFailed()
-    {
-        IsStarted = false;
-    }
-
-    private void OnRestart()
-    {
-        _killedEnemiesCount = 0;
-        _spawnedEnemyCount = 0;
-        _isReachedToSpawnNumber = false;
     }
 
     private void OnEnemyDie()
     {
         ++_killedEnemiesCount;
-        if (!_isReachedToSpawnNumber)
+        if (!WaveTimer.IsTimerEnded())
         {
             return;
         }
@@ -136,67 +89,40 @@ public class EnemySpawnManager: ITickable, IInitializable
         }
     }
 
-    public void Tick()
-    {
-        if (!IsStarted)
-        {
-            return;
-        }
-
-        if (_isReachedToSpawnNumber)
-        {
-            return;
-        }
-
-        _timer -= Time.deltaTime;
-        LevelSignals.onTimerChanged?.Invoke((int) _timer);
-
-        if (_timer <= 1)
-        {
-            _isReachedToSpawnNumber = true;
-            return;
-        }
-    }
-
     private async Task SpawnEnemy()
     {
-        while (IsStarted)
-        {
-            await Task.Delay((int) (1000 * _mySettings.Episodes[_levelId].SpawnDelay.Evaluate((_mySettings.Episodes[_levelId].WaveDuration - _timer) / _mySettings.Episodes[_levelId].WaveDuration)));
+        await Task.Delay(TimeSpan.FromSeconds(1));
 
-            if (_isReachedToSpawnNumber)
+        while (WaveTimer.IsStarted())
+        {
+            _currentSpawnDelay = MySettings.Waves[WaveId].SpawnDelay.Evaluate(
+                (MySettings.Waves[WaveId].WaveDuration - WaveTimer.GetTime()) / MySettings.Waves[WaveId].WaveDuration);
+
+            await Task.Delay(TimeSpan.FromSeconds(_currentSpawnDelay / MySettings.Waves[WaveId].WaveScale));
+
+            if (WaveTimer.IsTimerEnded())
             {
                 break;
             }
-            GameObject enemy = PoolSignals.onGetObject(PoolEnums.Enemy, GetRandomPoint(5f));
+
+            float startTime = Time.time;
+            float currentTime = startTime;
+            while (currentTime == startTime)
+            {
+                currentTime += Time.deltaTime;
+                await Task.Yield();
+            }
+
+            _randomEnemyType = MySettings.Waves[WaveId].SpawnableEnemies[EnemyTypeSelector.GetType()].enemyType;
+            GameObject enemy = PoolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), _randomEnemyType.ToString()), SpawnPointSelector.GetPoint(5f));
             enemy.SetActive(true);
             ++_spawnedEnemyCount;
         }
     }
 
-    public Vector3 GetRandomPoint(float radius)
+    private void Reset()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
-        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
-        {
-            finalPosition = hit.position;
-        }
-        return finalPosition;
-    }
-
-    [Serializable]
-    public class Settings
-    {
-        public List<EpisodeSpawnSettings> Episodes;
-
-        [System.Serializable]
-        public struct EpisodeSpawnSettings
-        {
-            public List<GameObject> SpawnableEnemies;
-            public AnimationCurve SpawnDelay;
-            public int WaveDuration;
-        }
+        _killedEnemiesCount = 0;
+        _spawnedEnemyCount = 0;
     }
 }

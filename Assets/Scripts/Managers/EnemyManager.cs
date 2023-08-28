@@ -1,6 +1,7 @@
 using Components.Players;
 using Enums;
 using Signals;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class EnemyManager : MonoBehaviour
     #region Serialized Variables
     [SerializeField] private EnemyAnimationController animationController;
     [SerializeField] private EnemyMovementController movementController;
+    [SerializeField] private Vector3 playerMeshInitPos;
+    [SerializeField] private Transform playerMesh;
 
     #endregion
     #region Private Variables
@@ -38,6 +41,12 @@ public class EnemyManager : MonoBehaviour
     private void OnEnable()
     {
         SubscribeEvents();
+        SetPlayerMeshInitPos();
+    }
+
+    private void SetPlayerMeshInitPos()
+    {
+        playerMesh.position = playerMeshInitPos;
     }
 
     private void SubscribeEvents()

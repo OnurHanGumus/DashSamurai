@@ -12,7 +12,7 @@ namespace Installers.Scenes
         [SerializeField] private GameObject explosionPrefab;
         [SerializeField] private Transform playerTransform;
         private BulletSettings _bulletSettings;
-        private EnemySpawnSettings _enemySpawnSettings;
+        private CD_EnemySpawn _enemySpawnSettings;
 
         public override void InstallBindings()
         {
@@ -38,6 +38,10 @@ namespace Installers.Scenes
             //Container.Bind<IDeneme>().WithId("DenemeController").To<DenemeController>().AsSingle();
             //Container.Bind<IDeneme>().WithId("DenemeController2").To<DenemeController2>().AsSingle();
 
+            Container.BindInterfacesAndSelfTo<EnemyTypeSelector>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SpawnPointSelector>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WaveTimer>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WaveManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
             Container.BindInstance(playerTransform).WithId("Player").AsSingle();
         }
@@ -47,7 +51,7 @@ namespace Installers.Scenes
             _bulletSettings = Resources.Load<BulletSettings>("Data/MetaData/BulletSettings");
             Container.BindInstance(_bulletSettings).AsSingle();
 
-            _enemySpawnSettings = Resources.Load<EnemySpawnSettings>("Data/MetaData/EnemySpawnSettings");
+            _enemySpawnSettings = Resources.Load<CD_EnemySpawn>("Data/MetaData/EnemySpawnSettings");
             Container.BindInstance(_enemySpawnSettings).AsSingle();
         }
     }

@@ -76,28 +76,19 @@ namespace Installers.Prefabs
         private void BindConditions()
         {
             moveCondition = new MoveCondition(manager, physicsController, playerTransform, myTransform, _stateMachineInternalSignals, _enemySettings);
-            Container.BindInstance(moveCondition).AsSingle();
 
             attackCondition = new AttackCondition(manager, physicsController, playerTransform, myTransform, _stateMachineInternalSignals, _enemySettings);
-            Container.BindInstance(attackCondition).AsSingle();
 
             anyCondition = new AnyCondition(physicsController, _stateMachineInternalSignals);
-            Container.BindInstance(anyCondition).AsSingle();
 
             deadCondition = new DeadCondition(physicsController, _stateMachineInternalSignals);
-            Container.BindInstance(deadCondition).AsSingle();
         }
 
         private void BindTransitions()
         {
             conditionInMoveState = new Conditions(attackCondition, anyCondition, deadCondition);
-            Container.BindInstance(conditionInMoveState).AsTransient();
-
             conditionInAttackState = new Conditions(moveCondition, anyCondition, deadCondition);
-            Container.BindInstance(conditionInAttackState).AsTransient();
-
             conditionInAnyState = new Conditions(moveCondition, deadCondition, attackCondition, anyCondition);
-            Container.BindInstance(conditionInAnyState).AsTransient();
         }
 
         private void BindStates()
@@ -106,11 +97,8 @@ namespace Installers.Prefabs
             anyState = new AnyState(navMeshAgent, _enemyAnimationController, conditionInAnyState, _enemySettings);
             attackState = new AttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController);
             deadState = new DeadState(navMeshAgent);
+            Container.QueueForInject(deadState);
 
-            Container.BindInstance(moveState).AsSingle();
-            Container.BindInstance(anyState).AsSingle();
-            Container.BindInstance(attackState).AsSingle();
-            Container.BindInstance(deadState).AsSingle();
         }
     }
 }

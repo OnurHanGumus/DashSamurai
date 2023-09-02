@@ -5,5 +5,8 @@ public enum PoolEnums
 {
     Zombie,
     Wizard,
-    Mage,
+    WizardMage,
+    Bomber,
+    BomberExplode,
+    Vampire,
 }

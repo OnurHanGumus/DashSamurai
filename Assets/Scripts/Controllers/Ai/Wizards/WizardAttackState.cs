@@ -9,7 +9,7 @@ using Data.MetaData;
 using System;
 using Signals;
 
-public class AttackState1 : IState
+public class WizardAttackState : IState
 {
     #region Self Variables
 
@@ -39,7 +39,7 @@ public class AttackState1 : IState
     #endregion
     #endregion
 
-    public AttackState1(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, PoolSignals poolSignals, Transform mageInitPos)
+    public WizardAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, PoolSignals poolSignals, Transform mageInitPos)
     {
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
@@ -132,7 +132,7 @@ public class AttackState1 : IState
         {
             return;
         }
-        magic = PoolSignals.onGetObjectExpanded?.Invoke(PoolEnums.Mage, _mageInitTransform.position, Quaternion.LookRotation((_playerTransform.position - _myTransform.position).normalized));
+        magic = PoolSignals.onGetObjectExpanded?.Invoke(PoolEnums.WizardMage, _mageInitTransform.position, Quaternion.LookRotation((_playerTransform.position - _myTransform.position).normalized));
         magic.SetActive(true);
     }
 }

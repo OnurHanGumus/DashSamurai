@@ -5,4 +5,6 @@ public enum EnemyTypeEnums
 {
     Zombie,
     Wizard,
+    Bomber,
+    Vampire,
 }

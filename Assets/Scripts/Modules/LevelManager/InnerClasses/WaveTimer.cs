@@ -52,7 +52,6 @@ public class WaveTimer : ITimer, ITickable
         }
 
         _timer -= Time.deltaTime;
-        Debug.Log(_timer);
         onTimeUpdated.Invoke((int)_timer);
 
         if (_timer <= 1)

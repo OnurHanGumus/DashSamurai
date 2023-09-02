@@ -34,9 +34,8 @@ public class WaveManager : IInitializable
         StartWave(_waveId++);
     }
 
-    private async Task StartWave(int id)
+    private void StartWave(int id)
     {
-        await Task.Delay(TimeSpan.FromSeconds(MySettings.TimeBetweenWaves));
         WaveTimer.Reset();
 
         WaveTimer.SetTimer(MySettings.Waves[id].WaveDuration);

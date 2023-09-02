@@ -15,9 +15,13 @@ MonoBehaviour:
   Waves:
   - SpawnableEnemies:
     - enemyType: 0
-      EnemyPercentage: 1
+      EnemyPercentage: 0.1
     - enemyType: 1
-      EnemyPercentage: 0.5
+      EnemyPercentage: 0.1
+    - enemyType: 2
+      EnemyPercentage: 0.1
+    - enemyType: 3
+      EnemyPercentage: 2
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -70,7 +74,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 20
-    WaveScale: 0.5
+    WaveScale: 1
   - SpawnableEnemies:
     - enemyType: 0
       EnemyPercentage: 1

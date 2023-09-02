@@ -56,7 +56,6 @@ public class EnemyManager2 : MonoBehaviour
     private void OnEnable()
     {
         SubscribeEvents();
-        SetPlayerMeshInitPos();
         _isDead = false;
         CurrentStateEnum = EnemyStateEnums.Move;
         StateMachine.InitMachine(EnemyStateEnums.Move);

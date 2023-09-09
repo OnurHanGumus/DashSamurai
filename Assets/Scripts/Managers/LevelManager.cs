@@ -7,6 +7,7 @@ using Enums;
 using Signals;
 using UnityEngine;
 using Zenject;
+using UnityEditor.AI;
 
 namespace Managers
 {
@@ -36,6 +37,7 @@ namespace Managers
         private int _levelID;
         private LevelData _data;
         private int _currentModdedLevel = 0;
+        UnityEngine.Object[] _levels;
         #endregion
 
         #endregion
@@ -49,6 +51,7 @@ namespace Managers
         {
             _levelID = GetActiveLevel();
             _data = GetData();
+            _levels = Resources.LoadAll("Levels");
         }
 
         private LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
@@ -72,12 +75,11 @@ namespace Managers
             CoreGameSignals.onClearActiveLevel += OnClearActiveLevel;
             CoreGameSignals.onNextLevel += OnNextLevel;
             CoreGameSignals.onRestart += OnRestartLevel;
+            CoreGameSignals.onPlay += OnPlay;
             LevelSignals.onGetLevelId += OnGetLevelId;
             LevelSignals.onGetCurrentModdedLevel += OnGetModdedLevel;
 
         }
-
-
 
         private void UnsubscribeEvents()
         {
@@ -85,9 +87,9 @@ namespace Managers
             CoreGameSignals.onClearActiveLevel -= OnClearActiveLevel;
             CoreGameSignals.onNextLevel -= OnNextLevel;
             CoreGameSignals.onRestart -= OnRestartLevel;
+            CoreGameSignals.onPlay -= OnPlay;
             LevelSignals.onGetLevelId -= OnGetLevelId;
             LevelSignals.onGetCurrentModdedLevel -= OnGetModdedLevel;
-
         }
 
         private void OnDisable()
@@ -100,6 +102,11 @@ namespace Managers
         private void Start()
         {
             OnInitializeLevel();
+        }
+
+        private void OnPlay()
+        {
+            RebindNavmesh();
         }
 
         private void OnNextLevel()
@@ -124,10 +131,15 @@ namespace Managers
 
         private void OnInitializeLevel()
         {
-            UnityEngine.Object[] Levels = Resources.LoadAll("Levels");
-            int newLevelId = _levelID % Levels.Length;
+            int newLevelId = _levelID % _levels.Length;
             _currentModdedLevel = newLevelId;
-            levelLoader.InitializeLevel((GameObject)Levels[newLevelId], levelHolder.transform);
+            levelLoader.InitializeLevel((GameObject)_levels[newLevelId], levelHolder.transform);
+        }
+
+        private void RebindNavmesh()
+        {
+            NavMeshBuilder.ClearAllNavMeshes();
+            NavMeshBuilder.BuildNavMesh();
         }
 
         private int OnGetModdedLevel()

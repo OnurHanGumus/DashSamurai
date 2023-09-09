@@ -14,7 +14,7 @@ public class WaveManager : IInitializable
     [Inject] private ITimer WaveTimer { get; set; }
     [Inject] public CD_EnemySpawn MySettings { get; set; }
 
-    private int _waveId = 0;
+    private int _waveId;
 
 
     private void SubscribeSignals()
@@ -26,12 +26,13 @@ public class WaveManager : IInitializable
     public void Initialize()
     {
         SubscribeSignals();
-
+        _waveId = LevelSignals.onGetLevelId();
     }
 
     private void OnEnemiesCleared()
     {
-        StartWave(_waveId++);
+        _waveId = LevelSignals.onGetLevelId();
+        StartWave(_waveId);
     }
 
     private void StartWave(int id)
@@ -40,10 +41,5 @@ public class WaveManager : IInitializable
 
         WaveTimer.SetTimer(MySettings.Waves[id].WaveDuration);
         WaveTimer.StartTimer();
-    }
-
-    public int OnGetWaveId()
-    {
-        return _waveId;
     }
 }

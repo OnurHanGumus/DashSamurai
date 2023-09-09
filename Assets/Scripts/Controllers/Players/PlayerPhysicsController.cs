@@ -7,60 +7,61 @@ using Components.Enemies;
 using System.Threading.Tasks;
 using Managers;
 
-namespace Controllers {
-    public class PlayerPhysicsController : MonoBehaviour, IAttackable
+public class PlayerPhysicsController : MonoBehaviour, IAttackable
+{
+    #region Self Variables
+
+    #region Inject Variables
+    [Inject] private CoreGameSignals CoreGameSignals { get; set; }
+    [Inject] private PlayerSignals PlayerSignals { get; set; }
+    public bool IsMoving { get => manager.IsMoving; }
+
+    #endregion
+
+    #region Serialized Variables
+    [SerializeField] private PlayerManager manager;
+    #endregion
+    #region Private Variables
+    private bool _isDeath = false;
+    private int _health = 100;
+    #endregion
+    #endregion
+
+    void IAttackable.OnWeaponTriggerEnter(int value)
     {
-        #region Self Variables
-
-        #region Inject Variables
-        [Inject] private CoreGameSignals CoreGameSignals { get; set; }
-        [Inject] private PlayerSignals PlayerSignals { get; set; }
-        public bool IsMoving { get => manager.IsMoving; }
-
-        #endregion
-
-        #region Serialized Variables
-        [SerializeField] private PlayerManager manager;
-        #endregion
-        #region Private Variables
-        private int _enemyHits = 2;
-        private bool _isDeath = false;
-        private int _health = 100;
-        #endregion
-        #endregion
-
-        void IAttackable.OnWeaponTriggerEnter(int value)
+        if (_isDeath)
         {
-            if (_isDeath)
-            {
-                return;
-            }
-
-            else if (manager.IsMoving)
-            {
-                return;
-            }
-
-            _health -= value;
-
-            if (_health <= 0)
-            {
-                _isDeath = true;
-                PlayerSignals.onDied?.Invoke();
-                CoreGameSignals.onLevelFailed?.Invoke();
-                PlayerSignals.onChangeAnimation?.Invoke(PlayerAnimationStates.Die);
-
-                DieDelay();
-            }
-            else
-            {
-                PlayerSignals.onHitted?.Invoke(_health - value);
-            }
+            return;
         }
 
-        private async Task DieDelay()
+        else if (manager.IsMoving)
         {
-            await Task.Delay(1000);
+            return;
         }
+
+        _health -= value;
+        PlayerSignals.onHitted?.Invoke(_health);
+
+        if (_health <= 0)
+        {
+            _isDeath = true;
+            PlayerSignals.onDied?.Invoke();
+            CoreGameSignals.onLevelFailed?.Invoke();
+            PlayerSignals.onChangeAnimation?.Invoke(PlayerAnimationStates.Die);
+
+            DieDelay();
+        }
+    }
+
+    public void OnRestart()
+    {
+        _health = 100;
+        PlayerSignals.onHitted?.Invoke(_health);
+        _isDeath = false;
+    }
+
+    private async Task DieDelay()
+    {
+        await Task.Delay(1000);
     }
 }

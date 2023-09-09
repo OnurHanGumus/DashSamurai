@@ -17,6 +17,7 @@ public class EnemySpawnManager : IInitializable
     [Inject] private IPointSelector SpawnPointSelector { get; set; }
     [Inject] private ITimer WaveTimer { get; set; }
     [Inject] private CoreGameSignals CoreGameSignals { get; set; }
+    [Inject] private PlayerSignals PlayerSignals { get; set; }
 
     #endregion
 
@@ -34,6 +35,7 @@ public class EnemySpawnManager : IInitializable
     private int _spawnedEnemyCount = 0;
     private float _currentSpawnDelay = 0f;
     private EnemyTypeEnums _randomEnemyType;
+    private bool _isPlayerDead = false;
     #endregion
     #endregion
 
@@ -56,6 +58,7 @@ public class EnemySpawnManager : IInitializable
     {
 
         CoreGameSignals.onPlay += OnWaveStarted;
+        PlayerSignals.onDied += OnPlayerDied;
         LevelSignals.onEnemyDied += OnEnemyDie;
     }
     #endregion
@@ -68,8 +71,8 @@ public class EnemySpawnManager : IInitializable
     private void OnWaveStarted()
     {
         Reset();
-
-        WaveId = 0;
+        _isPlayerDead = false;
+        WaveId = LevelSignals.onGetLevelId();
         EnemyTypeSelector.SetRange();
 
         SpawnEnemy();
@@ -100,7 +103,7 @@ public class EnemySpawnManager : IInitializable
 
             await Task.Delay(TimeSpan.FromSeconds(_currentSpawnDelay / MySettings.Waves[WaveId].WaveScale));
 
-            if (WaveTimer.IsTimerEnded())
+            if (WaveTimer.IsTimerEnded() || _isPlayerDead)
             {
                 break;
             }
@@ -118,6 +121,11 @@ public class EnemySpawnManager : IInitializable
             enemy.SetActive(true);
             ++_spawnedEnemyCount;
         }
+    }
+
+    private void OnPlayerDied()
+    {
+        _isPlayerDead = true;
     }
 
     private void Reset()

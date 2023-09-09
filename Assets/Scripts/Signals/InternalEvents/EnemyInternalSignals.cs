@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EnemyInternalSignals
 {
     public UnityAction<IAttackable> onDeath = delegate { };
+    public UnityAction onDisabled = delegate { };
     public UnityAction onHitted = delegate { };
     public UnityAction onAttack = delegate { };
     public UnityAction<EnemyAnimationStates> onChangeAnimation = delegate { };

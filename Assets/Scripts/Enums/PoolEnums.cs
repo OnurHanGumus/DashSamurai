@@ -9,4 +9,5 @@ public enum PoolEnums
     Bomber,
     BomberExplode,
     Vampire,
+    Giant,
 }

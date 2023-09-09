@@ -12,7 +12,6 @@ public class HealthBarManager : MonoBehaviour
     [Inject] private PlayerSignals PlayerSignals { get; set; }
     #endregion
     #region Public Variables
-    public TextMeshPro HealthText;
 
     #endregion
 

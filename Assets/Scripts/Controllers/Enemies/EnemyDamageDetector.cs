@@ -12,11 +12,13 @@ namespace Controllers
 {
     public class EnemyDamageDetector : MonoBehaviour
     {
+        [Inject] private EnemySettings EnemySettings { get; set; }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IAttackable attackable))
             {
-                attackable.OnWeaponTriggerEnter(10);
+                attackable.OnWeaponTriggerEnter(EnemySettings.AttackPower);
             }
         }
     }

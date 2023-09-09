@@ -80,6 +80,7 @@ public class EnemyManager2 : MonoBehaviour
         UnsubscribeEvents();
         SetPlayerMeshInitPos();
         StateMachine.OnResetCurrentState();
+        EnemyInternalSignals.onDisabled?.Invoke();
     }
 
     #endregion

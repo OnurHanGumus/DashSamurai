@@ -7,4 +7,5 @@ public enum EnemyTypeEnums
     Wizard,
     Bomber,
     Vampire,
+    Giant,
 }

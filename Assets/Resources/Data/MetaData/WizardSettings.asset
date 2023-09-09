@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783645a0c88996446b2217df115ca128, type: 3}
   m_Name: WizardSettings
   m_EditorClassIdentifier: 
-  AttackDelay: 2.5
+  AttackDelay: 1.5
   AttackRotatableTime: 1.2
+  AnyStateDuration: 1
+  DeathDuration: 1
+  AttackPower: 5
+  Health: 1
+  MoveSpeed: 1.1
   AttackDistance: 5
   AttackToMoveDistance: 5.2
-  AnyStateExitDelay: 1
-  MoveSpeed: 1.1
-  Health: 2

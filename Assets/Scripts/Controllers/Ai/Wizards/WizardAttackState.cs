@@ -8,13 +8,14 @@ using Enums;
 using Data.MetaData;
 using System;
 using Signals;
+using System.Threading;
+using Components.Enemies;
 
 public class WizardAttackState : IState
 {
     #region Self Variables
 
     #region Inject Variables
-
     #endregion
 
     #region Public Variables
@@ -34,12 +35,15 @@ public class WizardAttackState : IState
     private EnemyAnimationController _animationController;
     private Transform _mageInitTransform;
     private PoolSignals PoolSignals { get; set; }
+    private EnemyInternalSignals _enemyInternalSignals;
+
     GameObject magic;
 
+
     #endregion
     #endregion
 
-    public WizardAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, PoolSignals poolSignals, Transform mageInitPos)
+    public WizardAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, PoolSignals poolSignals, Transform mageInitPos, EnemyInternalSignals enemyInternalSignals)
     {
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
@@ -49,6 +53,13 @@ public class WizardAttackState : IState
         _animationController = animationController;
         PoolSignals = poolSignals;
         _mageInitTransform = mageInitPos;
+        _enemyInternalSignals = enemyInternalSignals;
+        SubscribleEvents();
+    }
+
+    private void SubscribleEvents()
+    {
+        _enemyInternalSignals.onDisabled += OnDeath;
     }
 
     public void OnEnterState()
@@ -60,6 +71,8 @@ public class WizardAttackState : IState
         _animationController.ResetTrigger(EnemyAnimationStates.Move);
         _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
         ThrowMage(0.8f);
+        //StartAsyncMethod();
+
 
         _isAttacking = true;
         if (_navmeshAgent.isActiveAndEnabled)
@@ -106,6 +119,7 @@ public class WizardAttackState : IState
             _attackDelay = _settings.AttackDelay;
 
             ThrowMage(0.8f);
+            //StartAsyncMethod();
         }
     }
 
@@ -134,5 +148,10 @@ public class WizardAttackState : IState
         }
         magic = PoolSignals.onGetObjectExpanded?.Invoke(PoolEnums.WizardMage, _mageInitTransform.position, Quaternion.LookRotation((_playerTransform.position - _myTransform.position).normalized));
         magic.SetActive(true);
+    }
+
+    private void OnDeath()
+    {
+        _isBlocked = true;
     }
 }

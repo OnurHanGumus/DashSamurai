@@ -50,7 +50,7 @@ public class AnyState : IState
     public void OnEnterState()
     {
         StopMovement();
-        _exitDelay = _settings.AnyStateExitDelay;
+        _exitDelay = _settings.AnyStateDuration;
         _randomHittedAnimId = Random.Range(0, 1);
 
         _animationController.ResetTrigger(EnemyAnimationStates.Attack1);

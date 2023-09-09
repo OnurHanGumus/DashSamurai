@@ -103,6 +103,7 @@ namespace Controllers
             _currentTime = 0f;
             isPlayerStopped = false;
             _manager.IsMoving = true;
+            PlayerSignals.onUseAbility?.Invoke(-50);
         }
 
         public void OnPlayerStopped()
@@ -110,7 +111,7 @@ namespace Controllers
             //PlayerSignals.onResetTrigger.Invoke(Enums.PlayerAnimationStates.Move);
             isPlayerStopped = true;
             _manager.IsMoving = false;
-            transform.position = groundDetector.CurrentGorund.transform.position;
+            transform.position = groundDetector.CurrentGround.transform.position;
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); 
         }
 

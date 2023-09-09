@@ -54,7 +54,7 @@ namespace Installers.Prefabs
         protected override void BindStates()
         {
             base.BindStates();
-            attackState = new WizardAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController, PoolSignals, mageInitTransform);
+            attackState = new WizardAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController, PoolSignals, mageInitTransform, _enemyInternalSignals);
         }
 
         protected override void BindStateMachine()

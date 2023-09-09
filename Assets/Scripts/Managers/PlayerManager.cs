@@ -26,7 +26,7 @@ namespace Managers
 
         #region Serialized Variables
         [SerializeField] private PlayerMovementController movementController;
-        [SerializeField] private PlayerObstacleDetector physicsController;
+        [SerializeField] private PlayerPhysicsController physicsController;
         [SerializeField] private PlayerAnimationController animationController;
         #endregion
 
@@ -58,6 +58,7 @@ namespace Managers
         {
             CoreGameSignals.onPlay += movementController.OnPlay;
             CoreGameSignals.onRestart += movementController.OnRestartLevel;
+            CoreGameSignals.onRestart += physicsController.OnRestart;
 
             InputSignals.onInputDragged += movementController.OnInputDragged;
 
@@ -65,12 +66,14 @@ namespace Managers
             PlayerSignals.onChangeAnimation += animationController.OnChangeAnimation;
             PlayerSignals.onResetTrigger += animationController.OnResetTrigger;
             PlayerSignals.onGetTransform += OnGetTransform;
+
         }
 
         private void UnsubscribeEvents()
         {
             CoreGameSignals.onPlay -= movementController.OnPlay;
             CoreGameSignals.onRestart -= movementController.OnRestartLevel;
+            CoreGameSignals.onRestart -= physicsController.OnRestart;
 
             InputSignals.onInputDragged -= movementController.OnInputDragged;
 
@@ -86,19 +89,10 @@ namespace Managers
         }
 
         #endregion
-        private void OnPlay()
-        {
-
-        }
 
         private Transform OnGetTransform()
         {
             return transform;
-        }
-
-        private void OnResetLevel()
-        {
-
         }
     }
 }

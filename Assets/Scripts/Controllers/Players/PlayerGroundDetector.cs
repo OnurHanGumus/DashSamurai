@@ -10,7 +10,7 @@ public class PlayerGroundDetector : MonoBehaviour
     #endregion
 
     #region Public Variables
-    public GameObject CurrentGorund = null;
+    public GameObject CurrentGround = null;
     #endregion 
 
     #region Serialized Variables
@@ -27,7 +27,7 @@ public class PlayerGroundDetector : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            CurrentGorund = other.gameObject;
+            CurrentGround = other.gameObject;
         }
     }
 }

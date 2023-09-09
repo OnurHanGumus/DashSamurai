@@ -16,6 +16,7 @@ namespace Managers
         #region Inject Variables
         [Inject] private InputSignals InputSignals { get; set; }
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
+        [Inject] private PlayerSignals PlayerSignals { get; set; }
         #endregion
         #region Public Variables
 
@@ -26,7 +27,6 @@ namespace Managers
         #region Serialized Variables
 
         [SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
-
 
         #endregion
 
@@ -46,7 +46,6 @@ namespace Managers
         #endregion
 
         #endregion
-
 
         private void Awake()
         {
@@ -100,13 +99,19 @@ namespace Managers
                 }
                 InputSignals.onClicked?.Invoke(/*_clickedTransform*/);
             }
-            
+
             if (Input.GetMouseButton(0))
             {
                 if (IsPointerOverUIElement())
                 {
                     return;
                 }
+
+                if (PlayerSignals.onGetStaminaValue() < 50)
+                {
+                    return;
+                }
+
                 InputSignals.onInputDragged?.Invoke(new Vector3()
                 {
                     x = joystick.Horizontal,
@@ -114,14 +119,12 @@ namespace Managers
                 });
             }
 
-            
-
             if (Input.GetMouseButtonUp(0))
             {
                 InputSignals.onInputReleased?.Invoke();
             }
-
         }
+
         private bool IsPointerOverUIElement()
         {
             var eventData = new PointerEventData(EventSystem.current);
@@ -131,6 +134,7 @@ namespace Managers
             return results.Count > 1;
             //return EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0);
         }
+
         private void OnEnableInput()
         {
 
@@ -146,35 +150,6 @@ namespace Managers
 
         }
 
-        private void OnBoomerangDisapeared()
-        {
-            _isBoomerangDisapeared = true;
-        }
-
-        private void OnBoomerangRebuilded()
-        {
-            _isBoomerangDisapeared = false;
-        }
-
-        private void OnBoomerangReturned()
-        {
-            _clickedTransform = null;
-            _isBoomerangOnPlayer = true;
-        }
-        private void OnBoomerangThrowed()
-        {
-            _isBoomerangOnPlayer = false;
-        }
-
-        //private bool IsPointerOverUIElement() //Joystick'i do�ru konumland�r�rsan buna gerek kalmaz
-        //{
-        //    var eventData = new PointerEventData(EventSystem.current);
-        //    eventData.position = Input.mousePosition;
-        //    var results = new List<RaycastResult>();
-        //    EventSystem.current.RaycastAll(eventData, results);
-        //    return results.Count > 0;
-        //}
-
         private void OnReset()
         {
             _isBoomerangOnPlayer = true;
@@ -185,6 +160,5 @@ namespace Managers
         {
             _isPlayerDead = !_isPlayerDead;
         }
-
     }
 }

@@ -118,7 +118,7 @@ public class PoolManager : MonoBehaviour
                 return _poolDictionary[type][i];
             }
         }
-        return ExplandPool(type, position);
+        return ExplandPool(type, position, quaternion);
     }
 
     private GameObject ExplandPool(PoolEnums type, Vector3 position)
@@ -135,6 +135,27 @@ public class PoolManager : MonoBehaviour
         expandObject.SetActive(false);
         expandObject.transform.position = position;
         expandObject.transform.parent = transform;
+        _poolDictionary[type].Add(expandObject);
+
+        return expandObject;
+    }
+
+    private GameObject ExplandPool(PoolEnums type, Vector3 position, Quaternion quaternion)
+    {
+        GameObject expandObject = null;
+        foreach (var i in pooledObjects)
+        {
+            if (i.PoolEnums.Equals(type))
+            {
+                expandObject = Container.InstantiatePrefab(i.Prefab);
+            }
+        }
+
+        expandObject.SetActive(false);
+        expandObject.transform.parent = transform;
+        expandObject.transform.position = position;
+        expandObject.transform.rotation = quaternion;
+
         _poolDictionary[type].Add(expandObject);
 
         return expandObject;

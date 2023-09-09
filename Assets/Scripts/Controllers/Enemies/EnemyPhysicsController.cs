@@ -65,7 +65,7 @@ namespace Controllers
 
         private async Task DieDelay()
         {
-            await Task.Delay(System.TimeSpan.FromSeconds(_mySettings.AnyStateExitDelay));
+            await Task.Delay(System.TimeSpan.FromSeconds(_mySettings.DeathDuration));
             enemy.SetActive(false);
         }
     }

@@ -7,7 +7,7 @@ using Enums;
 using Signals;
 using UnityEngine;
 using Zenject;
-using UnityEditor.AI;
+//using UnityEditor.AI;
 
 namespace Managers
 {
@@ -138,8 +138,7 @@ namespace Managers
 
         private void RebindNavmesh()
         {
-            NavMeshBuilder.ClearAllNavMeshes();
-            NavMeshBuilder.BuildNavMesh();
+
         }
 
         private int OnGetModdedLevel()

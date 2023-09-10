@@ -33,8 +33,10 @@ MonoBehaviour:
     - Zenject
     - Assembly-CSharp-firstpass
     - Zenject-IntegrationTests
+    - NavMeshComponents
     - PPv2URPConverters
     - Zenject-TestFramework
+    - NavMeshComponentsEditor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

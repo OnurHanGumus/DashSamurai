@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelController : MonoBehaviour {
+public class WheelController2 : MonoBehaviour {
 
 	
 	public Vector3 rotateDirection;

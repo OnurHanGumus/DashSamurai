@@ -4,7 +4,7 @@ using Signals;
 using System.Threading.Tasks;
 using System;
 
-public class EnemySpawnManager : IInitializable
+public class CollectableSpawnManager : IInitializable
 {
     #region Self Variables
     #region Injected Variables
@@ -35,7 +35,7 @@ public class EnemySpawnManager : IInitializable
     #endregion
     #endregion
 
-    public EnemySpawnManager(PoolSignals poolSignals, LevelSignals levelSignals)
+    public CollectableSpawnManager(PoolSignals poolSignals, LevelSignals levelSignals)
     {
         //Debug.Log("Const"); //Awake
         PoolSignals = poolSignals;

@@ -27,11 +27,8 @@ public class CollectableSpawnManager : IInitializable
     #region Private Variables
     private PoolSignals PoolSignals { get; set; }
     private LevelSignals LevelSignals { get; set; }
-    private int _killedEnemiesCount = 0;
-    private int _spawnedEnemyCount = 0;
-    private float _currentSpawnDelay = 0f;
-    private EnemyTypeEnums _randomEnemyType;
-    private bool _isPlayerDead = false;
+    private int _time;
+
     #endregion
     #endregion
 
@@ -54,8 +51,7 @@ public class CollectableSpawnManager : IInitializable
     {
 
         CoreGameSignals.onPlay += OnWaveStarted;
-        PlayerSignals.onDied += OnPlayerDied;
-        LevelSignals.onEnemyDied += OnEnemyDie;
+        WaveTimer.onTimeUpdated += OnTimeUpdated;
     }
     #endregion
 
@@ -66,67 +62,26 @@ public class CollectableSpawnManager : IInitializable
 
     private void OnWaveStarted()
     {
-        Reset();
-        _isPlayerDead = false;
         WaveId = LevelSignals.onGetLevelId();
         EnemyTypeSelector.SetRange();
-
-        SpawnEnemy();
     }
 
-    private void OnEnemyDie()
+    private void OnTimeUpdated(int time)
     {
-        ++_killedEnemiesCount;
-        if (!WaveTimer.IsTimerEnded())
+        if (!WaveTimer.IsStarted())
         {
             return;
         }
 
-        if (_killedEnemiesCount.Equals(_spawnedEnemyCount))
+        foreach (var i in MySettings.Waves[WaveId].SpawnableCollectables)
         {
-            CoreGameSignals.onLevelSuccessful?.Invoke();
-        }
-    }
-
-    private async Task SpawnEnemy()
-    {
-        await Task.Delay(TimeSpan.FromSeconds(1));
-
-        while (WaveTimer.IsStarted())
-        {
-            _currentSpawnDelay = MySettings.Waves[WaveId].SpawnDelay.Evaluate(
-                (MySettings.Waves[WaveId].WaveDuration - WaveTimer.GetTime()) / MySettings.Waves[WaveId].WaveDuration);
-
-            await Task.Delay(TimeSpan.FromSeconds(_currentSpawnDelay / MySettings.Waves[WaveId].WaveScale));
-
-            if (WaveTimer.IsTimerEnded() || _isPlayerDead)
+            _time = (int)WaveTimer.GetTime();
+            if (time == i.SecondToInstantiate)
             {
-                break;
+                Debug.Log("Time: " + _time + "\nData: " + i.SecondToInstantiate);
+                GameObject collectable = PoolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), i.CollectableType.ToString()), SpawnPointSelector.GetPoint(5f));
+                collectable.SetActive(true);
             }
-
-            float startTime = Time.time;
-            float currentTime = startTime;
-            while (currentTime == startTime)
-            {
-                currentTime += Time.deltaTime;
-                await Task.Yield();
-            }
-
-            _randomEnemyType = MySettings.Waves[WaveId].SpawnableEnemies[EnemyTypeSelector.GetType()].enemyType;
-            GameObject enemy = PoolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), _randomEnemyType.ToString()), SpawnPointSelector.GetPoint(5f));
-            enemy.SetActive(true);
-            ++_spawnedEnemyCount;
         }
-    }
-
-    private void OnPlayerDied()
-    {
-        _isPlayerDead = true;
-    }
-
-    private void Reset()
-    {
-        _killedEnemiesCount = 0;
-        _spawnedEnemyCount = 0;
     }
 }

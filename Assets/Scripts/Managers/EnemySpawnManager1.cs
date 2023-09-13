@@ -4,7 +4,7 @@ using Signals;
 using System.Threading.Tasks;
 using System;
 
-public class EnemySpawnManager : IInitializable
+public class EnemySpawnManager1 : IInitializable
 {
     #region Self Variables
     #region Injected Variables
@@ -27,13 +27,15 @@ public class EnemySpawnManager : IInitializable
     #region Private Variables
     private PoolSignals PoolSignals { get; set; }
     private LevelSignals LevelSignals { get; set; }
+    private int _killedEnemiesCount = 0;
+    private int _spawnedEnemyCount = 0;
     private float _currentSpawnDelay = 0f;
     private EnemyTypeEnums _randomEnemyType;
     private bool _isPlayerDead = false;
     #endregion
     #endregion
 
-    public EnemySpawnManager(PoolSignals poolSignals, LevelSignals levelSignals)
+    public EnemySpawnManager1(PoolSignals poolSignals, LevelSignals levelSignals)
     {
         //Debug.Log("Const"); //Awake
         PoolSignals = poolSignals;
@@ -50,8 +52,10 @@ public class EnemySpawnManager : IInitializable
     #region Event Subscriptions
     private void SubscribeEvents()
     {
+
         CoreGameSignals.onPlay += OnWaveStarted;
         PlayerSignals.onDied += OnPlayerDied;
+        LevelSignals.onEnemyDied += OnEnemyDie;
     }
     #endregion
 
@@ -63,10 +67,25 @@ public class EnemySpawnManager : IInitializable
     private void OnWaveStarted()
     {
         Reset();
+        _isPlayerDead = false;
         WaveId = LevelSignals.onGetLevelId();
         EnemyTypeSelector.SetRange();
 
         SpawnEnemy();
+    }
+
+    private void OnEnemyDie()
+    {
+        ++_killedEnemiesCount;
+        if (!WaveTimer.IsTimerEnded())
+        {
+            return;
+        }
+
+        if (_killedEnemiesCount.Equals(_spawnedEnemyCount))
+        {
+            CoreGameSignals.onLevelSuccessful?.Invoke();
+        }
     }
 
     private async Task SpawnEnemy()
@@ -96,8 +115,7 @@ public class EnemySpawnManager : IInitializable
             _randomEnemyType = MySettings.Waves[WaveId].SpawnableEnemies[EnemyTypeSelector.GetType()].EnemyType;
             GameObject enemy = PoolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), _randomEnemyType.ToString()), SpawnPointSelector.GetPoint(5f));
             enemy.SetActive(true);
-
-            LevelSignals.onEnemyInitialized?.Invoke();
+            ++_spawnedEnemyCount;
         }
     }
 
@@ -108,6 +126,7 @@ public class EnemySpawnManager : IInitializable
 
     private void Reset()
     {
-        _isPlayerDead = false;
+        _killedEnemiesCount = 0;
+        _spawnedEnemyCount = 0;
     }
 }

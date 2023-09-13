@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -70,8 +71,9 @@ MonoBehaviour:
     WaveDuration: 10
     WaveScale: 0.5
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -126,8 +128,9 @@ MonoBehaviour:
     WaveDuration: 15
     WaveScale: 0.8
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -182,10 +185,13 @@ MonoBehaviour:
     WaveDuration: 20
     WaveScale: 3
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables:
+    - CollectableType: 0
+      SecondToInstantiate: 18
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -240,10 +246,19 @@ MonoBehaviour:
     WaveDuration: 20
     WaveScale: 1.5
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables:
+    - CollectableType: 0
+      SecondToInstantiate: 22
+    - CollectableType: 1
+      SecondToInstantiate: 21
+    - CollectableType: 2
+      SecondToInstantiate: 20
+    - CollectableType: 3
+      SecondToInstantiate: 19
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -298,10 +313,11 @@ MonoBehaviour:
     WaveDuration: 25
     WaveScale: 1.8
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -356,12 +372,13 @@ MonoBehaviour:
     WaveDuration: 28
     WaveScale: 2.5
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -416,8 +433,9 @@ MonoBehaviour:
     WaveDuration: 30
     WaveScale: 1.8
   - SpawnableEnemies:
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -472,12 +490,13 @@ MonoBehaviour:
     WaveDuration: 32
     WaveScale: 2
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -532,14 +551,15 @@ MonoBehaviour:
     WaveDuration: 5
     WaveScale: 3.5
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -594,14 +614,15 @@ MonoBehaviour:
     WaveDuration: 5
     WaveScale: 2
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -656,14 +677,15 @@ MonoBehaviour:
     WaveDuration: 40
     WaveScale: 3
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -718,16 +740,17 @@ MonoBehaviour:
     WaveDuration: 42
     WaveScale: 4
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 4
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -782,16 +805,17 @@ MonoBehaviour:
     WaveDuration: 45
     WaveScale: 2.5
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 4
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -846,16 +870,17 @@ MonoBehaviour:
     WaveDuration: 48
     WaveScale: 2.8
   - SpawnableEnemies:
-    - enemyType: 0
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 1
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 2
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 3
+    - EnemyType: 0
       EnemyPercentage: 1
-    - enemyType: 4
+    - EnemyType: 0
       EnemyPercentage: 1
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:

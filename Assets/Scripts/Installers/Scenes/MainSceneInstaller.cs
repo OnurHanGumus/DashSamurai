@@ -43,6 +43,7 @@ namespace Installers.Scenes
             Container.BindInterfacesAndSelfTo<WaveTimer>().AsSingle();
             Container.BindInterfacesAndSelfTo<WaveManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CollectableSpawnManager>().AsSingle();
             Container.BindInstance(playerTransform).WithId("Player").AsSingle();
         }
 

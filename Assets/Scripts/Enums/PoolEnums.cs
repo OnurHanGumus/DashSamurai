@@ -10,4 +10,9 @@ public enum PoolEnums
     BomberExplode,
     Vampire,
     Giant,
+
+    Shield,
+    EndlessStamina,
+    IncreaseHealth,
+    KillOneDash,
 }

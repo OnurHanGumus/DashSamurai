@@ -24,6 +24,7 @@ public class WaveTimer : ITimer, ITickable
     private float _timer = 0;
     private bool _isStarted = false;
     private bool _isTimerEnded = false;
+    private int _lastTimeValue;
 
 
     #endregion
@@ -32,6 +33,7 @@ public class WaveTimer : ITimer, ITickable
     void ITimer.SetTimer(int value)
     {
         _timer = value;
+        _lastTimeValue = value;
     }
 
     float ITimer.GetTime()
@@ -52,7 +54,11 @@ public class WaveTimer : ITimer, ITickable
         }
 
         _timer -= Time.deltaTime;
-        onTimeUpdated.Invoke((int)_timer);
+        if (_lastTimeValue - (int)_timer == 1)
+        {
+            onTimeUpdated.Invoke((int)_timer);
+            _lastTimeValue = (int)_timer;
+        }
 
         if (_timer <= 1)
         {

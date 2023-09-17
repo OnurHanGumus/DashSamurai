@@ -109,6 +109,7 @@ namespace Managers
 
                 if (PlayerSignals.onGetStaminaValue() < 50)
                 {
+                    PlayerSignals.onLowStamina?.Invoke();
                     return;
                 }
 

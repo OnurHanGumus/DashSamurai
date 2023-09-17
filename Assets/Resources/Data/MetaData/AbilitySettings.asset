@@ -15,14 +15,14 @@ MonoBehaviour:
   AbilityDatas:
   - Type: 0
     IsActivated: 0
-    Duration: 3
+    Duration: 10
     Value: 0
   - Type: 1
-    IsActivated: 0
+    IsActivated: 1
     Duration: 10
     Value: 100
   - Type: 2
-    IsActivated: 1
+    IsActivated: 0
     Duration: 10
     Value: 10
   - Type: 3

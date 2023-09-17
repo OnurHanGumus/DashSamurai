@@ -12,6 +12,7 @@ public class PlayerSignals
     public UnityAction<int> onHitted = delegate { };
     public UnityAction onDied = delegate { };
     public UnityAction<int> onUseAbility = delegate { };
+    public UnityAction onLowStamina = delegate { };
     public UnityAction<int> onIncreaseSkill = delegate { };
     public UnityAction<PlayerAnimationStates> onChangeAnimation = delegate { };
     public UnityAction<PlayerAnimationStates> onResetTrigger = delegate { };

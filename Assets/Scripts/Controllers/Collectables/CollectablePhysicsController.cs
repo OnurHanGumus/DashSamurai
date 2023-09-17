@@ -33,6 +33,7 @@ public class CollectablePhysicsController : MonoBehaviour
     {
         Debug.Log(CollectableEnum + " is collected.");
         _abilitySignals.onActivateAbility?.Invoke(CollectableEnum);
+        gameObject.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider other)

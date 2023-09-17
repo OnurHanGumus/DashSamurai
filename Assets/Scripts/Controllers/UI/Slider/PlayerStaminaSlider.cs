@@ -6,6 +6,7 @@ using TMPro;
 using Zenject;
 using System;
 using System.Threading.Tasks;
+using DG.Tweening;
 
 public class PlayerStaminaSlider : SliderBase
 {
@@ -14,6 +15,7 @@ public class PlayerStaminaSlider : SliderBase
     [Inject] private PlayerSignals _playerSignals { get; set; }
     [Inject] private SliderIncreaseAutomatically _sliderIncreaseAuomatically;
     [Inject] private AbilitySettings _abilitySettings { get; set; }
+    [Inject(Id = "StaminaFill")] private Image _staminaFillImage;
 
     #endregion
     #region Public Variables
@@ -38,6 +40,7 @@ public class PlayerStaminaSlider : SliderBase
         _playerSignals.onUseAbility += IncreaseValue;
         _playerSignals.onIncreaseSkill += IncreaseValue;
         _playerSignals.onGetStaminaValue += GetValue;
+        _playerSignals.onLowStamina += OnLowStamina;
     }
 
     private void UnsubscribeSignals()
@@ -45,6 +48,7 @@ public class PlayerStaminaSlider : SliderBase
         _playerSignals.onUseAbility -= IncreaseValue;
         _playerSignals.onIncreaseSkill -= IncreaseValue;
         _playerSignals.onGetStaminaValue -= GetValue;
+        _playerSignals.onLowStamina -= OnLowStamina;
     }
 
     private void OnDisable()
@@ -78,5 +82,13 @@ public class PlayerStaminaSlider : SliderBase
     public override int GetValue()
     {
         return (int) slider.value;
+    }
+
+    private void OnLowStamina()
+    {
+        _staminaFillImage.DOColor(new Color(1, 0, 0), 0.5f).OnComplete(() =>
+           {
+               _staminaFillImage.DOColor(new Color(0, 229f/255f, 1), 0.5f);
+           });
     }
 }

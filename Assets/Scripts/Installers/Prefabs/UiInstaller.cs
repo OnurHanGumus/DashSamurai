@@ -10,11 +10,13 @@ namespace Installers.Prefabs
     {
         [SerializeField] private Slider slider;
         [SerializeField] private TextMeshProUGUI sliderText;
+        [SerializeField] private Image staminaSliderImage;
         public override void InstallBindings()
         {
             Container.Bind<SliderIncreaseAutomatically>().AsSingle();
             Container.BindInstance(slider).AsSingle();
             Container.BindInstance(sliderText).AsSingle();
+            Container.BindInstance(staminaSliderImage).WithId("StaminaFill").AsSingle();
         }
     }
 }

@@ -5047,6 +5047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1984277262}
   sliderText: {fileID: 1191645897}
+  staminaSliderImage: {fileID: 1805356716}
 --- !u!1 &568350706
 GameObject:
   m_ObjectHideFlags: 0
@@ -15726,6 +15727,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804475511}
   m_CullTransparentMesh: 1
+--- !u!114 &1805356716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8414331585584831331, guid: dc57f14f9b2c5b14aad3344e5a0b68cf, type: 3}
+  m_PrefabInstance: {fileID: 131280683}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1809267903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9082824185583292393, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}

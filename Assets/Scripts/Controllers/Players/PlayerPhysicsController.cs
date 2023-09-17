@@ -14,6 +14,7 @@ public class PlayerPhysicsController : MonoBehaviour, IAttackable
     #region Inject Variables
     [Inject] private CoreGameSignals CoreGameSignals { get; set; }
     [Inject] private PlayerSignals PlayerSignals { get; set; }
+    [Inject] private AbilitySettings AbilitySettings { get; set; }
     public bool IsMoving { get => manager.IsMoving; }
 
     #endregion
@@ -39,7 +40,7 @@ public class PlayerPhysicsController : MonoBehaviour, IAttackable
             return;
         }
 
-        _health -= value;
+        _health -= value * (AbilitySettings.AbilityDatas[(int)CollectableEnums.Shield].IsActivated ? 0:1);
         PlayerSignals.onHitted?.Invoke(_health);
 
         if (_health <= 0)

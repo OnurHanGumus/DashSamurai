@@ -11,8 +11,9 @@ public class PlayerStaminaSlider : SliderBase
 {
     #region Self Variables
     #region Inject Variables
-    [Inject] private PlayerSignals PlayerSignals { get; set; }
-    [Inject] private SliderIncreaseAutomatically SliderIncreaseAuomatically;
+    [Inject] private PlayerSignals _playerSignals { get; set; }
+    [Inject] private SliderIncreaseAutomatically _sliderIncreaseAuomatically;
+    [Inject] private AbilitySettings _abilitySettings { get; set; }
 
     #endregion
     #region Public Variables
@@ -34,16 +35,16 @@ public class PlayerStaminaSlider : SliderBase
 
     private void SubscribeSignals()
     {
-        PlayerSignals.onUseAbility += IncreaseValue;
-        PlayerSignals.onIncreaseSkill += IncreaseValue;
-        PlayerSignals.onGetStaminaValue += GetValue;
+        _playerSignals.onUseAbility += IncreaseValue;
+        _playerSignals.onIncreaseSkill += IncreaseValue;
+        _playerSignals.onGetStaminaValue += GetValue;
     }
 
     private void UnsubscribeSignals()
     {
-        PlayerSignals.onUseAbility -= IncreaseValue;
-        PlayerSignals.onIncreaseSkill -= IncreaseValue;
-        PlayerSignals.onGetStaminaValue -= GetValue;
+        _playerSignals.onUseAbility -= IncreaseValue;
+        _playerSignals.onIncreaseSkill -= IncreaseValue;
+        _playerSignals.onGetStaminaValue -= GetValue;
     }
 
     private void OnDisable()
@@ -51,7 +52,6 @@ public class PlayerStaminaSlider : SliderBase
         UnsubscribeSignals();
     }
     #endregion
-
 
     private void Awake()
     {
@@ -61,8 +61,7 @@ public class PlayerStaminaSlider : SliderBase
     public override void Init()
     {
         base.Init();
-        SliderIncreaseAuomatically.IncreaseValue(slider, _maksValue);
-
+        _sliderIncreaseAuomatically.IncreaseValue(slider, _maksValue);
     }
 
     public override void SetValue(int value)
@@ -72,8 +71,8 @@ public class PlayerStaminaSlider : SliderBase
 
     public override void IncreaseValue(int value)
     {
-        base.IncreaseValue(value);
-        SliderIncreaseAuomatically.IncreaseValue(slider, _maksValue);
+        base.IncreaseValue(value * (_abilitySettings.AbilityDatas[(int)CollectableEnums.EndlessStamina].IsActivated ? 0 : 1));
+        _sliderIncreaseAuomatically.IncreaseValue(slider, _maksValue);
     }
 
     public override int GetValue()

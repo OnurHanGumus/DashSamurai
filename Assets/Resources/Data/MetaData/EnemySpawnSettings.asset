@@ -189,9 +189,7 @@ MonoBehaviour:
       EnemyPercentage: 1
     - EnemyType: 0
       EnemyPercentage: 1
-    SpawnableCollectables:
-    - CollectableType: 0
-      SecondToInstantiate: 18
+    SpawnableCollectables: []
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -253,12 +251,7 @@ MonoBehaviour:
     SpawnableCollectables:
     - CollectableType: 0
       SecondToInstantiate: 22
-    - CollectableType: 1
-      SecondToInstantiate: 21
-    - CollectableType: 2
-      SecondToInstantiate: 20
-    - CollectableType: 3
-      SecondToInstantiate: 19
+      Position: {x: 1, y: 0.7, z: -2.5}
     SpawnDelay:
       serializedVersion: 2
       m_Curve:

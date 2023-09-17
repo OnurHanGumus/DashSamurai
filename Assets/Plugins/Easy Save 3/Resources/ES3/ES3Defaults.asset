@@ -33,10 +33,16 @@ MonoBehaviour:
     - Zenject
     - Assembly-CSharp-firstpass
     - Zenject-IntegrationTests
+    - CFXRDemo
+    - CFXRRuntime
     - NavMeshComponents
+    - KinoBloom.Runtime
+    - CFXREditor
     - PPv2URPConverters
     - Zenject-TestFramework
     - NavMeshComponentsEditor
+    - ToonyColorsPro.Demo.Editor
+    - CFXR.WelcomeScreen
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

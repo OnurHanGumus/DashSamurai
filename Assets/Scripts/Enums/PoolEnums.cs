@@ -13,6 +13,6 @@ public enum PoolEnums
 
     Shield,
     EndlessStamina,
-    IncreaseHealth,
+    Poison,
     KillOneDash,
 }

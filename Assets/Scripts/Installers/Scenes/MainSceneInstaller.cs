@@ -9,10 +9,17 @@ namespace Installers.Scenes
     {
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private GameObject enemyPrefab;
-        [SerializeField] private GameObject explosionPrefab;
         [SerializeField] private Transform playerTransform;
+
+        [SerializeField] private GameObject shieldParticle, staminaParticle, 
+            poisonParticle, dashParticle;
+        [SerializeField] private SphereCollider poisonParticleCollider;
+
         private BulletSettings _bulletSettings;
+        private AbilitySettings _abilitySettings;
         private CD_EnemySpawn _enemySpawnSettings;
+        
+
 
         public override void InstallBindings()
         {
@@ -45,6 +52,31 @@ namespace Installers.Scenes
             Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<CollectableSpawnManager>().AsSingle();
             Container.BindInstance(playerTransform).WithId("Player").AsSingle();
+            #region Abilities
+
+            Container.Bind<AbilitySignals>().AsSingle();
+
+            ShieldAbility shieldAbility = new ShieldAbility(shieldParticle);
+            Container.BindInterfacesTo(shieldAbility.GetType()).FromInstance(shieldAbility);
+            Container.QueueForInject(shieldAbility);
+
+            StaminaAbility staminaAbility = new StaminaAbility(staminaParticle);
+            Container.BindInterfacesTo(staminaAbility.GetType()).FromInstance(staminaAbility);
+            Container.QueueForInject(staminaAbility);
+
+            PoisonAbility poisonAbility = new PoisonAbility(poisonParticle, poisonParticleCollider);
+            Container.BindInterfacesTo(poisonAbility.GetType()).FromInstance(poisonAbility);
+            Container.QueueForInject(poisonAbility);
+
+            DashAbility dashAbility = new DashAbility(dashParticle);
+            Container.BindInterfacesTo(dashAbility.GetType()).FromInstance(dashAbility);
+            Container.QueueForInject(dashAbility);
+
+            AbilityManager abilityManager = new AbilityManager(shieldAbility, staminaAbility, poisonAbility, dashAbility);
+            Container.BindInstance(abilityManager).AsSingle();
+            Container.BindInterfacesTo<AbilityManager>().FromResolve();
+            Container.QueueForInject(abilityManager);
+            #endregion
         }
 
         private void BindSettings()
@@ -54,6 +86,9 @@ namespace Installers.Scenes
 
             _enemySpawnSettings = Resources.Load<CD_EnemySpawn>("Data/MetaData/EnemySpawnSettings");
             Container.BindInstance(_enemySpawnSettings).AsSingle();
+
+            _abilitySettings = Resources.Load<AbilitySettings>("Data/MetaData/AbilitySettings");
+            Container.BindInstance(_abilitySettings).AsSingle();
         }
     }
 }

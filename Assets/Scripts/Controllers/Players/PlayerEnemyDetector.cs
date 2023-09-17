@@ -12,18 +12,19 @@ namespace Controllers
 {
     public class PlayerEnemyDetector : MonoBehaviour
     {
-        [Inject] private PlayerSignals PlayerSignals { get; set; }
+        [Inject] private AbilitySettings _abilitySettings;
+        private AbilityData _abilityData;
 
         private void Awake()
         {
-            
+            _abilityData = _abilitySettings.AbilityDatas[(int)CollectableEnums.KillOneDash];
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IAttackable attackable))
             {
-                attackable.OnWeaponTriggerEnter(1);
+                attackable.OnWeaponTriggerEnter(1 + ((_abilityData.IsActivated ? 1 : 0) * _abilityData.Value));
             }
         }
     }

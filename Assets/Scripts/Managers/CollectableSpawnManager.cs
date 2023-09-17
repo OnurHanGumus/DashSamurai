@@ -28,6 +28,7 @@ public class CollectableSpawnManager : IInitializable
     private PoolSignals PoolSignals { get; set; }
     private LevelSignals LevelSignals { get; set; }
     private int _time;
+    private Vector3 _position;
 
     #endregion
     #endregion
@@ -78,8 +79,9 @@ public class CollectableSpawnManager : IInitializable
             _time = (int)WaveTimer.GetTime();
             if (time == i.SecondToInstantiate)
             {
-                Debug.Log("Time: " + _time + "\nData: " + i.SecondToInstantiate);
-                GameObject collectable = PoolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), i.CollectableType.ToString()), SpawnPointSelector.GetPoint(5f));
+                _position = i.Position;
+
+                GameObject collectable = PoolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), i.CollectableType.ToString()), _position);
                 collectable.SetActive(true);
             }
         }

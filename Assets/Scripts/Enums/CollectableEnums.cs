@@ -5,6 +5,6 @@ public enum CollectableEnums
 {
     Shield,
     EndlessStamina,
-    IncreaseHealth,
+    Poison,
     KillOneDash,
 }

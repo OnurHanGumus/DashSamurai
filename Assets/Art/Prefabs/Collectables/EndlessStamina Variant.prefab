@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7152858816798802497, guid: eda100ae0e91f714db5f6c8ead0d1184, type: 3}
+      propertyPath: CollectableEnum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8588423615865322271, guid: eda100ae0e91f714db5f6c8ead0d1184, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592179497832424445, guid: eda100ae0e91f714db5f6c8ead0d1184, type: 3}
       propertyPath: m_Name
-      value: EndlessStamina
+      value: EndlessStamina Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8596031853479099315, guid: eda100ae0e91f714db5f6c8ead0d1184, type: 3}
       propertyPath: m_Mesh

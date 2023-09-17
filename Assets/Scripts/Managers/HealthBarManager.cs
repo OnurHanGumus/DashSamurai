@@ -50,8 +50,6 @@ public class HealthBarManager : MonoBehaviour
     }
 
     #endregion
-
-
     private void Awake()
     {
         Init();

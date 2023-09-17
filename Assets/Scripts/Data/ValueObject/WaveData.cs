@@ -17,6 +17,7 @@ public struct WaveData
     {
         public CollectableEnums CollectableType;
         public int SecondToInstantiate;
+        public Vector3 Position;
     }
 
     public List<Enemies> SpawnableEnemies;

@@ -15522,6 +15522,21 @@ MonoBehaviour:
   - PoolEnums: 10
     Prefab: {fileID: 58867802822527770, guid: 88c8b6b40e892524ea769cd9a4dfcd9c, type: 3}
     Amounts: 10
+  - PoolEnums: 11
+    Prefab: {fileID: 100004, guid: 9d415e1f9754b0d40955f9a80f1e1ee6, type: 3}
+    Amounts: 1
+  - PoolEnums: 12
+    Prefab: {fileID: 100000, guid: 3706af753175f444aaf3c711b43bd6d1, type: 3}
+    Amounts: 1
+  - PoolEnums: 13
+    Prefab: {fileID: 100006, guid: ea9bfbe9f528b914d91da37dcb8b3c71, type: 3}
+    Amounts: 1
+  - PoolEnums: 14
+    Prefab: {fileID: 100000, guid: ce72034e533e8964f9fc2ab4a6fa25c6, type: 3}
+    Amounts: 1
+  - PoolEnums: 15
+    Prefab: {fileID: 2339602903440507071, guid: 6c3a90fd767f55e45a5033f1662e4faf, type: 3}
+    Amounts: 5
 --- !u!1 &1804475511
 GameObject:
   m_ObjectHideFlags: 0

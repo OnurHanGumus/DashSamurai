@@ -15,4 +15,11 @@ public enum PoolEnums
     EndlessStamina,
     Poison,
     KillOneDash,
+
+    ShieldCollectParticle,
+    EndlessStaminaCollectParticle,
+    PoisonCollectParticle,
+    KillOneDashCollectParticle,
+
+    WaterSplash,
 }

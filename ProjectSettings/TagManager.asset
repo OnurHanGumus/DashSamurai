@@ -7,6 +7,9 @@ TagManager:
   - Obstacle
   - Ground
   - Poison
+  - FxTemporaire
+  - Enemy
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - UI
   - EnemyAttack
   - EnemyPhysics
-  - 
-  - 
+  - EnemyRay
+  - Border
   - 
   - 
   - 

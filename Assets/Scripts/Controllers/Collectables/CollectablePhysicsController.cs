@@ -7,8 +7,8 @@ public class CollectablePhysicsController : MonoBehaviour
 {
     #region Self Variables
     #region Injected Variables
-    [Inject] protected AbilitySignals _abilitySignals { get; set; }
-
+    [Inject] private AbilitySignals _abilitySignals { get; set; }
+    [Inject] private PoolSignals _poolSignals { get; set; }
 
     #endregion
 
@@ -16,6 +16,7 @@ public class CollectablePhysicsController : MonoBehaviour
     public CollectableEnums CollectableEnum;
     #endregion
     #region Serialized Variables
+    [SerializeField] private PoolEnums collectParticle;
 
     #endregion
     #region Private Variables
@@ -33,6 +34,8 @@ public class CollectablePhysicsController : MonoBehaviour
     {
         Debug.Log(CollectableEnum + " is collected.");
         _abilitySignals.onActivateAbility?.Invoke(CollectableEnum);
+        GameObject particle = _poolSignals.onGetObject(collectParticle, new Vector3(transform.position.x, 2, transform.position.z));
+        particle.SetActive(true);
         gameObject.SetActive(false);
     }
 

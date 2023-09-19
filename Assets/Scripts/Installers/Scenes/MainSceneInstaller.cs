@@ -13,6 +13,7 @@ namespace Installers.Scenes
 
         [SerializeField] private GameObject shieldParticle, staminaParticle, 
             poisonParticle, dashParticle;
+
         [SerializeField] private SphereCollider poisonParticleCollider;
 
         private BulletSettings _bulletSettings;

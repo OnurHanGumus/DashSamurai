@@ -24,7 +24,7 @@ public class StaminaAbility : AbilityBase
     public StaminaAbility(GameObject particle)
     {
         _collectableEnum = CollectableEnums.EndlessStamina;
-        _particle = particle;
+        _playerParticle = particle;
     }
 
     public override void Activated()

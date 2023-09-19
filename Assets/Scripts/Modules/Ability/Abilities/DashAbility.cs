@@ -24,7 +24,7 @@ public class DashAbility : AbilityBase
     public DashAbility(GameObject particle)
     {
         _collectableEnum = CollectableEnums.KillOneDash;
-        _particle = particle;
+        _playerParticle = particle;
     }
 
     public override void Activated()

@@ -21,7 +21,7 @@ public abstract class AbilityBase : IAbility, ITickable
     #region Private Variables
     protected float _duration;
     protected CollectableEnums _collectableEnum;
-    protected GameObject _particle;
+    protected GameObject _playerParticle;
 
     #endregion
     #endregion
@@ -30,7 +30,7 @@ public abstract class AbilityBase : IAbility, ITickable
     {
         _abilitySettings.AbilityDatas[(int)_collectableEnum].IsActivated = true;
         _duration = _abilitySettings.AbilityDatas[(int)_collectableEnum].Duration;
-        _particle.SetActive(true);
+        _playerParticle.SetActive(true);
     }
 
     public virtual void Tick()
@@ -50,7 +50,7 @@ public abstract class AbilityBase : IAbility, ITickable
     public virtual void Deactivated()
     {
         _abilitySettings.AbilityDatas[(int)_collectableEnum].IsActivated = false;
-        _particle.SetActive(false);
+        _playerParticle.SetActive(false);
 
         Debug.Log("Deactivated");
     }

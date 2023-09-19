@@ -24,7 +24,7 @@ public class ShieldAbility : AbilityBase
     public ShieldAbility(GameObject particle)
     {
         _collectableEnum = CollectableEnums.Shield;
-        _particle = particle;
+        _playerParticle = particle;
     }
 
     public override void Activated()

@@ -512,7 +512,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 32
-    WaveScale: 3
+    WaveScale: 1
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1

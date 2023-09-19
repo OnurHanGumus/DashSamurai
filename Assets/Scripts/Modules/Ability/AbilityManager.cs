@@ -37,7 +37,6 @@ public class AbilityManager : IInitializable
 
     private void OnActivated(CollectableEnums collectableEnum)
     {
-        Debug.Log("calisti");
         _abilities[(int)collectableEnum].Activated();
     }
 

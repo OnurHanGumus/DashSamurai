@@ -25,7 +25,7 @@ public class PoisonAbility : AbilityBase
     public PoisonAbility(GameObject particle, SphereCollider sphereCollider)
     {
         _collectableEnum = CollectableEnums.Poison;
-        _particle = particle;
+        _playerParticle = particle;
         _particleCollider = sphereCollider;
     }
 

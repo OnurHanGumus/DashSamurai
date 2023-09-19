@@ -15,7 +15,7 @@ MonoBehaviour:
   AttackDelay: 1.25
   AttackRotatableTime: 1.2
   AnyStateDuration: 1
-  DeathDuration: 1
+  DeathDuration: 0.667
   AttackPower: 20
   Health: 2
   MoveSpeed: 2

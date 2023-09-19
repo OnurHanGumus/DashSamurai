@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3464197938601784558}
   - component: {fileID: 6322679024717500761}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1628912175796537598}
   - component: {fileID: 8248057276721757405}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6213771029214566752}
   - component: {fileID: 2582212821070060075}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230975043656762011}
   - component: {fileID: 9115115771983960910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4008307622911116822}
   - component: {fileID: 4002190286514992214}
   - component: {fileID: 3921162718605017261}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (29)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 4008307622948372564}
   - component: {fileID: 4002190286551855636}
   - component: {fileID: 3921162718970283759}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 4008307623079430223}
   - component: {fileID: 4002190286679112207}
   - component: {fileID: 3921162718837296884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (19)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 4008307623668858387}
   - component: {fileID: 4002190286164888659}
   - component: {fileID: 3921162718281414824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (12)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 4008307623637124312}
   - component: {fileID: 4002190286129510040}
   - component: {fileID: 3921162718313120355}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (25)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 4008307623746700839}
   - component: {fileID: 4002190286239085671}
   - component: {fileID: 3921162718337761436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (28)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 4008307621756250194}
   - component: {fileID: 4002190285326031378}
   - component: {fileID: 3921162719657144041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (21)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 4008307621840297589}
   - component: {fileID: 4002190285444295733}
   - component: {fileID: 3921162719673620686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 4008307621876347887}
   - component: {fileID: 4002190285475611055}
   - component: {fileID: 3921162720040236372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (27)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 4008307621900175818}
   - component: {fileID: 4002190285470497674}
   - component: {fileID: 3921162720052203377}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (9)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1162,7 +1162,7 @@ GameObject:
   - component: {fileID: 4008307622057918992}
   - component: {fileID: 4002190285628371024}
   - component: {fileID: 3921162719892227243}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (18)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 4008307622325883023}
   - component: {fileID: 4002190284818260687}
   - component: {fileID: 3921162719089595956}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (20)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 4008307622371472951}
   - component: {fileID: 4002190284863833207}
   - component: {fileID: 3921162719178240140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (22)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1453,7 +1453,7 @@ GameObject:
   - component: {fileID: 4008307622617099520}
   - component: {fileID: 4002190285146693440}
   - component: {fileID: 3921162719435926459}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1550,7 +1550,7 @@ GameObject:
   - component: {fileID: 4012628426838963462}
   - component: {fileID: 4002068428500264128}
   - component: {fileID: 4069949278306287253}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (17)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1647,7 +1647,7 @@ GameObject:
   - component: {fileID: 4012628426739351704}
   - component: {fileID: 4002068428602052958}
   - component: {fileID: 4069949278141565707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (8)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1744,7 +1744,7 @@ GameObject:
   - component: {fileID: 4012628426574388124}
   - component: {fileID: 4002068428764957274}
   - component: {fileID: 4069949278041837583}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (28)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 4012628426370363189}
   - component: {fileID: 4002068428838813427}
   - component: {fileID: 4069949277972194470}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (22)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1938,7 +1938,7 @@ GameObject:
   - component: {fileID: 4012628427395350603}
   - component: {fileID: 4002068427908206989}
   - component: {fileID: 4069949278797925336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (27)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2035,7 +2035,7 @@ GameObject:
   - component: {fileID: 4012628427298197016}
   - component: {fileID: 4002068427877441502}
   - component: {fileID: 4069949278899733899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (24)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2132,7 +2132,7 @@ GameObject:
   - component: {fileID: 4012628427270806692}
   - component: {fileID: 4002068428068408674}
   - component: {fileID: 4069949278671279927}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (21)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2229,7 +2229,7 @@ GameObject:
   - component: {fileID: 4012628427201021492}
   - component: {fileID: 4002068427974711282}
   - component: {fileID: 4069949278735355303}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (16)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2326,7 +2326,7 @@ GameObject:
   - component: {fileID: 4012628426961638332}
   - component: {fileID: 4002068428346114682}
   - component: {fileID: 4069949278431057967}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (25)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2423,7 +2423,7 @@ GameObject:
   - component: {fileID: 4012628425418020249}
   - component: {fileID: 4002068429755614303}
   - component: {fileID: 4069949279169306122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2520,7 +2520,7 @@ GameObject:
   - component: {fileID: 4012628425386427704}
   - component: {fileID: 4002068429917230334}
   - component: {fileID: 4069949278936125099}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 4012628425285396026}
   - component: {fileID: 4002068429884094460}
   - component: {fileID: 4069949279036648873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (18)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2714,7 +2714,7 @@ GameObject:
   - component: {fileID: 4012628426303498496}
   - component: {fileID: 4002068429039925446}
   - component: {fileID: 4069949279918563987}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (9)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2811,7 +2811,7 @@ GameObject:
   - component: {fileID: 4012628426038073630}
   - component: {fileID: 4002068429303236824}
   - component: {fileID: 4069949279654974093}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (26)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2908,7 +2908,7 @@ GameObject:
   - component: {fileID: 4012628425946808746}
   - component: {fileID: 4002068429228953708}
   - component: {fileID: 4069949279695964729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3002,7 +3002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7010891203868319979}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3040,7 +3040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5757820559648436406}
   - component: {fileID: 5086395764370812913}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject (8)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3085,7 +3085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4259674338595242260}
   - component: {fileID: 7337320728645297263}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3129,7 +3129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8687886381222629772}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpGrounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3201,7 +3201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8687886382262465018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3237,7 +3237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8687886382617180811}
   - component: {fileID: 683092710114499384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3259,7 +3259,7 @@ Transform:
   - {fileID: 8687886381222629772}
   - {fileID: 8687886382262465018}
   - {fileID: 7010891203868319979}
-  - {fileID: 3852277821591889474}
+  - {fileID: 2074603821587928425}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3304,7 +3304,7 @@ GameObject:
   - component: {fileID: 8711734450144058771}
   - component: {fileID: 8702010080575360085}
   - component: {fileID: 8589113626588993024}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (12)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 8711734450640303647}
   - component: {fileID: 8702010079982659545}
   - component: {fileID: 8589113627219459468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (13)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3498,7 +3498,7 @@ GameObject:
   - component: {fileID: 8711734450307570147}
   - component: {fileID: 8702010080277760037}
   - component: {fileID: 8589113626953962096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3595,7 +3595,7 @@ GameObject:
   - component: {fileID: 8711734448915278001}
   - component: {fileID: 8702010081839839607}
   - component: {fileID: 8589113627577131810}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (20)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3692,7 +3692,7 @@ GameObject:
   - component: {fileID: 8711734448785775219}
   - component: {fileID: 8702010081969327029}
   - component: {fileID: 8589113627447628256}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (29)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3789,7 +3789,7 @@ GameObject:
   - component: {fileID: 8711734448585947876}
   - component: {fileID: 8702010082037148450}
   - component: {fileID: 8589113627379560823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround02 (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3886,7 +3886,7 @@ GameObject:
   - component: {fileID: 8712682505984671982}
   - component: {fileID: 8701894306717184686}
   - component: {fileID: 8728874034090247765}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (13)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3983,7 +3983,7 @@ GameObject:
   - component: {fileID: 8712682506661919904}
   - component: {fileID: 8701894306357759712}
   - component: {fileID: 8728874033379637787}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (10)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4080,7 +4080,7 @@ GameObject:
   - component: {fileID: 8712682504634800037}
   - component: {fileID: 8701894305370973669}
   - component: {fileID: 8728874034901160222}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (17)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4177,7 +4177,7 @@ GameObject:
   - component: {fileID: 8712682504679887556}
   - component: {fileID: 8701894305445421188}
   - component: {fileID: 8728874034958832767}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (26)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4274,7 +4274,7 @@ GameObject:
   - component: {fileID: 8712682505024941439}
   - component: {fileID: 8701894305794531135}
   - component: {fileID: 8728874035014478788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4371,7 +4371,7 @@ GameObject:
   - component: {fileID: 8712682505244167593}
   - component: {fileID: 8701894304906608617}
   - component: {fileID: 8728874034428136210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForestGround01 (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4456,7 +4456,73 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9999998, y: 2, z: 2.0000005}
   m_Center: {x: -0.000000923872, y: 0, z: 0}
---- !u!1001 &491888548734198770
+--- !u!1001 &666937793696680055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8687886382262465018}
+    m_Modifications:
+    - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_Name
+      value: Box (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+--- !u!4 &8392740609479476656 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+  m_PrefabInstance: {fileID: 666937793696680055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3418224887923298521
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -4513,72 +4579,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7a27948b4fc37429aadb224b618c69, type: 3}
---- !u!4 &3852277821591889474 stripped
+--- !u!4 &2074603821587928425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3721521695907628464, guid: 8e7a27948b4fc37429aadb224b618c69, type: 3}
-  m_PrefabInstance: {fileID: 491888548734198770}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &666937793696680055
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8687886382262465018}
-    m_Modifications:
-    - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_Name
-      value: Box (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 07f0dec8324789e47963f022dd310708, type: 3}
---- !u!4 &8392740609479476656 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
-  m_PrefabInstance: {fileID: 666937793696680055}
+  m_PrefabInstance: {fileID: 3418224887923298521}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3692452518882258760
 PrefabInstance:
@@ -4635,6 +4639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 8048593150375284821, guid: 58b7797cb5dc68342b17528568c86a8b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58b7797cb5dc68342b17528568c86a8b, type: 3}
 --- !u!4 &3840400320518551690 stripped
@@ -4652,6 +4660,10 @@ PrefabInstance:
     - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
       propertyPath: m_Name
       value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
       propertyPath: m_RootOrder
@@ -4714,6 +4726,10 @@ PrefabInstance:
     - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
       propertyPath: m_Name
       value: Box (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020042373868499385, guid: 07f0dec8324789e47963f022dd310708, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9023086639023902151, guid: 07f0dec8324789e47963f022dd310708, type: 3}
       propertyPath: m_RootOrder

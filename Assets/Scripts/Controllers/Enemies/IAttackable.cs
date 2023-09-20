@@ -1,10 +1,7 @@
 ﻿using UnityEngine.Events;
 
-namespace Components.Enemies
+public interface IAttackable
 {
-    public interface IAttackable
-    {
-        void OnWeaponTriggerEnter(int value);
-        bool IsMoving { get;}
-    }
+    void OnWeaponTriggerEnter(int value);
+    bool IsMoving { get; }
 }

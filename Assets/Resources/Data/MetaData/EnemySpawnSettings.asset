@@ -249,7 +249,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 20
-    WaveScale: 1.5
+    WaveScale: 1
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1
@@ -309,7 +309,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 25
-    WaveScale: 1.8
+    WaveScale: 1.1
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1
@@ -374,7 +374,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 28
-    WaveScale: 2.5
+    WaveScale: 1.3
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1
@@ -441,7 +441,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 30
-    WaveScale: 1.8
+    WaveScale: 1.4
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 0.5
@@ -512,7 +512,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 32
-    WaveScale: 1
+    WaveScale: 1.5
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1

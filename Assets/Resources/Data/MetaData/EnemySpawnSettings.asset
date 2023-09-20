@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - SpawnableEnemies:
-    - EnemyType: 0
+    - EnemyType: 4
       EnemyPercentage: 1
     SpawnableCollectables: []
     SpawnDelay:
@@ -251,7 +251,7 @@ MonoBehaviour:
     WaveDuration: 20
     WaveScale: 1
   - SpawnableEnemies:
-    - EnemyType: 0
+    - EnemyType: 4
       EnemyPercentage: 1
     SpawnableCollectables:
     - CollectableType: 3

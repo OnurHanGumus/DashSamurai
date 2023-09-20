@@ -125,6 +125,8 @@ public class BomberAttackState : IState
         magic = PoolSignals.onGetObject?.Invoke(PoolEnums.BomberExplode, _myTransform.position);
         magic.SetActive(true);
         LevelSignals.onEnemyDied?.Invoke();
+        //await Task.Delay(TimeSpan.FromSeconds(_settings.DeathDuration));
+
         _myTransform.gameObject.SetActive(false);
 
     }

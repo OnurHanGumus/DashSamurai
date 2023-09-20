@@ -251,7 +251,7 @@ MonoBehaviour:
     WaveDuration: 20
     WaveScale: 1
   - SpawnableEnemies:
-    - EnemyType: 4
+    - EnemyType: 0
       EnemyPercentage: 1
     SpawnableCollectables:
     - CollectableType: 3

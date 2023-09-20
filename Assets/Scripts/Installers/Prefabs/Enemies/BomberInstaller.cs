@@ -39,11 +39,14 @@ namespace Installers.Prefabs
         protected override void BindConditions()
         {
             base.BindConditions();
+            attackCondition = new BomberAttackCondition(manager, physicsController, playerTransform, myTransform, _stateMachineInternalSignals, _enemySettings);
         }
 
         protected override void BindTransitions()
         {
-            base.BindTransitions();
+            conditionInMoveState = new Conditions(attackCondition, anyCondition);
+            conditionInAttackState = new Conditions(moveCondition, anyCondition);
+            conditionInAnyState = new Conditions(moveCondition, attackCondition, anyCondition);
         }
 
         protected override void BindStates()

@@ -19,6 +19,7 @@ namespace Managers
         [Inject] private InputSignals InputSignals { get; set; }
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
         [Inject] private PlayerSignals PlayerSignals { get; set; }
+        [Inject] private LevelSignals LevelSignals { get; set; }
         #endregion
 
         #region Public Variables
@@ -33,6 +34,8 @@ namespace Managers
         [SerializeField] private GameObject playerMesh;
         [SerializeField] private Vector3 rigPosition;
         [SerializeField] private Transform rig;
+
+        [SerializeField] private Vector3 playerInitializePosition;
 
         #endregion
 
@@ -75,6 +78,8 @@ namespace Managers
             PlayerSignals.onResetTrigger += animationController.OnResetTrigger;
             PlayerSignals.onGetTransform += OnGetTransform;
             PlayerSignals.onDied += OnDie;
+
+            CoreGameSignals.onNextLevel += OnNextLevel;
         }
 
         private void UnsubscribeEvents()
@@ -91,6 +96,8 @@ namespace Managers
             PlayerSignals.onResetTrigger -= animationController.OnResetTrigger;
             PlayerSignals.onGetTransform -= OnGetTransform;
             PlayerSignals.onDied -= OnDie;
+
+            CoreGameSignals.onNextLevel -= OnNextLevel;
         }
 
         private void OnDisable()
@@ -120,6 +127,11 @@ namespace Managers
         private Transform OnGetTransform()
         {
             return transform;
+        }
+
+        private void OnNextLevel()
+        {
+            transform.position = playerInitializePosition;
         }
     }
 }

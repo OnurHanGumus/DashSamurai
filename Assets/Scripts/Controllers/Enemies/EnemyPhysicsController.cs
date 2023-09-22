@@ -6,67 +6,64 @@ using System.Threading.Tasks;
 using Components.Enemies;
 using Data.MetaData;
 
-namespace Controllers
+public class EnemyPhysicsController : MonoBehaviour, IAttackable
 {
-    public class EnemyPhysicsController : MonoBehaviour, IAttackable
+    #region Self Variables
+
+    #region Inject Variables
+    [Inject] private LevelSignals _levelSignals { get; set; }
+    [Inject] private EnemyInternalSignals _enemyInternalSignals { get; set; }
+    [Inject] private EnemySettings _mySettings;
+    public bool IsMoving { get => false; }
+    public bool IsHitted { get; set; }
+    public bool IsDeath { get; set; }
+
+    #endregion
+
+    #region Serialized Variables
+    [SerializeField] private GameObject enemy;
+
+
+    #endregion
+    #region Private Variables
+    private int _enemyHits;
+    private int _randomHittedAnimId = 0;
+    #endregion
+    #endregion
+
+    private void OnEnable()
     {
-        #region Self Variables
+        IsDeath = false;
+        _enemyHits = _mySettings.Health;
+    }
 
-        #region Inject Variables
-        [Inject] private LevelSignals LevelSignals { get; set; }
-        [Inject] private EnemyInternalSignals EnemyInternalSignals { get; set; }
-        [Inject] private EnemySettings _mySettings;
-        public bool IsMoving { get => false; }
-        public bool IsHitted { get; set; }
-        public bool IsDeath { get; set; }
-
-        #endregion
-
-        #region Serialized Variables
-        [SerializeField] private GameObject enemy;
-
-
-        #endregion
-        #region Private Variables
-        private int _enemyHits;
-        private int _randomHittedAnimId = 0;
-        #endregion
-        #endregion
-
-        private void OnEnable()
+    void IAttackable.OnWeaponTriggerEnter(int value)
+    {
+        if (IsDeath)
         {
-            IsDeath = false;
-            _enemyHits = _mySettings.Health;
+            return;
         }
 
-        void IAttackable.OnWeaponTriggerEnter(int value)
+        _enemyHits -= value;
+
+        if (_enemyHits <= 0)
         {
-            if (IsDeath)
-            {
-                return;
-            }
+            IsDeath = true;
+            _enemyInternalSignals.onDeath?.Invoke(this);
+            _levelSignals.onEnemyDied?.Invoke();
+            //LevelSignals.onEnemyDied.Invoke();
 
-            _enemyHits -= value;
-
-            if (_enemyHits <= 0)
-            {
-                IsDeath = true;
-                EnemyInternalSignals.onDeath?.Invoke(this);
-                LevelSignals.onEnemyDied?.Invoke();
-                //LevelSignals.onEnemyDied.Invoke();
-
-                DieDelay();
-            }
-            else
-            {
-                IsHitted = true;
-            }
+            DieDelay();
         }
-
-        private async Task DieDelay()
+        else
         {
-            await Task.Delay(System.TimeSpan.FromSeconds(_mySettings.DeathDuration));
-            enemy.SetActive(false);
+            IsHitted = true;
         }
+    }
+
+    private async Task DieDelay()
+    {
+        await Task.Delay(System.TimeSpan.FromSeconds(_mySettings.DeathDuration));
+        enemy.SetActive(false);
     }
 }

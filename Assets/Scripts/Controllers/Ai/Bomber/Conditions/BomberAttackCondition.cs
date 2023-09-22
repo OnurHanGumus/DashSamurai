@@ -29,7 +29,8 @@ public class BomberAttackCondition : ICondition
     {
         _condition = (_physicsController.IsDeath == false &&
             _manager.CurrentStateEnum != EnemyStateEnums.Attack &&
-            Mathf.Abs((_playerTransform.transform.position - _myTransform.position).sqrMagnitude) < _settings.AttackDistance) || _physicsController.IsDeath;
+            Mathf.Abs((_playerTransform.transform.position - _myTransform.position).sqrMagnitude) < _settings.AttackDistance) 
+            || (_physicsController.IsDeath);
 
         if (!_condition)
         {

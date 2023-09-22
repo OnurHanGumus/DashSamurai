@@ -51,7 +51,5 @@ public abstract class AbilityBase : IAbility, ITickable
     {
         _abilitySettings.AbilityDatas[(int)_collectableEnum].IsActivated = false;
         _playerParticle.SetActive(false);
-
-        Debug.Log("Deactivated");
     }
 }

@@ -8,6 +8,7 @@ using Enums;
 using Data.MetaData;
 using System;
 using Signals;
+using Controllers;
 
 public class BomberAttackState : IState
 {
@@ -15,6 +16,8 @@ public class BomberAttackState : IState
 
     #region Inject Variables
     [Inject] private LevelSignals LevelSignals { get; set; }
+    [Inject] private PoolSignals PoolSignals { get; set; }
+
     #endregion
 
     #region Public Variables
@@ -28,17 +31,15 @@ public class BomberAttackState : IState
     private NavMeshAgent _navmeshAgent;
     private Transform _playerTransform, _myTransform;
     private bool _isAttacking = false, _isBlocked = false;
-    private float _attackDelay = 0f;
     private Conditions _conditions;
     private EnemySettings _settings;
     private EnemyAnimationController _animationController;
-    [Inject] private PoolSignals PoolSignals { get; set; }
-    GameObject magic;
-
+    private GameObject magic;
+    private IAttackable _physicsController;
     #endregion
     #endregion
 
-    public BomberAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController)
+    public BomberAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, IAttackable attackable)
     {
         _navmeshAgent = agent;
         _playerTransform = playerTransform;
@@ -46,13 +47,12 @@ public class BomberAttackState : IState
         _conditions = conditions;
         _settings = settings;
         _animationController = animationController;
+        _physicsController = attackable;
     }
 
     public void OnEnterState()
     {
         _isBlocked = false;
-
-        _attackDelay = _settings.AttackDelay;
 
         _animationController.ResetTrigger(EnemyAnimationStates.Move);
         _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
@@ -73,10 +73,7 @@ public class BomberAttackState : IState
     public void Tick()
     {
         AttackDelay();
-        if (_attackDelay > _settings.AttackRotatableTime)
-        {
-            ManuelRotation();
-        }
+        ManuelRotation();
     }
 
     private void ManuelRotation()
@@ -95,12 +92,11 @@ public class BomberAttackState : IState
         }
 
         _isAttacking = false;
-        Explode(_attackDelay);
+        Explode(0.5f);
     }
 
     public void OnReset()
     {
-        _attackDelay = 0f;
         _isAttacking = false;
     }
 
@@ -124,10 +120,8 @@ public class BomberAttackState : IState
 
         magic = PoolSignals.onGetObject?.Invoke(PoolEnums.BomberExplode, _myTransform.position);
         magic.SetActive(true);
-        LevelSignals.onEnemyDied?.Invoke();
         //await Task.Delay(TimeSpan.FromSeconds(_settings.DeathDuration));
-
-        _myTransform.gameObject.SetActive(false);
+        _physicsController.OnWeaponTriggerEnter(100);
 
     }
 }

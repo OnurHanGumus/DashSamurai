@@ -52,7 +52,7 @@ namespace Installers.Prefabs
         protected override void BindStates()
         {
             base.BindStates();
-            attackState = new BomberAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController);
+            attackState = new BomberAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController, physicsController);
             Container.QueueForInject(attackState);
         }
 

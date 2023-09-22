@@ -8,16 +8,16 @@ using DG.Tweening;
 
 public class WavePanelController : MonoBehaviour
 {
-    [Inject] private ITimer WaveTimer { get; set; }
-    [Inject] private LevelSignals WaveSignals { get; set; }
-    [Inject] private CD_EnemySpawn SpawnSettings { get; set; }
-    [Inject] private CoreGameSignals CoreGameSignals { get; set; }
-    [SerializeField] private TextMeshProUGUI waveTimerText;
+    [Inject] private ITimer _waveTimer { get; set; }
+    [Inject] private LevelSignals _levelSignals { get; set; }
+    [Inject] private CD_EnemySpawn _spawnSettings { get; set; }
+    [Inject] private CoreGameSignals _coreGameSignals { get; set; }
+    [SerializeField] private TextMeshProUGUI waveTimerText, levelText;
 
     private void Awake()
     {
-        WaveTimer.onTimeUpdated += UpdateWaveTimerText;
-        //CoreGameSignals.onPlay += OnWaveStarted;
+        _waveTimer.onTimeUpdated += UpdateWaveTimerText;
+        _coreGameSignals.onPlay += OnWaveStarted;
     }
 
     private void UpdateWaveTimerText(int value)
@@ -25,12 +25,13 @@ public class WavePanelController : MonoBehaviour
         waveTimerText.text = value.ToString();
     }
 
-    //private void OnWaveStarted()
-    //{
-    //    WaveIdText.text = (0 + 1) + ". Wave";
-    //    WaveIdText.DOFade(1, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
-    //    {
-    //        WaveIdText.DOFade(0, 1f).SetEase(Ease.Linear).SetDelay(SpawnSettings.WaveTextShowingTime);
-    //    });
-    //}
+    private void OnWaveStarted()
+    {
+        int id = _levelSignals.onGetLevelId();
+        levelText.text = "Level: " + (id + 1);
+        //levelText.DOFade(1, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
+        //{
+        //    levelText.DOFade(0, 1f).SetEase(Ease.Linear).SetDelay(_spawnSettings.WaveTextShowingTime);
+        //});
+    }
 }

@@ -122,7 +122,7 @@ namespace Managers
         {
             yield return new WaitForSeconds(2f);
 
-            //_levelID++;
+            _levelID++;
             CoreGameSignals.onClearActiveLevel?.Invoke();
             CoreGameSignals.onRestart?.Invoke();
             SaveSignals.onSave(_levelID, SaveLoadStates.Level, SaveFiles.SaveFile);

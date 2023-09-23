@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Commands;
 using Controllers;
 using Data.UnityObject;
@@ -18,6 +19,7 @@ namespace Managers
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
         [Inject] private LevelSignals LevelSignals { get; set; }
         [Inject] private SaveSignals SaveSignals { get; set; }
+        [Inject] private CameraSignals CameraSignals { get; set; }
         #endregion
         #region Public Variables
 
@@ -111,7 +113,16 @@ namespace Managers
 
         private void OnNextLevel()
         {
-            _levelID++;
+            CameraSignals.onChangeState?.Invoke(CameraStatesEnum.TransitionPre);
+            StartCoroutine(NextLevelDelay());
+
+        }
+
+        IEnumerator NextLevelDelay()
+        {
+            yield return new WaitForSeconds(2f);
+
+            //_levelID++;
             CoreGameSignals.onClearActiveLevel?.Invoke();
             CoreGameSignals.onRestart?.Invoke();
             SaveSignals.onSave(_levelID, SaveLoadStates.Level, SaveFiles.SaveFile);
@@ -134,6 +145,9 @@ namespace Managers
             int newLevelId = _levelID % _levels.Length;
             _currentModdedLevel = newLevelId;
             levelLoader.InitializeLevel((GameObject)_levels[newLevelId], levelHolder.transform);
+
+            CameraSignals.onChangeState?.Invoke(CameraStatesEnum.Init);
+
         }
 
         private void RebindNavmesh()

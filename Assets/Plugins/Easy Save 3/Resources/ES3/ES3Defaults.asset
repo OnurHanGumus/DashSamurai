@@ -37,6 +37,7 @@ MonoBehaviour:
     - CFXRRuntime
     - NavMeshComponents
     - KinoBloom.Runtime
+    - Cinemachine
     - CFXREditor
     - PPv2URPConverters
     - Zenject-TestFramework

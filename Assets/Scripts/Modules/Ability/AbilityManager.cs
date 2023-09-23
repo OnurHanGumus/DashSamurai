@@ -48,6 +48,10 @@ public class AbilityManager : IInitializable
 
     private void OnDeactivated()
     {
+        if (_currentAbility == null)
+        {
+            return;
+        }
         _currentAbility.Deactivated();
     }
 

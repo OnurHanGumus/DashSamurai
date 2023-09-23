@@ -40,6 +40,7 @@ namespace Installers.Scenes
             Container.Bind<AudioSignals>().AsSingle();
             Container.Bind<PlayerSignals>().AsSingle();
             Container.Bind<EnemySignals>().AsSingle();
+            Container.Bind<CameraSignals>().AsSingle();
 
             //Container.Bind<DenemeController>().AsSingle();
             //Container.BindInterfacesTo<DenemeController>().with.FromResolve();

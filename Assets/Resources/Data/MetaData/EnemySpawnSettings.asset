@@ -128,7 +128,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 15
+    WaveDuration: 5
     WaveScale: 0.8
   - SpawnableEnemies:
     - EnemyType: 0

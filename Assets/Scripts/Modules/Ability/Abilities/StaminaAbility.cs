@@ -27,6 +27,11 @@ public class StaminaAbility : AbilityBase
         _playerParticle = particle;
     }
 
+    public override void SetName()
+    {
+        _name = "Endless stamina";
+    }
+
     public override void Activated()
     {
         Debug.Log("Stamina is Activated");
@@ -41,5 +46,10 @@ public class StaminaAbility : AbilityBase
     public override void Deactivated()
     {
         base.Deactivated();
+    }
+
+    public override string GetName()
+    {
+        return _name;
     }
 }

@@ -103,7 +103,7 @@ namespace Controllers
             _currentTime = 0f;
             isPlayerStopped = false;
             _manager.IsMoving = true;
-            PlayerSignals.onUseAbility?.Invoke(-50);
+            PlayerSignals.onUseAbility?.Invoke(-30);
         }
 
         public void OnPlayerStopped()

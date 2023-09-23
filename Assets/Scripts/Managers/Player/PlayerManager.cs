@@ -79,7 +79,7 @@ namespace Managers
             PlayerSignals.onGetTransform += OnGetTransform;
             PlayerSignals.onDied += OnDie;
 
-            CoreGameSignals.onNextLevel += OnNextLevel;
+            CoreGameSignals.onRestart += OnRestartLevel;
         }
 
         private void UnsubscribeEvents()
@@ -97,7 +97,7 @@ namespace Managers
             PlayerSignals.onGetTransform -= OnGetTransform;
             PlayerSignals.onDied -= OnDie;
 
-            CoreGameSignals.onNextLevel -= OnNextLevel;
+            CoreGameSignals.onRestart -= OnRestartLevel;
         }
 
         private void OnDisable()
@@ -129,7 +129,7 @@ namespace Managers
             return transform;
         }
 
-        private void OnNextLevel()
+        private void OnRestartLevel()
         {
             transform.position = playerInitializePosition;
         }

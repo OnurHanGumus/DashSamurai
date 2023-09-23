@@ -8,6 +8,7 @@ public class AbilityManager : IInitializable
     #region Self Variables
     #region Injected Variables
     [Inject] private AbilitySignals _abilitySignals { get; set; }
+    [Inject] private CoreGameSignals _coreGameSignals { get; set; }
     #endregion
 
     #region Public Variables
@@ -18,6 +19,7 @@ public class AbilityManager : IInitializable
     #endregion
     #region Private Variables
     private IAbility[] _abilities;
+    private IAbility _currentAbility;
 
     #endregion
     #endregion
@@ -32,12 +34,21 @@ public class AbilityManager : IInitializable
     private void SubscribeEvents()
     {
         _abilitySignals.onActivateAbility += OnActivated;
+        _coreGameSignals.onRestart += OnDeactivated;
     }
     #endregion
 
     private void OnActivated(CollectableEnums collectableEnum)
     {
-        _abilities[(int)collectableEnum].Activated();
+        _currentAbility = _abilities[(int)collectableEnum];
+
+        _currentAbility.Activated();
+        _abilitySignals.onAbilityNameChanged?.Invoke(_currentAbility.GetName());
+    }
+
+    private void OnDeactivated()
+    {
+        _currentAbility.Deactivated();
     }
 
     public void Initialize()

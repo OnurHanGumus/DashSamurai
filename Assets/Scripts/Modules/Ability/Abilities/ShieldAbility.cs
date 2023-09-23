@@ -27,6 +27,11 @@ public class ShieldAbility : AbilityBase
         _playerParticle = particle;
     }
 
+    public override void SetName()
+    {
+        _name = "Shield";
+    }
+
     public override void Activated()
     {
         base.Activated();

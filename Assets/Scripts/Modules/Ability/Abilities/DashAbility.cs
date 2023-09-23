@@ -27,6 +27,11 @@ public class DashAbility : AbilityBase
         _playerParticle = particle;
     }
 
+    public override void SetName()
+    {
+        _name = "Kill only one Dash";
+    }
+
     public override void Activated()
     {
         Debug.Log("Dash is Activated");
@@ -41,5 +46,10 @@ public class DashAbility : AbilityBase
     public override void Deactivated()
     {
         base.Deactivated();
+    }
+
+    public override string GetName()
+    {
+        return _name;
     }
 }

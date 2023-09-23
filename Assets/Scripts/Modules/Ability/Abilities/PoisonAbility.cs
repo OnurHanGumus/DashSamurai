@@ -29,6 +29,11 @@ public class PoisonAbility : AbilityBase
         _particleCollider = sphereCollider;
     }
 
+    public override void SetName()
+    {
+        _name = "Poison Defance";
+    }
+
     public override void Activated()
     {
         Debug.Log("Poison is Activated");
@@ -49,5 +54,10 @@ public class PoisonAbility : AbilityBase
     public override void Deactivated()
     {
         base.Deactivated();
+    }
+
+    public override string GetName()
+    {
+        return _name;
     }
 }

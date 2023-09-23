@@ -22,9 +22,19 @@ public abstract class AbilityBase : IAbility, ITickable
     protected float _duration;
     protected CollectableEnums _collectableEnum;
     protected GameObject _playerParticle;
+    protected string _name;
 
     #endregion
     #endregion
+    public AbilityBase()
+    {
+        SetName();
+    }
+
+    public virtual void SetName()
+    {
+        //
+    }
 
     public virtual void Activated()
     {
@@ -51,5 +61,16 @@ public abstract class AbilityBase : IAbility, ITickable
     {
         _abilitySettings.AbilityDatas[(int)_collectableEnum].IsActivated = false;
         _playerParticle.SetActive(false);
+        _abilitySignals.onAbilityDeactivated?.Invoke();
+    }
+
+    public virtual string GetName()
+    {
+        return _name;
+    }
+
+    float IAbility.GetDuration()
+    {
+        return _duration;
     }
 }

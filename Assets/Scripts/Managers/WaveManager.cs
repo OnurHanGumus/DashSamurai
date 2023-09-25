@@ -38,6 +38,7 @@ public class WaveManager : IInitializable
         CoreGameSignals.onPlay += OnPlay;
         LevelSignals.onEnemyInitialized += OnEnemyInitialized;
         LevelSignals.onEnemyDied += OnEnemyDie;
+        WaveTimer.onTimeUpdated += OnTimerEnded;
     }
 
     #endregion
@@ -77,6 +78,18 @@ public class WaveManager : IInitializable
             return;
         }
 
+        if (_killedEnemiesCount.Equals(_spawnedEnemyCount))
+        {
+            CoreGameSignals.onLevelSuccessful?.Invoke();
+        }
+    }
+
+    private void OnTimerEnded(int time)
+    {
+        if (time != 0)
+        {
+            return;
+        }
         if (_killedEnemiesCount.Equals(_spawnedEnemyCount))
         {
             CoreGameSignals.onLevelSuccessful?.Invoke();

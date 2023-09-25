@@ -1213,7 +1213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3629055457001910141
 Transform:
   m_ObjectHideFlags: 0
@@ -1467,6 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acceaddb67c323142833837242eb296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: 7
 --- !u!65 &2575114833595509600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2787,6 +2788,7 @@ MonoBehaviour:
   playerMesh: {fileID: 4113807471455958471}
   rigPosition: {x: -0.000003667654, y: 0.6674055, z: 0.0008558738}
   rig: {fileID: 9082824185583292393}
+  playerInitializePosition: {x: 0, y: 0.5, z: 0.5}
 --- !u!114 &8549495318211459232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3355,6 +3357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acceaddb67c323142833837242eb296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: 0
 --- !u!4 &5824670795038375735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5824670795371433374, guid: f6fd568b816c64943a44efc3add3a881, type: 3}

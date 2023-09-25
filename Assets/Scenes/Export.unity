@@ -12553,22 +12553,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4113807471455958471, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328194391149732951, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8549495318211459233, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
-      propertyPath: playerInitializePosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8549495318211459233, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
-      propertyPath: playerInitializePosition.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8549495318211459234, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -14455,6 +14439,15 @@ MonoBehaviour:
   - PoolEnums: 15
     Prefab: {fileID: 2339602903440507071, guid: 6c3a90fd767f55e45a5033f1662e4faf, type: 3}
     Amounts: 5
+  - PoolEnums: 16
+    Prefab: {fileID: 3651857315736303647, guid: db29df50a550dde45bf5d00c314982b3, type: 3}
+    Amounts: 10
+  - PoolEnums: 17
+    Prefab: {fileID: 7734842631919761116, guid: 332a8daed0a539e4fa7f957fd1b10f56, type: 3}
+    Amounts: 3
+  - PoolEnums: 18
+    Prefab: {fileID: 3943180579602681528, guid: 587b6a2136d408c4db50ac309c57c2ff, type: 3}
+    Amounts: 3
 --- !u!1 &1804475511
 GameObject:
   m_ObjectHideFlags: 0
@@ -17842,6 +17835,10 @@ PrefabInstance:
     - target: {fileID: 7991576535391899465, guid: d9b506cf4414dce4da9ba0fa443f8a43, type: 3}
       propertyPath: m_Name
       value: Vampire
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991576535391899465, guid: d9b506cf4414dce4da9ba0fa443f8a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b506cf4414dce4da9ba0fa443f8a43, type: 3}

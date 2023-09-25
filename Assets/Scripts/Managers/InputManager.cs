@@ -17,6 +17,7 @@ namespace Managers
         [Inject] private InputSignals InputSignals { get; set; }
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
         [Inject] private PlayerSignals PlayerSignals { get; set; }
+        [Inject] private UISignals _uiSignals { get; set; }
         #endregion
         #region Public Variables
 
@@ -37,12 +38,9 @@ namespace Managers
         private Vector2? _mousePosition; //ref type
         private Vector3 _moveVector; //ref type
         private bool _isPlayerDead = false;
+        private bool _isReadyToInput = false;
         private Ray _ray;
         private Transform _clickedTransform;
-
-        private bool _isBoomerangDisapeared = false;
-        private bool _isPlayerDrawing = false;
-        private bool _isBoomerangOnPlayer = true;
         #endregion
 
         #endregion
@@ -68,6 +66,7 @@ namespace Managers
             InputSignals.onDisableInput += OnDisableInput;
             CoreGameSignals.onPlay += OnPlay;
             CoreGameSignals.onReset += OnReset;
+            _uiSignals.onLockJoystick += OnLockJoystick;
         }
 
         private void UnsubscribeEvents()
@@ -76,6 +75,7 @@ namespace Managers
             InputSignals.onDisableInput -= OnDisableInput;
             CoreGameSignals.onPlay -= OnPlay;
             CoreGameSignals.onReset -= OnReset;
+            _uiSignals.onLockJoystick -= OnLockJoystick;
         }
 
         private void OnDisable()
@@ -148,12 +148,16 @@ namespace Managers
 
         private void OnPlay()
         {
+            _isReadyToInput = true;
+        }
 
+        private void OnLockJoystick(bool isLock)
+        {
+            joystick.enabled = !isLock;
         }
 
         private void OnReset()
         {
-            _isBoomerangOnPlayer = true;
             _clickedTransform = null;
         }
 

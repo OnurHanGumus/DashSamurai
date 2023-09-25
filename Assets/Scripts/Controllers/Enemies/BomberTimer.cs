@@ -80,13 +80,13 @@ public class BomberTimer : MonoBehaviour, ITimer
         if (_lastTimeValue - (int)_timer == 1)
         {
             _lastTimeValue = (int)_timer;
-            fireParticle.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f); 
+            fireParticle.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f); 
         }
 
         if (_timer <= 1)
         {
             _isTimerEnded = true;
-            ((IAttackable)attackableComponent).OnWeaponTriggerEnter(100);
+            ((IAttackable)attackableComponent).OnWeaponTriggerEnter(500);
 
             return;
         }

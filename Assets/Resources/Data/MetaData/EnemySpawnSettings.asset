@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - SpawnableEnemies:
-    - EnemyType: 4
+    - EnemyType: 0
       EnemyPercentage: 1
     SpawnableCollectables: []
     SpawnDelay:
@@ -68,10 +68,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 10
+    WaveDuration: 5
     WaveScale: 0.5
   - SpawnableEnemies:
-    - EnemyType: 0
+    - EnemyType: 1
+      EnemyPercentage: 1
+    - EnemyType: 3
       EnemyPercentage: 1
     SpawnableCollectables:
     - CollectableType: 0
@@ -131,6 +133,8 @@ MonoBehaviour:
     WaveDuration: 5
     WaveScale: 0.8
   - SpawnableEnemies:
+    - EnemyType: 2
+      EnemyPercentage: 0.3
     - EnemyType: 0
       EnemyPercentage: 1
     SpawnableCollectables:
@@ -189,7 +193,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
     WaveDuration: 20
-    WaveScale: 3
+    WaveScale: 1
   - SpawnableEnemies:
     - EnemyType: 2
       EnemyPercentage: 1
@@ -255,7 +259,9 @@ MonoBehaviour:
     WaveDuration: 20
     WaveScale: 1
   - SpawnableEnemies:
-    - EnemyType: 0
+    - EnemyType: 3
+      EnemyPercentage: 1
+    - EnemyType: 1
       EnemyPercentage: 1
     SpawnableCollectables:
     - CollectableType: 3

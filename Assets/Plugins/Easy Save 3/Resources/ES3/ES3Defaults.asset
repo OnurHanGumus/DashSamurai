@@ -33,11 +33,11 @@ MonoBehaviour:
     - Zenject
     - Assembly-CSharp-firstpass
     - Zenject-IntegrationTests
+    - Cinemachine
     - CFXRDemo
     - CFXRRuntime
     - NavMeshComponents
     - KinoBloom.Runtime
-    - Cinemachine
     - CFXREditor
     - PPv2URPConverters
     - Zenject-TestFramework

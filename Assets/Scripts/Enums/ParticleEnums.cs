@@ -1,20 +1,10 @@
 using System;
 
 [Serializable]
-public enum PoolEnums
+public enum ParticleEnums
 {
-    Zombie,
-    Wizard,
-    WizardMage,
-    Bomber,
+    None,
     BomberExplode,
-    Vampire,
-    Giant,
-
-    Shield,
-    EndlessStamina,
-    Poison,
-    KillOneDash,
 
     ShieldCollectParticle,
     EndlessStaminaCollectParticle,

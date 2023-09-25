@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783645a0c88996446b2217df115ca128, type: 3}
   m_Name: BomberSettings
   m_EditorClassIdentifier: 
-  AttackDelay: 5
+  AttackDelay: 10
   AttackRotatableTime: 1.2
   AnyStateDuration: 0.5
   DeathDuration: 0.8
   AttackPower: 30
-  Health: 3
+  Health: 450
   MoveSpeed: 1
   AttackDistance: 1
   AttackToMoveDistance: 1.1

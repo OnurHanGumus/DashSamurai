@@ -5,6 +5,7 @@ using Signals;
 using System.Threading.Tasks;
 using Components.Enemies;
 using Data.MetaData;
+using System;
 
 public class EnemyPhysicsController : MonoBehaviour, IAttackable
 {
@@ -12,6 +13,7 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
 
     #region Inject Variables
     [Inject] private LevelSignals _levelSignals { get; set; }
+    [Inject] private PoolSignals _poolSignals { get; set; }
     [Inject] private EnemyInternalSignals _enemyInternalSignals { get; set; }
     [Inject] private EnemySettings _mySettings;
     public bool IsMoving { get => false; }
@@ -22,6 +24,7 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
 
     #region Serialized Variables
     [SerializeField] private GameObject enemy;
+    [SerializeField] private ParticleEnums dieParticle;
 
 
     #endregion
@@ -52,6 +55,10 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
             _enemyInternalSignals.onDeath?.Invoke(this);
             _levelSignals.onEnemyDied?.Invoke();
             //LevelSignals.onEnemyDied.Invoke();
+            if (dieParticle.ToString() != "None")
+            {
+                _poolSignals.onGetObject(((PoolEnums)Enum.Parse(typeof(PoolEnums), dieParticle.ToString())), transform.position).SetActive(true); ;
+            }
 
             DieDelay();
         }
@@ -64,6 +71,7 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
     private async Task DieDelay()
     {
         await Task.Delay(System.TimeSpan.FromSeconds(_mySettings.DeathDuration));
+
         enemy.SetActive(false);
     }
 }

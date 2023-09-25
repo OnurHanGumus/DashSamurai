@@ -124,7 +124,6 @@ namespace Managers
         {
             CoreGameSignals.onNextLevel?.Invoke();
             UISignals.onClosePanel?.Invoke(UIPanels.WinPanel);
-            UISignals.onOpenPanel?.Invoke(UIPanels.StartPanel);
         }
 
         public void RestartLevel()

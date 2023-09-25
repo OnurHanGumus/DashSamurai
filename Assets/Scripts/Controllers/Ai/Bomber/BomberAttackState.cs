@@ -121,7 +121,7 @@ public class BomberAttackState : IState
         magic = PoolSignals.onGetObject?.Invoke(PoolEnums.BomberExplode, _myTransform.position);
         magic.SetActive(true);
         //await Task.Delay(TimeSpan.FromSeconds(_settings.DeathDuration));
-        _physicsController.OnWeaponTriggerEnter(100);
+        _physicsController.OnWeaponTriggerEnter(500);
 
     }
 }

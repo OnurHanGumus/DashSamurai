@@ -18,6 +18,7 @@ namespace Managers
         #region Injected Variables
         [Inject] private CoreGameSignals CoreGameSignals { get; set; }
         [Inject] private LevelSignals LevelSignals { get; set; }
+        [Inject] private UISignals _uiSignals { get; set; }
         [Inject] private SaveSignals SaveSignals { get; set; }
         [Inject] private CameraSignals CameraSignals { get; set; }
         #endregion
@@ -114,18 +115,20 @@ namespace Managers
         private void OnNextLevel()
         {
             CameraSignals.onChangeState?.Invoke(CameraStatesEnum.TransitionPre);
+            _uiSignals.onLockJoystick?.Invoke(true);
             StartCoroutine(NextLevelDelay());
-
         }
 
         IEnumerator NextLevelDelay()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.6f);
 
             _levelID++;
             CoreGameSignals.onClearActiveLevel?.Invoke();
             CoreGameSignals.onRestart?.Invoke();
             SaveSignals.onSave(_levelID, SaveLoadStates.Level, SaveFiles.SaveFile);
+            _uiSignals.onLockJoystick?.Invoke(false);
+
         }
 
         private void OnRestartLevel()
@@ -133,6 +136,7 @@ namespace Managers
             CoreGameSignals.onClearActiveLevel?.Invoke();
             CoreGameSignals.onReset?.Invoke();
             CoreGameSignals.onLevelInitialize?.Invoke();
+            _uiSignals.onOpenPanel?.Invoke(UIPanels.StartPanel);
         }
 
         private int OnGetLevelId()

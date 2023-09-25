@@ -13,6 +13,8 @@ namespace Controllers
     public class PlayerEnemyDetector : MonoBehaviour
     {
         [Inject] private AbilitySettings _abilitySettings;
+        [Inject] private PoolSignals _poolSignals { get; set; }
+        [SerializeField] private ParticleEnums hitParticle;
         private AbilityData _abilityData;
 
         private void Awake()
@@ -25,6 +27,10 @@ namespace Controllers
             if (other.TryGetComponent(out IAttackable attackable))
             {
                 attackable.OnWeaponTriggerEnter(1 + ((_abilityData.IsActivated ? 1 : 0) * _abilityData.Value));
+                if (hitParticle.ToString() != "None")
+                {
+                    _poolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), hitParticle.ToString()), new Vector3(other.transform.position.x, other.transform.position.y + 1f + other.transform.position.z)).SetActive(true);
+                }
             }
         }
     }

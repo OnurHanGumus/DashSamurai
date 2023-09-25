@@ -12,6 +12,7 @@ namespace Controllers
     {
         [Inject] private PlayerSettings PlayerSettings { get; set; }
         [Inject] private PlayerSignals PlayerSignals { get; set; }
+        [Inject] private AudioSignals _audioSignals { get; set; }
 
         private Settings _mySettings;
         #region Self Variables
@@ -104,6 +105,7 @@ namespace Controllers
             isPlayerStopped = false;
             _manager.IsMoving = true;
             PlayerSignals.onUseAbility?.Invoke(-30);
+            _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashIn);
         }
 
         public void OnPlayerStopped()
@@ -112,7 +114,9 @@ namespace Controllers
             isPlayerStopped = true;
             _manager.IsMoving = false;
             transform.position = groundDetector.CurrentGround.transform.position;
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); 
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+            _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashOut);
+
         }
 
         public void OnRestartLevel()

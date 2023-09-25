@@ -8,9 +8,13 @@ namespace Enums
         Click,
         Win,
         Loose,
-        Explosion1,
-        Explosion2,
-        Combo,
-        Pitch,
+        Cut,
+        DashIn,
+        DashOut,
+        ThrowMage,
+        Punch,
+        Kick,
+        Bite,
+        WaterSplash,
     }
 }

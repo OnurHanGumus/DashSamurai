@@ -13,6 +13,7 @@ namespace Controllers
     public class PlayerEnemyDetector : MonoBehaviour
     {
         [Inject] private AbilitySettings _abilitySettings;
+        [Inject] private AudioSignals _audioSignals;
         [Inject] private PoolSignals _poolSignals { get; set; }
         [SerializeField] private ParticleEnums hitParticle;
         private AbilityData _abilityData;
@@ -31,6 +32,8 @@ namespace Controllers
                 {
                     _poolSignals.onGetObject((PoolEnums)Enum.Parse(typeof(PoolEnums), hitParticle.ToString()), new Vector3(other.transform.position.x, other.transform.position.y + 1f + other.transform.position.z)).SetActive(true);
                 }
+
+                _audioSignals.onPlaySound?.Invoke(AudioSoundEnums.Cut);
             }
         }
     }

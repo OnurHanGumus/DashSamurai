@@ -55,6 +55,7 @@ namespace Installers.Prefabs
         {
             base.BindStates();
             attackState = new WizardAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController, PoolSignals, mageInitTransform, _enemyInternalSignals);
+            Container.QueueForInject(attackState);
         }
 
         protected override void BindStateMachine()

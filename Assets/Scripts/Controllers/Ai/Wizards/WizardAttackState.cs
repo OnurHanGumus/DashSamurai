@@ -16,6 +16,8 @@ public class WizardAttackState : IState
     #region Self Variables
 
     #region Inject Variables
+    [Inject] private AudioSignals _audioSignals { get; set; }
+
     #endregion
 
     #region Public Variables
@@ -36,7 +38,6 @@ public class WizardAttackState : IState
     private Transform _mageInitTransform;
     private PoolSignals PoolSignals { get; set; }
     private EnemyInternalSignals _enemyInternalSignals;
-
     GameObject magic;
 
 
@@ -146,6 +147,7 @@ public class WizardAttackState : IState
         {
             return;
         }
+        _audioSignals.onPlaySound?.Invoke(AudioSoundEnums.ThrowMage);
         magic = PoolSignals.onGetObjectExpanded?.Invoke(PoolEnums.WizardMage, _mageInitTransform.position, Quaternion.LookRotation((_playerTransform.position - _myTransform.position).normalized));
         magic.SetActive(true);
     }

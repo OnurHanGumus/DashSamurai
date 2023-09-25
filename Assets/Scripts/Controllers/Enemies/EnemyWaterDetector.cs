@@ -7,6 +7,7 @@ public class EnemyWaterDetector : MonoBehaviour
     #region Self Variables
     #region Injected Variables
     [Inject] private PoolSignals _poolSignals { get; set; }
+    [Inject] private AudioSignals _audioSignals { get; set; }
     [Inject] private EnemyInternalSignals _enemyInternalSignals { get; set; }
     #endregion
 
@@ -66,6 +67,7 @@ public class EnemyWaterDetector : MonoBehaviour
                     return;
                 }
 
+                _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.WaterSplash);
                 GameObject particle = _poolSignals.onGetObject(PoolEnums.WaterSplash, hitPoint);
                 particle.SetActive(true);
                 _isDropable = false;

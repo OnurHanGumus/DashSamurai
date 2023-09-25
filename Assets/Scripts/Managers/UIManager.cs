@@ -106,12 +106,15 @@ namespace Managers
             UISignals.onClosePanel?.Invoke(UIPanels.LevelPanel);
             UISignals.onOpenPanel?.Invoke(UIPanels.FailPanel);
             //gameOverPanelController.ShowThePanel();
+            AudioSignals.onPlaySound?.Invoke(AudioSoundEnums.Loose);
+
         }
 
         private void OnLevelSuccessful()
         {
             UISignals.onClosePanel?.Invoke(UIPanels.LevelPanel);
             UISignals.onOpenPanel?.Invoke(UIPanels.WinPanel);
+            AudioSignals.onPlaySound?.Invoke(AudioSoundEnums.Win);
         }
 
         public void Play()

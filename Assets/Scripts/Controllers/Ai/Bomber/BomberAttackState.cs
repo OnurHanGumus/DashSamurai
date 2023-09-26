@@ -17,7 +17,7 @@ public class BomberAttackState : IState
     #region Inject Variables
     [Inject] private LevelSignals LevelSignals { get; set; }
     [Inject] private PoolSignals PoolSignals { get; set; }
-
+    [Inject] private AudioSignals _audioSignals { get; set; }
     #endregion
 
     #region Public Variables
@@ -120,6 +120,7 @@ public class BomberAttackState : IState
 
         magic = PoolSignals.onGetObject?.Invoke(PoolEnums.BomberExplode, _myTransform.position);
         magic.SetActive(true);
+        _audioSignals.onPlaySound?.Invoke(AudioSoundEnums.Explode);
         //await Task.Delay(TimeSpan.FromSeconds(_settings.DeathDuration));
         _physicsController.OnWeaponTriggerEnter(500);
 

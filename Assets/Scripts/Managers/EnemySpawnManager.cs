@@ -66,7 +66,7 @@ public class EnemySpawnManager : IInitializable
         WaveId = LevelSignals.onGetLevelId();
         EnemyTypeSelector.SetRange();
 
-        //SpawnEnemy();
+        SpawnEnemy();
     }
 
     private async Task SpawnEnemy()

@@ -16,5 +16,6 @@ namespace Enums
         Kick,
         Bite,
         WaterSplash,
+        Explode,
     }
 }

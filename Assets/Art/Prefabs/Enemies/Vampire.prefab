@@ -2783,7 +2783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7991576535391899465}
-  dieParticle: 9
+  dieParticle: 0
 --- !u!65 &7741013350490210979
 BoxCollider:
   m_ObjectHideFlags: 0

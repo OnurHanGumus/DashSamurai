@@ -148,10 +148,16 @@ namespace Managers
         {
             int newLevelId = _levelID % _levels.Length;
             _currentModdedLevel = newLevelId;
-            levelLoader.InitializeLevel((GameObject)_levels[newLevelId], levelHolder.transform);
+            foreach (var i in _levels)
+            {
+                if (i.name.ToString() == newLevelId.ToString())
+                {
+                    levelLoader.InitializeLevel((GameObject)i, levelHolder.transform);
+                    break;
+                }
+            }
 
             CameraSignals.onChangeState?.Invoke(CameraStatesEnum.Init);
-
         }
 
         private void RebindNavmesh()

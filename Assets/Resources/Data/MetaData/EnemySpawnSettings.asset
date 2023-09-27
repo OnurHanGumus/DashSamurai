@@ -593,7 +593,10 @@ MonoBehaviour:
       EnemyPercentage: 1
     - EnemyType: 0
       EnemyPercentage: 1
-    SpawnableCollectables: []
+    SpawnableCollectables:
+    - CollectableType: 2
+      SecondToInstantiate: 5
+      Position: {x: 1, y: 0.85, z: 2.5}
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -645,7 +648,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 5
+    WaveDuration: 10
     WaveScale: 2
   - SpawnableEnemies:
     - EnemyType: 0
@@ -656,7 +659,13 @@ MonoBehaviour:
       EnemyPercentage: 1
     - EnemyType: 0
       EnemyPercentage: 1
-    SpawnableCollectables: []
+    SpawnableCollectables:
+    - CollectableType: 0
+      SecondToInstantiate: 13
+      Position: {x: 1, y: 0.85, z: 2.5}
+    - CollectableType: 3
+      SecondToInstantiate: 7
+      Position: {x: -0.8, y: 0.85, z: 1.3}
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -708,7 +717,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 40
+    WaveDuration: 20
     WaveScale: 3
   - SpawnableEnemies:
     - EnemyType: 0
@@ -719,7 +728,13 @@ MonoBehaviour:
       EnemyPercentage: 1
     - EnemyType: 0
       EnemyPercentage: 1
-    SpawnableCollectables: []
+    SpawnableCollectables:
+    - CollectableType: 2
+      SecondToInstantiate: 18
+      Position: {x: -2, y: 0.8, z: 2.5}
+    - CollectableType: 1
+      SecondToInstantiate: 8
+      Position: {x: -2, y: 0.8, z: -4.5}
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -771,7 +786,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 42
+    WaveDuration: 22
     WaveScale: 4
   - SpawnableEnemies:
     - EnemyType: 0

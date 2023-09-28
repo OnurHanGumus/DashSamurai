@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDelay: 2.5
   AttackRotatableTime: 1.2
-  AnyStateDuration: 1
+  AnyStateDuration: 0.6
   DeathDuration: 1
   AttackPower: 15
   Health: 2

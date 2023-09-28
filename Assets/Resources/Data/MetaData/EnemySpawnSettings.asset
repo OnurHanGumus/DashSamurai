@@ -791,15 +791,12 @@ MonoBehaviour:
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1
-    - EnemyType: 0
+    - EnemyType: 3
       EnemyPercentage: 1
-    - EnemyType: 0
-      EnemyPercentage: 1
-    - EnemyType: 0
-      EnemyPercentage: 1
-    - EnemyType: 0
-      EnemyPercentage: 1
-    SpawnableCollectables: []
+    SpawnableCollectables:
+    - CollectableType: 0
+      SecondToInstantiate: 8
+      Position: {x: 0, y: 0.85, z: 0}
     SpawnDelay:
       serializedVersion: 2
       m_Curve:
@@ -851,8 +848,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 45
-    WaveScale: 2.5
+    WaveDuration: 25
+    WaveScale: 1.5
   - SpawnableEnemies:
     - EnemyType: 0
       EnemyPercentage: 1

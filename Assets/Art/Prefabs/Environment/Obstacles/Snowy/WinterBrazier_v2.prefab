@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 89371620730174276}
   - component: {fileID: 284598744967335510}
   - component: {fileID: 284122753150330070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4836,7 +4836,7 @@ GameObject:
   - component: {fileID: 293939585661785340}
   - component: {fileID: 3293697277135748689}
   - component: {fileID: 5072639679665332162}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WinterBrazier_v2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4933,7 +4933,7 @@ GameObject:
   - component: {fileID: 4218019643602608238}
   - component: {fileID: 4060188056087688146}
   - component: {fileID: 4061382500404003756}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,7 +9755,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4920941681803313988}
-  m_Layer: 0
+  - component: {fileID: -7032118832012320226}
+  m_Layer: 10
   m_Name: WinterBrazier_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9778,6 +9779,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &-7032118832012320226
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920941681803313989}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6041849094139571140
 GameObject:
   m_ObjectHideFlags: 0
@@ -9787,7 +9804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6081870523503893877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire&Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

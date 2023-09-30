@@ -44,6 +44,7 @@ public class OptionsPanelController : MonoBehaviour
     public void CloseOptionsPanel()
     {
         UISignals.onClosePanel?.Invoke(UIPanels.OptionsPanel);
+        Time.timeScale = 1.0f;
     }
     private void SetAudioSource()
     {

@@ -134,7 +134,7 @@ MonoBehaviour:
     WaveScale: 0.8
   - SpawnableEnemies:
     - EnemyType: 2
-      EnemyPercentage: 0.3
+      EnemyPercentage: 0
     - EnemyType: 0
       EnemyPercentage: 1
     SpawnableCollectables:

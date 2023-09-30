@@ -16,7 +16,6 @@ public class EnemyWaterDetector : MonoBehaviour
     #endregion
     #region Serialized Variables
     [SerializeField] private float raycastDistance = 1.5f;
-
     #endregion
     #region Private Variables
     private bool _isDropable = true;
@@ -57,7 +56,7 @@ public class EnemyWaterDetector : MonoBehaviour
 
         //Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.blue);
 
-        if (Physics.Raycast(ray, out hit, raycastDistance, 9))
+        if (Physics.Raycast(ray, out hit, raycastDistance))
         {
             if (hit.collider != null)
             {

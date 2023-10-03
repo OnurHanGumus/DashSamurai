@@ -61,6 +61,8 @@ public class AttackState : IState
     public void OnExitState()
     {
         _isAttacking = false;
+        _animationController.ResetTrigger(EnemyAnimationStates.Attack1);
+
     }
 
     public void Tick()

@@ -122,6 +122,7 @@ namespace Controllers
         public void OnRestartLevel()
         {
             _isNotStarted = true;
+            _pastInput = new Vector3();
         }
 
         [Serializable]

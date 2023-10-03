@@ -71,8 +71,6 @@ MonoBehaviour:
     WaveDuration: 5
     WaveScale: 0.5
   - SpawnableEnemies:
-    - EnemyType: 1
-      EnemyPercentage: 1
     - EnemyType: 3
       EnemyPercentage: 1
     SpawnableCollectables:
@@ -130,8 +128,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 5
-    WaveScale: 0.8
+    WaveDuration: 10
+    WaveScale: 1
   - SpawnableEnemies:
     - EnemyType: 2
       EnemyPercentage: 0
@@ -196,7 +194,7 @@ MonoBehaviour:
     WaveScale: 1
   - SpawnableEnemies:
     - EnemyType: 2
-      EnemyPercentage: 1
+      EnemyPercentage: 0.3
     - EnemyType: 3
       EnemyPercentage: 1
     - EnemyType: 4
@@ -391,7 +389,7 @@ MonoBehaviour:
     - EnemyType: 1
       EnemyPercentage: 1
     - EnemyType: 2
-      EnemyPercentage: 1
+      EnemyPercentage: 0.4
     SpawnableCollectables:
     - CollectableType: 2
       SecondToInstantiate: 24
@@ -454,15 +452,15 @@ MonoBehaviour:
     WaveScale: 1
   - SpawnableEnemies:
     - EnemyType: 0
-      EnemyPercentage: 0.5
+      EnemyPercentage: 1
     - EnemyType: 1
       EnemyPercentage: 0.5
     - EnemyType: 2
       EnemyPercentage: 0.2
     - EnemyType: 3
-      EnemyPercentage: 2
+      EnemyPercentage: 1
     - EnemyType: 4
-      EnemyPercentage: 2
+      EnemyPercentage: 0.5
     SpawnableCollectables:
     - CollectableType: 1
       SecondToInstantiate: 20

@@ -61,7 +61,7 @@ namespace Controllers
                 return;
             }
 
-            _rig.velocity = _input * _mySettings.Speed *_mySettings.SpeedCurve.Evaluate(_currentTime) * (isPlayerStopped? 0:1);
+            _rig.velocity = (isPlayerStopped ? 0 : 1) * _input * _mySettings.Speed *_mySettings.SpeedCurve.Evaluate(_currentTime);
         }
 
         public void OnPlay()
@@ -110,11 +110,12 @@ namespace Controllers
 
         public void OnPlayerStopped()
         {
+            _rig.velocity = Vector3.zero;
             //PlayerSignals.onResetTrigger.Invoke(Enums.PlayerAnimationStates.Move);
             isPlayerStopped = true;
             _manager.IsMoving = false;
-            transform.position = groundDetector.CurrentGround.transform.position;
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+            Vector3 newPos = groundDetector.CurrentGround.transform.position;
+            transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
             _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashOut);
 
         }

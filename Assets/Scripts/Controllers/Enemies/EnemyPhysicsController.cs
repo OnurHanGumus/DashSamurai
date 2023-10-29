@@ -19,6 +19,7 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
     public bool IsMoving { get => false; }
     public bool IsHitted { get; set; }
     public bool IsDeath { get; set; }
+    public int Health { get; set; }
 
     #endregion
 
@@ -29,7 +30,6 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
 
     #endregion
     #region Private Variables
-    private int _enemyHits;
     private int _randomHittedAnimId = 0;
     #endregion
     #endregion
@@ -37,7 +37,7 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
     private void OnEnable()
     {
         IsDeath = false;
-        _enemyHits = _mySettings.Health;
+        Health = _mySettings.Health;
     }
 
     void IAttackable.OnWeaponTriggerEnter(int value)
@@ -47,9 +47,9 @@ public class EnemyPhysicsController : MonoBehaviour, IAttackable
             return;
         }
 
-        _enemyHits -= value;
+        Health -= value;
 
-        if (_enemyHits <= 0)
+        if (Health <= 0)
         {
             IsDeath = true;
             _enemyInternalSignals.onDeath?.Invoke(this);

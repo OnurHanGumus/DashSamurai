@@ -27,6 +27,10 @@ namespace Controllers
         {
             if (other.TryGetComponent(out IAttackable attackable))
             {
+                if (attackable.Health <= 0)
+                {
+                    return;
+                }
                 attackable.OnWeaponTriggerEnter(1 + ((_abilityData.IsActivated ? 1 : 0) * _abilityData.Value));
                 if (hitParticle.ToString() != "None")
                 {

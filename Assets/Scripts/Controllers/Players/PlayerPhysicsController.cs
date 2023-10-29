@@ -16,6 +16,7 @@ public class PlayerPhysicsController : MonoBehaviour, IAttackable
     [Inject] private PlayerSignals PlayerSignals { get; set; }
     [Inject] private AbilitySettings AbilitySettings { get; set; }
     public bool IsMoving { get => manager.IsMoving; }
+    public int Health { get; set; } = 100;
 
     #endregion
 
@@ -24,7 +25,6 @@ public class PlayerPhysicsController : MonoBehaviour, IAttackable
     #endregion
     #region Private Variables
     private bool _isDeath = false;
-    private int _health = 100;
     #endregion
     #endregion
 
@@ -40,10 +40,10 @@ public class PlayerPhysicsController : MonoBehaviour, IAttackable
             return;
         }
 
-        _health -= value * (AbilitySettings.AbilityDatas[(int)CollectableEnums.Shield].IsActivated ? 0:1);
-        PlayerSignals.onHitted?.Invoke(_health);
+        Health -= value * (AbilitySettings.AbilityDatas[(int)CollectableEnums.Shield].IsActivated ? 0:1);
+        PlayerSignals.onHitted?.Invoke(Health);
 
-        if (_health <= 0)
+        if (Health <= 0)
         {
             _isDeath = true;
             PlayerSignals.onDied?.Invoke();
@@ -56,8 +56,8 @@ public class PlayerPhysicsController : MonoBehaviour, IAttackable
 
     public void OnRestart()
     {
-        _health = 100;
-        PlayerSignals.onHitted?.Invoke(_health);
+        Health = 100;
+        PlayerSignals.onHitted?.Invoke(Health);
         _isDeath = false;
     }
 

@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 2937543203515793356}
   m_Layer: 0
   m_Name: ForestGround02 (16)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1507,7 +1507,7 @@ GameObject:
   - component: {fileID: 2937543203961141600}
   m_Layer: 0
   m_Name: ForestGround02 (8)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1701,7 +1701,7 @@ GameObject:
   - component: {fileID: 2937543203792410317}
   m_Layer: 0
   m_Name: ForestGround02 (22)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2283,7 +2283,7 @@ GameObject:
   - component: {fileID: 2798325275735915802}
   m_Layer: 0
   m_Name: ForestGround01 (9)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2574,7 +2574,7 @@ GameObject:
   - component: {fileID: 2798325275653409133}
   m_Layer: 0
   m_Name: ForestGround01 (14)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

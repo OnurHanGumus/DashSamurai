@@ -12,6 +12,7 @@ namespace Installers.Prefabs
         [SerializeField] protected NavMeshAgent navMeshAgent;
         [SerializeField] protected Transform myTransform;
 
+
         [SerializeField] protected EnemyManager2 manager;
         [SerializeField] protected EnemyPhysicsController physicsController;
         [SerializeField] protected Animator animator;

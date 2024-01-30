@@ -29,7 +29,9 @@ public class EnemyManager2 : MonoBehaviour
     #region Serialized Variables
     [SerializeField] public float speedPercent;
     [SerializeField] private Vector3 playerMeshInitPos;
+    [SerializeField] private Vector3 shadowSpritePos;
     [SerializeField] private Transform playerMesh;
+    [SerializeField] private Transform shadowSprite;
 
     #endregion
     #region Private Variables
@@ -89,6 +91,7 @@ public class EnemyManager2 : MonoBehaviour
     {
         animationController.ResetAnimator();
         playerMesh.localPosition = playerMeshInitPos;
+        shadowSprite.localPosition = shadowSpritePos;
     }
 
     private void Update()

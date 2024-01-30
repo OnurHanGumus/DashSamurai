@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: collectParticle
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4084588258518087595, guid: eda100ae0e91f714db5f6c8ead0d1184, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8588423615865322271, guid: eda100ae0e91f714db5f6c8ead0d1184, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -51,6 +51,8 @@ public class AnyState : IState
     {
         StopMovement();
         _exitDelay = _settings.AnyStateDuration;
+
+        _animationController.SetSpeed(Random.Range(2f, 3f));
         _randomHittedAnimId = Random.Range(0, 1);
 
         _animationController.ResetTrigger(EnemyAnimationStates.Attack1);

@@ -36,4 +36,9 @@ public class EnemyAnimationController
         _animator.Rebind();
         _animator.Update(0f);
     }
+
+    public void SetSpeed(float value)
+    {
+        _animator.SetFloat("Speed", value);
+    }
 }

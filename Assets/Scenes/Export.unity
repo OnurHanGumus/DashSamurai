@@ -10720,10 +10720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c82776dbdf9fa3428145370fcc1f854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data:
-    HorizontalInputSpeed: 2
-    ClampSides: {x: -3, y: 3}
-    ClampSpeed: 0.007
   joystick: {fileID: 1073078434}
 --- !u!1 &997524568
 GameObject:

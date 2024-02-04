@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Commands;
 using Controllers;
-using Data.UnityObject;
 using Data.ValueObject;
 using Enums;
 using Signals;
@@ -40,7 +39,6 @@ namespace Managers
         #endregion
 
         #region Private Variables
-        private PlayerData _data;
         #endregion
 
         #endregion
@@ -52,10 +50,8 @@ namespace Managers
 
         private void Init()
         {
-            _data = GetData();
-        }
 
-        public PlayerData GetData() => Resources.Load<CD_Player>("Data/CD_Player").Data;
+        }
 
         #region Event Subscription
 

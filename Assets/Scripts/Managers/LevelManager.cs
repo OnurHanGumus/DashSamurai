@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Commands;
 using Controllers;
-using Data.UnityObject;
 using Data.ValueObject;
 using Enums;
 using Signals;
@@ -38,7 +37,6 @@ namespace Managers
         #region Private Variables
 
         private int _levelID;
-        private LevelData _data;
         private int _currentModdedLevel = 0;
         UnityEngine.Object[] _levels;
         #endregion
@@ -53,11 +51,8 @@ namespace Managers
         private void Init()
         {
             _levelID = GetActiveLevel();
-            _data = GetData();
             _levels = Resources.LoadAll("Levels");
         }
-
-        private LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
 
         private int GetActiveLevel()
         {

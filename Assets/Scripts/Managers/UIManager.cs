@@ -2,7 +2,6 @@ using Controllers;
 using Enums;
 using Signals;
 using UnityEngine;
-using Data.UnityObject;
 using Data.ValueObject;
 using Zenject;
 
@@ -29,7 +28,6 @@ namespace Managers
 
         #endregion
         #region Private Variables
-        private UIData _data;
         private bool _isStorePanelOpened = false;
 
         #endregion
@@ -43,10 +41,9 @@ namespace Managers
 
         private void Init()
         {
-            _data = GetData();
+
         }
 
-        private UIData GetData() => Resources.Load<CD_UI>("Data/CD_UI").Data;
         private void OnEnable()
         {
             SubscribeEvents();

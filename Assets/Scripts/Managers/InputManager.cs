@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Data.UnityObject;
 using Data.ValueObject;
 using Signals;
 using UnityEngine;
@@ -20,8 +19,6 @@ namespace Managers
         [Inject] private UISignals _uiSignals { get; set; }
         #endregion
         #region Public Variables
-
-        [Header("Data")] public InputData Data;
 
         #endregion
 
@@ -47,11 +44,8 @@ namespace Managers
 
         private void Awake()
         {
-            Data = GetInputData();
+
         }
-
-        private InputData GetInputData() => Resources.Load<CD_Input>("Data/CD_Input").Data;
-
 
         #region Event Subscriptions
 

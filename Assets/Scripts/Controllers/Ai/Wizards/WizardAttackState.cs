@@ -39,6 +39,8 @@ public class WizardAttackState : IState
     private PoolSignals PoolSignals { get; set; }
     private EnemyInternalSignals _enemyInternalSignals;
     GameObject magic;
+    CancellationTokenSource cancellationToken;
+
 
 
     #endregion
@@ -71,7 +73,8 @@ public class WizardAttackState : IState
 
         _animationController.ResetTrigger(EnemyAnimationStates.Move);
         _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
-        ThrowMage(0.8f);
+        cancellationToken = new CancellationTokenSource();
+        ThrowMage(0.8f, cancellationToken.Token);
         //StartAsyncMethod();
 
 
@@ -86,6 +89,7 @@ public class WizardAttackState : IState
     {
         _isAttacking = false;
         _isBlocked = true;
+        cancellationToken.Cancel();
     }
 
     public void Tick()
@@ -119,7 +123,7 @@ public class WizardAttackState : IState
             _animationController.ChangeAnimation(EnemyAnimationStates.Attack1);
             _attackDelay = _settings.AttackDelay;
 
-            ThrowMage(0.8f);
+            ThrowMage(0.8f, cancellationToken.Token);
             //StartAsyncMethod();
         }
     }
@@ -140,9 +144,17 @@ public class WizardAttackState : IState
         _conditions.IsSatisfied();
     }
 
-    private async Task ThrowMage(float delay)
+    private async Task ThrowMage(float delay, CancellationToken cancellationToken)
     {
-        await Task.Delay(TimeSpan.FromSeconds(delay));
+        for (int i = 0; i < 10; i++)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(delay/10));
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+        }
+
         if (_isBlocked)
         {
             return;

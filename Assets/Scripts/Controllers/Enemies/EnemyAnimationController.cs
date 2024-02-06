@@ -41,4 +41,9 @@ public class EnemyAnimationController
     {
         _animator.SetFloat("Speed", value);
     }
+
+    public void SetBlend(float value)
+    {
+        _animator.SetFloat("Blend", value);
+    }
 }

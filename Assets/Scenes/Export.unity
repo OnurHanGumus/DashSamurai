@@ -15895,17 +15895,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1629147222, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1629147223, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48725775
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_Size.z
-      value: 0.10214629
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
+      propertyPath: m_Center.y
+      value: -0.16143031
       objectReference: {fileID: 0}
     - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: 0.24551779
       objectReference: {fileID: 0}
     - target: {fileID: 1844191676487986, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_IsActive

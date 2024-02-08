@@ -145,7 +145,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3999999, y: 1.420111, z: 1.4000001}
+  m_Size: {x: 1.95, y: 2, z: 1.95}
   m_Center: {x: -0.0043328106, y: 0.011680812, z: -0.0013746619}
 --- !u!1001 &8836587440210963069
 PrefabInstance:
@@ -213,6 +213,10 @@ PrefabInstance:
     - target: {fileID: 2424367924098283558, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
       propertyPath: m_Name
       value: StickmansShadow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424367924098283558, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7535423680389100079, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
       propertyPath: m_Sprite

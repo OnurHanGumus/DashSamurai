@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7327621606798160836}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PineShortFixed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,6 +42,22 @@ PrefabInstance:
     - target: {fileID: 744020576067633268, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 781610157941269012, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 781610157941269012, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
+      propertyPath: m_Size.y
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 781610157941269012, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
+      propertyPath: m_Size.z
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626681477705302782, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6153373035990914748, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
       propertyPath: m_RootOrder
@@ -90,6 +106,10 @@ PrefabInstance:
     - target: {fileID: 6155695891648740002, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
       propertyPath: m_Name
       value: ForestTreePineShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155695891648740002, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b97fc93d9435b64c807acb122b9da0b, type: 3}

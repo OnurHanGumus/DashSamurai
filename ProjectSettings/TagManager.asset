@@ -22,8 +22,8 @@ TagManager:
   - EnemyRay
   - Border
   - Obstacle
-  - 
-  - 
+  - Ground
+  - GroundDetector
   - 
   - 
   - 

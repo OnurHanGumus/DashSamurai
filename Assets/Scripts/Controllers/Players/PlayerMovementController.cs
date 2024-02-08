@@ -111,13 +111,11 @@ namespace Controllers
         public void OnPlayerStopped()
         {
             _rig.velocity = Vector3.zero;
-            //PlayerSignals.onResetTrigger.Invoke(Enums.PlayerAnimationStates.Move);
             isPlayerStopped = true;
             _manager.IsMoving = false;
             Vector3 newPos = groundDetector.CurrentGround.transform.position;
             transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
             _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashOut);
-
         }
 
         public void OnRestartLevel()

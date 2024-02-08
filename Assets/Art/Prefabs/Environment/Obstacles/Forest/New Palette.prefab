@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7918112761403001915}
   - component: {fileID: 3498807005610704179}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 1629287290894547117}
   - component: {fileID: 4611831132668192495}
   - component: {fileID: 9191563971887720311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

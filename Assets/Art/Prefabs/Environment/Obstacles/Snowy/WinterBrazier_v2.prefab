@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 89371620730174276}
   - component: {fileID: 284598744967335510}
   - component: {fileID: 284122753150330070}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4920,7 +4920,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9016799, y: 1.5391979, z: 1.9016799}
+  m_Size: {x: 1.5, y: 3, z: 1.5}
   m_Center: {x: -0.0000009536743, y: 0.038821727, z: -0.00000035762787}
 --- !u!1 &4223146040607746490
 GameObject:
@@ -4933,7 +4933,7 @@ GameObject:
   - component: {fileID: 4218019643602608238}
   - component: {fileID: 4060188056087688146}
   - component: {fileID: 4061382500404003756}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9805,7 +9805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6081870523503893877}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Fire&Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9895,6 +9895,10 @@ PrefabInstance:
     - target: {fileID: 2424367924098283558, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
       propertyPath: m_Name
       value: StickmansShadow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424367924098283558, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}

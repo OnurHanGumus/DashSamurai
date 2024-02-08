@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 1282743508512288890}
   - component: {fileID: 8051281307083975159}
   - component: {fileID: 557360210385900110}
-  - component: {fileID: 4571078432838659102}
+  - component: {fileID: 1332814491643948702}
   m_Layer: 10
   m_Name: WinterCannonBall_v2
   m_TagString: Obstacle
@@ -134,8 +134,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4571078432838659102
-SphereCollider:
+--- !u!65 &1332814491643948702
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -145,7 +145,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.49486482
+  m_Size: {x: 0.95, y: 3, z: 0.95}
   m_Center: {x: -0.000000044703484, y: 0.017785072, z: -0.00000010430813}
 --- !u!1001 &8013942529861025271
 PrefabInstance:
@@ -213,6 +213,10 @@ PrefabInstance:
     - target: {fileID: 2424367924098283558, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
       propertyPath: m_Name
       value: StickmansShadow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424367924098283558, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1db7558417ea4d45b229e9e0bbb811e, type: 3}

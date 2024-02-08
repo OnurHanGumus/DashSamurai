@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6936243409601886339}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PineShort2Fixed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,6 +39,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6936243409601886339}
     m_Modifications:
+    - target: {fileID: -6533406657840624202, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -6533406657840624202, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: -6533406657840624202, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
+      propertyPath: m_Size.z
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2751916262969743887, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -87,9 +99,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForestTreePineShort2
       objectReference: {fileID: 0}
+    - target: {fileID: 2754118929820982117, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5447649514393441283, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331154692785231497, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8a382c5399481c468d9e299847fa8d1, type: 3}

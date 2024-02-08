@@ -11,6 +11,7 @@ public class PlayerGroundDetector : MonoBehaviour
 
     #region Public Variables
     public GameObject CurrentGround = null;
+    public bool Collided = false;
     #endregion 
 
     #region Serialized Variables
@@ -25,6 +26,11 @@ public class PlayerGroundDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Ground"))
+        {
+            Collided = true;
+        }
+
         if (other.CompareTag("Ground"))
         {
             CurrentGround = other.gameObject;

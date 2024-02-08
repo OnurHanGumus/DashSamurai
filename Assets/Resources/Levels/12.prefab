@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1680061506103373925}
   - component: {fileID: 6821529149356024089}
   m_Layer: 0
-  m_Name: Tilemap3
+  m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5101,7 +5101,7 @@ GameObject:
   - component: {fileID: 4443997159197602484}
   - component: {fileID: 4443997159197602485}
   m_Layer: 0
-  m_Name: Tilemap2
+  m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

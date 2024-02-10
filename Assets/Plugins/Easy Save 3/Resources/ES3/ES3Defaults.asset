@@ -29,12 +29,12 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assembly-CSharp
     - Zenject
     - Assembly-CSharp-firstpass
     - Zenject-IntegrationTests
     - Cinemachine
     - CFXRDemo
+    - Assembly-CSharp
     - CFXRRuntime
     - NavMeshComponents
     - KinoBloom.Runtime

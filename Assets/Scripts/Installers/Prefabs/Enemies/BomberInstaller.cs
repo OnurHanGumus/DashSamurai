@@ -39,7 +39,8 @@ namespace Installers.Prefabs
         protected override void BindConditions()
         {
             base.BindConditions();
-            attackCondition = new BomberAttackCondition(manager, physicsController, playerTransform, myTransform, _stateMachineInternalSignals, _enemySettings);
+            attackCondition = new BomberAttackCondition(playerTransform, myTransform);
+            Container.QueueForInject(attackCondition);
         }
 
         protected override void BindTransitions()
@@ -52,7 +53,7 @@ namespace Installers.Prefabs
         protected override void BindStates()
         {
             base.BindStates();
-            attackState = new BomberAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController, physicsController);
+            attackState = new BomberAttackState(playerTransform, myTransform, conditionInAttackState, physicsController);
             Container.QueueForInject(attackState);
         }
 

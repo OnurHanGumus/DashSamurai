@@ -43,7 +43,6 @@ namespace Installers.Prefabs
 
         public override void InstallBindings()
         {
-
             BindSignals();
             BindData();
             BindReferences();
@@ -51,7 +50,6 @@ namespace Installers.Prefabs
             BindTransitions();
             BindStates();
             BindStateMachine();
-
         }
 
         protected virtual void BindSignals()
@@ -74,17 +72,23 @@ namespace Installers.Prefabs
             Container.BindInstance(navMeshAgent).AsSingle();
             _enemyAnimationController = new EnemyAnimationController(animator);
             Container.BindInstance(_enemyAnimationController).AsSingle();
+            Container.BindInstance(manager).AsSingle();
+            Container.BindInstance(physicsController).AsSingle();
         }
 
         protected virtual void BindConditions()
         {
-            moveCondition = new MoveCondition(manager, physicsController, playerTransform, myTransform, _stateMachineInternalSignals, _enemySettings);
+            moveCondition = new MoveCondition(playerTransform, myTransform);
+            Container.QueueForInject(moveCondition);
 
-            attackCondition = new AttackCondition(manager, physicsController, playerTransform, myTransform, _stateMachineInternalSignals, _enemySettings);
+            attackCondition = new AttackCondition(playerTransform, myTransform);
+            Container.QueueForInject(attackCondition);
 
-            anyCondition = new AnyCondition(physicsController, _stateMachineInternalSignals);
+            anyCondition = new AnyCondition();
+            Container.QueueForInject(anyCondition);
 
-            deadCondition = new DeadCondition(physicsController, _stateMachineInternalSignals);
+            deadCondition = new DeadCondition();
+            Container.QueueForInject(deadCondition);
         }
 
         protected virtual void BindTransitions()
@@ -96,10 +100,16 @@ namespace Installers.Prefabs
 
         protected virtual void BindStates()
         {
-            moveState = new MoveState(navMeshAgent, manager, playerTransform, conditionInMoveState, _enemyAnimationController, _enemySettings);
-            anyState = new AnyState(navMeshAgent, _enemyAnimationController, conditionInAnyState, _enemySettings);
-            attackState = new AttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController);
-            deadState = new DeadState(navMeshAgent);
+            moveState = new MoveState(playerTransform, conditionInMoveState);
+            Container.QueueForInject(moveState);
+
+            anyState = new AnyState(conditionInAnyState);
+            Container.QueueForInject(anyState);
+
+            attackState = new AttackState(playerTransform, myTransform, conditionInAttackState);
+            Container.QueueForInject(attackState);
+
+            deadState = new DeadState();
             Container.QueueForInject(deadState);
 
         }

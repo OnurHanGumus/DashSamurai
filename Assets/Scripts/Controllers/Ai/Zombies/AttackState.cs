@@ -12,7 +12,9 @@ public class AttackState : IState
     #region Self Variables
 
     #region Inject Variables
-
+    [Inject] private NavMeshAgent _navmeshAgent;
+    [Inject] private EnemySettings _settings;
+    [Inject] private EnemyAnimationController _animationController;
     #endregion
 
     #region Public Variables
@@ -23,25 +25,20 @@ public class AttackState : IState
     #endregion
 
     #region Private Variables
-    private NavMeshAgent _navmeshAgent;
+
     private Transform _playerTransform, _myTransform;
     private bool _isAttacking = false;
     private float _attackDelay = 0f;
     private Conditions _conditions;
-    private EnemySettings _settings;
-    private EnemyAnimationController _animationController;
-
+    
     #endregion
     #endregion
 
-    public AttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController)
+    public AttackState(Transform playerTransform, Transform myTransform, Conditions conditions)
     {
-        _navmeshAgent = agent;
         _playerTransform = playerTransform;
         _myTransform = myTransform;
         _conditions = conditions;
-        _settings = settings;
-        _animationController = animationController;
     }
 
     public void OnEnterState()

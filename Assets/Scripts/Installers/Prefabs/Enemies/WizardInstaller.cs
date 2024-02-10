@@ -11,8 +11,6 @@ namespace Installers.Prefabs
     {
         [SerializeField] private Transform mageInitTransform;
 
-        [Inject] PoolSignals PoolSignals;
-
         public override void InstallBindings()
         {
 
@@ -54,8 +52,10 @@ namespace Installers.Prefabs
         protected override void BindStates()
         {
             base.BindStates();
-            attackState = new WizardAttackState(navMeshAgent, playerTransform, myTransform, conditionInAttackState, _enemySettings, _enemyAnimationController, PoolSignals, mageInitTransform, _enemyInternalSignals);
+            attackState = new WizardAttackState(playerTransform, myTransform, conditionInAttackState, mageInitTransform);
             Container.QueueForInject(attackState);
+            Container.BindInterfacesTo(attackState.GetType()).FromInstance(attackState);
+
         }
 
         protected override void BindStateMachine()

@@ -15,9 +15,11 @@ public class BomberAttackState : IState
     #region Self Variables
 
     #region Inject Variables
-    [Inject] private LevelSignals LevelSignals { get; set; }
     [Inject] private PoolSignals PoolSignals { get; set; }
     [Inject] private AudioSignals _audioSignals { get; set; }
+    [Inject] private EnemySettings _settings;
+    [Inject] private EnemyAnimationController _animationController;
+    [Inject] private NavMeshAgent _navmeshAgent;
     #endregion
 
     #region Public Variables
@@ -28,25 +30,20 @@ public class BomberAttackState : IState
     #endregion
 
     #region Private Variables
-    private NavMeshAgent _navmeshAgent;
     private Transform _playerTransform, _myTransform;
     private bool _isAttacking = false, _isBlocked = false;
     private Conditions _conditions;
-    private EnemySettings _settings;
-    private EnemyAnimationController _animationController;
+
     private GameObject magic;
     private IAttackable _physicsController;
     #endregion
     #endregion
 
-    public BomberAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, IAttackable attackable)
+    public BomberAttackState(Transform playerTransform, Transform myTransform, Conditions conditions, IAttackable attackable)
     {
-        _navmeshAgent = agent;
         _playerTransform = playerTransform;
         _myTransform = myTransform;
         _conditions = conditions;
-        _settings = settings;
-        _animationController = animationController;
         _physicsController = attackable;
     }
 

@@ -13,7 +13,9 @@ public class AnyState : IState
     #region Self Variables
 
     #region Inject Variables
-
+    [Inject] private NavMeshAgent _navmeshAgent;
+    [Inject] private EnemyAnimationController _animationController;
+    [Inject] private EnemySettings _settings;
     #endregion
 
     #region Public Variables
@@ -24,22 +26,17 @@ public class AnyState : IState
     #endregion
 
     #region Private Variables
-    private NavMeshAgent _navmeshAgent;
-    private EnemyAnimationController _animationController;
+
     private Conditions _conditions;
     private float _exitDelay = 0f;
-    EnemySettings _settings;
     private int _randomHittedAnimId;
 
     #endregion
     #endregion
 
-    public AnyState(NavMeshAgent agent, EnemyAnimationController animationController, Conditions conditions, EnemySettings settings)
+    public AnyState(Conditions conditions)
     {
-        _navmeshAgent = agent;
-        _animationController = animationController;
         _conditions = conditions;
-        _settings = settings;
     }
 
     public bool IsItReadyToExit()

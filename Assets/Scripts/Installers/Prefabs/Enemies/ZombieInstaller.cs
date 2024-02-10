@@ -10,7 +10,6 @@ namespace Installers.Prefabs
     {
         public override void InstallBindings()
         {
-
             BindSignals();
             BindData();
             BindReferences();

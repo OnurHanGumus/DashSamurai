@@ -11,6 +11,11 @@ public class MoveState : IState
     #region Self Variables
 
     #region Inject Variables
+    [Inject] private EnemyManager2 _manager;
+    [Inject] private EnemyAnimationController _animationController;
+    [Inject] private NavMeshAgent _navmeshAgent;
+    [Inject] private EnemyInternalSignals _enemyInternalSignals;
+    [Inject] private EnemySettings _mySettings;
 
     #endregion
 
@@ -22,26 +27,18 @@ public class MoveState : IState
     #endregion
 
     #region Private Variables
-    private EnemyManager2 _manager;
-    private EnemyAnimationController _animationController;
-    private NavMeshAgent _navmeshAgent;
+    
     private Transform _playerTransform;
-    private EnemyInternalSignals _enemyInternalSignals;
     private Conditions _conditions;
-    private EnemySettings _mySettings;
 
 
     #endregion
     #endregion
 
-    public MoveState(NavMeshAgent agent, EnemyManager2 manager, Transform playerTransform, Conditions conditions, EnemyAnimationController animationControler, EnemySettings enemySettings)
+    public MoveState(Transform playerTransform, Conditions conditions)
     {
-        _navmeshAgent = agent;
-        _manager = manager;
         _playerTransform = playerTransform;
         _conditions = conditions;
-        _animationController = animationControler;
-        _mySettings = enemySettings;
     }
 
     public bool IsItReadyToExit()

@@ -6,15 +6,20 @@ using Controllers;
 
 public class DeadCondition : ICondition
 {
-    private EnemyPhysicsController _physicsController;
-    private StateMachineInternalSignals _stateMachineInternalSignals;
+    #region Self Variables
+    #region Inject Variables
+    [Inject] private EnemyPhysicsController _physicsController;
+    [Inject] private StateMachineInternalSignals _stateMachineInternalSignals;
+    #endregion
+    #region Private Variables
     private bool _condition;
+    #endregion
+    #endregion
 
     [Inject]
-    public DeadCondition(EnemyPhysicsController physicsController, StateMachineInternalSignals stateMachineInternalSignals)
+    public DeadCondition()
     {
-        _physicsController = physicsController;
-        _stateMachineInternalSignals = stateMachineInternalSignals;
+
     }
 
     public void IsSatisfied()

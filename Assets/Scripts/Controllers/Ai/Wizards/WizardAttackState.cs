@@ -11,13 +11,17 @@ using Signals;
 using System.Threading;
 using Components.Enemies;
 
-public class WizardAttackState : IState
+public class WizardAttackState : IState, IInitializable
 {
     #region Self Variables
 
     #region Inject Variables
     [Inject] private AudioSignals _audioSignals { get; set; }
-
+    [Inject] private NavMeshAgent _navmeshAgent;
+    [Inject] private EnemySettings _settings;
+    [Inject] private EnemyAnimationController _animationController;
+    [Inject] private PoolSignals PoolSignals { get; set; }
+    [Inject] private EnemyInternalSignals _enemyInternalSignals;
     #endregion
 
     #region Public Variables
@@ -28,41 +32,33 @@ public class WizardAttackState : IState
     #endregion
 
     #region Private Variables
-    private NavMeshAgent _navmeshAgent;
     private Transform _playerTransform, _myTransform;
     private bool _isAttacking = false, _isBlocked = false;
     private float _attackDelay = 0f;
     private Conditions _conditions;
-    private EnemySettings _settings;
-    private EnemyAnimationController _animationController;
     private Transform _mageInitTransform;
-    private PoolSignals PoolSignals { get; set; }
-    private EnemyInternalSignals _enemyInternalSignals;
-    GameObject magic;
-    CancellationTokenSource cancellationToken;
-
-
+    private GameObject magic;
+    private CancellationTokenSource cancellationToken;
 
     #endregion
     #endregion
 
-    public WizardAttackState(NavMeshAgent agent, Transform playerTransform, Transform myTransform, Conditions conditions, EnemySettings settings, EnemyAnimationController animationController, PoolSignals poolSignals, Transform mageInitPos, EnemyInternalSignals enemyInternalSignals)
+    public WizardAttackState(Transform playerTransform, Transform myTransform, Conditions conditions, Transform mageInitPos)
     {
-        _navmeshAgent = agent;
         _playerTransform = playerTransform;
         _myTransform = myTransform;
         _conditions = conditions;
-        _settings = settings;
-        _animationController = animationController;
-        PoolSignals = poolSignals;
         _mageInitTransform = mageInitPos;
-        _enemyInternalSignals = enemyInternalSignals;
-        SubscribleEvents();
     }
 
     private void SubscribleEvents()
     {
         _enemyInternalSignals.onDisabled += OnDeath;
+    }
+
+    public void Initialize()
+    {
+        SubscribleEvents();
     }
 
     public void OnEnterState()

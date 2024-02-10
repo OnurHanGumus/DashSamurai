@@ -7,22 +7,24 @@ using Zenject;
 
 public class MoveCondition : ICondition
 {
+    #region Self Variables
+    #region Inject Variables
+    [Inject] private EnemyManager2 _manager;
+    [Inject] private EnemyPhysicsController _physicsController;
+    [Inject] private StateMachineInternalSignals _stateMachineInternalSignals;
+    [Inject] private EnemySettings _settings;
+    #endregion
+    #region Private Variables
     private Transform _myTransform, _playerTransform;
-    private EnemyManager2 _manager;
-    private EnemyPhysicsController _physicsController;
-    private StateMachineInternalSignals _stateMachineInternalSignals;
     private bool _condition;
-    private EnemySettings _settings;
+    #endregion
+    #endregion
 
     [Inject]
-    public MoveCondition(EnemyManager2 manager, EnemyPhysicsController physicsController, Transform playerTransform, Transform myTransform, StateMachineInternalSignals stateMachineInternalSignals, EnemySettings settings)
+    public MoveCondition(Transform playerTransform, Transform myTransform)
     {
-        _manager = manager;
-        _physicsController = physicsController;
         _playerTransform = playerTransform;
         _myTransform = myTransform;
-        _stateMachineInternalSignals = stateMachineInternalSignals;
-        _settings = settings;
     }
 
     public void IsSatisfied()

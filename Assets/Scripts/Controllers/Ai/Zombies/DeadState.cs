@@ -11,6 +11,7 @@ public class DeadState :IState
 
     #region Inject Variables
     [Inject] private EnemyAnimationController EnemyAnimationController;
+    [Inject] private NavMeshAgent _navmeshAgent;
 
     #endregion
 
@@ -22,14 +23,13 @@ public class DeadState :IState
     #endregion
 
     #region Private Variables
-    private NavMeshAgent _navmeshAgent;
 
     #endregion
     #endregion
 
-    public DeadState(NavMeshAgent agent)
+    public DeadState()
     {
-        _navmeshAgent = agent;
+
     }
 
     public bool IsItReadyToExit()

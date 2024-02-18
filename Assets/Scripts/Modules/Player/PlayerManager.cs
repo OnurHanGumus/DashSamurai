@@ -128,6 +128,7 @@ namespace Managers
         private void OnRestartLevel()
         {
             transform.position = playerInitializePosition;
+            transform.rotation = new Quaternion(0,0,0,0);
         }
     }
 }

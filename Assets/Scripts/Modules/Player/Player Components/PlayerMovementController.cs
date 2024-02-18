@@ -115,6 +115,7 @@ namespace Controllers
             _manager.IsMoving = false;
             Vector3 newPos = groundDetector.CurrentGround.transform.position;
             transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
+            Debug.Log("stop");
             _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashOut);
         }
 
@@ -129,6 +130,7 @@ namespace Controllers
         {
             [SerializeField] public float Speed = 1f;
             [SerializeField] public AnimationCurve SpeedCurve;
+            [SerializeField] public Quaternion InitialQuaternion;
         }
     }
 }

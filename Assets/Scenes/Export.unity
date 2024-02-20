@@ -838,7 +838,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 89123236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e1bb721e9e72c94c9c8c901f1dde1d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fad7243434860a4fa597902ff71a81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &93705045
@@ -15913,7 +15913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_Size.z
-      value: 0.6
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_Enabled
@@ -15925,7 +15925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1629147224, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_Center.z
-      value: 0.24551779
+      value: 0.2147689
       objectReference: {fileID: 0}
     - target: {fileID: 1629147225, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: collider

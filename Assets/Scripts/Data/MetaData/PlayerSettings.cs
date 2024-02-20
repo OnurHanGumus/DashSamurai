@@ -7,6 +7,8 @@ using Zenject;
 [CreateAssetMenu(fileName = "PlayerSettings", menuName = "ZenjectExample/PlayerSettings", order = 0)]
 public class PlayerSettings : ScriptableObject
 {
-    [SerializeField] public PlayerCameraController.Settings PlayerCameraControllerSettings;
-    [SerializeField] public PlayerMovementController.Settings PlayerMovementSettings;
+    [SerializeField] public Vector3 CameraOffset;
+    [SerializeField] public float Speed = 1f;
+    [SerializeField] public AnimationCurve SpeedCurve;
+    [SerializeField] public Quaternion InitialQuaternion;
 }

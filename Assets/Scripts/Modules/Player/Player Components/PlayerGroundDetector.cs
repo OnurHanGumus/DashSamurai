@@ -7,7 +7,7 @@ public class PlayerGroundDetector : MonoBehaviour
 {
     #region Self Variables
     #region Injected Variables
-    [Inject] private PlayerSignals PlayerSignals { get; set; }
+    [Inject] private PlayerSignals _playerSignals { get; set; }
     [Inject] private CoreGameSignals _coreGameSignals { get; set; }
 
     #endregion
@@ -17,7 +17,7 @@ public class PlayerGroundDetector : MonoBehaviour
     #endregion
 
     #region Serialized Variables
-    [SerializeField] private Collider collider;
+    [SerializeField] private Collider detector;
     #endregion
 
     #region Private Variables
@@ -35,12 +35,12 @@ public class PlayerGroundDetector : MonoBehaviour
 
     private void SubscribeEvents()
     {
-        _coreGameSignals.onPlay += EnableCollider;
+        _coreGameSignals.onPlay += EnableDetector;
     }
 
     private void UnsubscribeEvents()
     {
-        _coreGameSignals.onPlay -= EnableCollider;
+        _coreGameSignals.onPlay -= EnableDetector;
     }
 
     private void OnDisable()
@@ -55,9 +55,8 @@ public class PlayerGroundDetector : MonoBehaviour
     {
         if (!other.CompareTag("Ground"))
         {
-            Debug.Log("stopped");
-            PlayerSignals.onPlayerStopped?.Invoke();
-            PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
+            _playerSignals.onPlayerStopped?.Invoke();
+            _playerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
         }
 
         if (other.CompareTag("Ground"))
@@ -66,13 +65,8 @@ public class PlayerGroundDetector : MonoBehaviour
         }
     }
 
-    private void EnableCollider()
+    private void EnableDetector()
     {
-        collider.enabled = true;
-    }
-
-    private void DisableCollider()
-    {
-        collider.enabled = false;
+        detector.enabled = true;
     }
 }

@@ -12,11 +12,10 @@ namespace Controllers
         [Inject] private PlayerSignals PlayerSignals { get; set; }
         [Inject] private PlayerSettings PlayerSettings { get; set; }
 
-        private Settings _mySettings;
 
         private void Awake()
         {
-            _mySettings = PlayerSettings.PlayerCameraControllerSettings;
+
         }
 
         private void OnEnable()
@@ -31,26 +30,12 @@ namespace Controllers
 
         private void RegisterEvents()
         {
-            //MainSceneEvents.GameLoaded += OnGameLoaded;
-        }
 
-        //private void OnGameLoaded(){
-        //loadPlayer
-        //}
-        
-        private void OnPlayerMove(Vector3 playerPos)
-        {
-            _myTransform.position = playerPos + _mySettings.CameraOffset;
         }
 
         private void UnRegisterEvents()
         {
-        }
 
-        [Serializable]
-        public class Settings
-        {
-            [SerializeField] public Vector3 CameraOffset;
         }
     }
 }

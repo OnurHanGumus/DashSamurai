@@ -17,10 +17,9 @@ namespace Installers.Scenes
         [SerializeField] private SphereCollider poisonParticleCollider;
 
         private BulletSettings _bulletSettings;
+        private PlayerSettings _playerSettings;
         private AbilitySettings _abilitySettings;
         private CD_EnemySpawn _enemySpawnSettings;
-        
-
 
         public override void InstallBindings()
         {
@@ -91,6 +90,10 @@ namespace Installers.Scenes
 
             _abilitySettings = Resources.Load<AbilitySettings>("Data/MetaData/AbilitySettings");
             Container.BindInstance(_abilitySettings).AsSingle();
+
+            _playerSettings = Resources.Load<PlayerSettings>("Data/MetaData/PlayerSettings");
+            Container.BindInstance(_playerSettings).AsSingle();
+
         }
     }
 }

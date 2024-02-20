@@ -15931,6 +15931,10 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 353826777}
+    - target: {fileID: 1629147225, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
+      propertyPath: detector
+      value: 
+      objectReference: {fileID: 353826777}
     - target: {fileID: 1844191676487986, guid: a865b51e48b6f2c45b965a2ac6bd888c, type: 3}
       propertyPath: m_IsActive
       value: 0

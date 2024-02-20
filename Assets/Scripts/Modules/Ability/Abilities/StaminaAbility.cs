@@ -7,7 +7,7 @@ public class StaminaAbility : AbilityBase
 {
     #region Self Variables
     #region Injected Variables
-
+    [Inject] private PlayerSettings _playerSettings;
     #endregion
 
     #region Public Variables
@@ -17,6 +17,7 @@ public class StaminaAbility : AbilityBase
 
     #endregion
     #region Private Variables
+    private float _tempSpeed;
     #endregion
     #endregion
 
@@ -35,6 +36,8 @@ public class StaminaAbility : AbilityBase
     public override void Activated()
     {
         Debug.Log("Stamina is Activated");
+        _tempSpeed = _playerSettings.Speed;
+        _playerSettings.Speed = _abilitySettings.AbilityDatas[(int)CollectableEnums.EndlessStamina].Value;
         base.Activated();
     }
 
@@ -45,6 +48,7 @@ public class StaminaAbility : AbilityBase
 
     public override void Deactivated()
     {
+        _playerSettings.Speed = _tempSpeed;
         base.Deactivated();
     }
 

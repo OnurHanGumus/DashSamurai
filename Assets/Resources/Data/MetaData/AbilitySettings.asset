@@ -18,14 +18,14 @@ MonoBehaviour:
     Duration: 10
     Value: 0
   - Type: 1
-    IsActivated: 1
+    IsActivated: 0
     Duration: 10
-    Value: 100
+    Value: 30
   - Type: 2
     IsActivated: 0
     Duration: 10
     Value: 10
   - Type: 3
-    IsActivated: 0
+    IsActivated: 1
     Duration: 10
     Value: 200

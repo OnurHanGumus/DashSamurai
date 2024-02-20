@@ -14,7 +14,6 @@ namespace Controllers
         [Inject] private PlayerSignals PlayerSignals { get; set; }
         [Inject] private AudioSignals _audioSignals { get; set; }
 
-        private Settings _mySettings;
         #region Self Variables
 
         #region Serialized Variables
@@ -44,7 +43,6 @@ namespace Controllers
         {
             _rig = GetComponent<Rigidbody>();
             _manager = GetComponent<PlayerManager>();
-            _mySettings = PlayerSettings.PlayerMovementSettings;
         }
 
         private void FixedUpdate()
@@ -61,7 +59,7 @@ namespace Controllers
                 return;
             }
 
-            _rig.velocity = (isPlayerStopped ? 0 : 1) * _input * _mySettings.Speed *_mySettings.SpeedCurve.Evaluate(_currentTime);
+            _rig.velocity = (isPlayerStopped ? 0 : 1) * _input * PlayerSettings.Speed * PlayerSettings.SpeedCurve.Evaluate(_currentTime);
         }
 
         public void OnPlay()
@@ -115,7 +113,6 @@ namespace Controllers
             _manager.IsMoving = false;
             Vector3 newPos = groundDetector.CurrentGround.transform.position;
             transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
-            Debug.Log("stop");
             _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashOut);
         }
 

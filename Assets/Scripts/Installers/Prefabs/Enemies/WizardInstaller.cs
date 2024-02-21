@@ -29,7 +29,7 @@ namespace Installers.Prefabs
 
         protected override void BindData()
         {
-            _enemySettings = Resources.Load<EnemySettings>("Data/MetaData/WizardSettings");
+            _enemySettings = Resources.Load<EnemySettings>("Data/Enemies/WizardSettings");
             Container.BindInstance(_enemySettings).AsSingle();
         }
 

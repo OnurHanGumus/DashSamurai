@@ -80,13 +80,13 @@ namespace Installers.Scenes
 
         private void BindSettings()
         {
-            _enemySpawnSettings = Resources.Load<CD_EnemySpawn>("Data/MetaData/EnemySpawnSettings");
+            _enemySpawnSettings = Resources.Load<CD_EnemySpawn>("Data/EnemySpawnSettings");
             Container.BindInstance(_enemySpawnSettings).AsSingle();
 
-            _abilitySettings = Resources.Load<AbilitySettings>("Data/MetaData/AbilitySettings");
+            _abilitySettings = Resources.Load<AbilitySettings>("Data/AbilitySettings");
             Container.BindInstance(_abilitySettings).AsSingle();
 
-            _playerSettings = Resources.Load<PlayerSettings>("Data/MetaData/PlayerSettings");
+            _playerSettings = Resources.Load<PlayerSettings>("Data/PlayerSettings");
             Container.BindInstance(_playerSettings).AsSingle();
         }
     }

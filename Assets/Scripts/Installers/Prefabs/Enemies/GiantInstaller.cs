@@ -26,7 +26,7 @@ namespace Installers.Prefabs
 
         protected override void BindData()
         {
-            _enemySettings = Resources.Load<EnemySettings>("Data/MetaData/GiantSettings");
+            _enemySettings = Resources.Load<EnemySettings>("Data/Enemies/GiantSettings");
             Container.BindInstance(_enemySettings).AsSingle();
         }
 

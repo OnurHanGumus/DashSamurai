@@ -11,9 +11,8 @@ namespace Installers.Prefabs
 
         public override void InstallBindings()
         {
-            _wizardSettings = Resources.Load<EnemySettings>("Data/MetaData/WizardSettings");
+            _wizardSettings = Resources.Load<EnemySettings>("Data/Enemies/WizardSettings");
             Container.BindInstance(_wizardSettings).AsSingle();
-
         }
     }
 }

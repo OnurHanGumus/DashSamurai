@@ -62,7 +62,7 @@ namespace Installers.Prefabs
 
         protected virtual void BindData()
         {
-            _enemySettings = Resources.Load<EnemySettings>("Data/MetaData/ZombieSettings");
+            _enemySettings = Resources.Load<EnemySettings>("Data/Enemies/ZombieSettings");
             Container.BindInstance(_enemySettings).AsSingle();
         }
 

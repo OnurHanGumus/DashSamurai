@@ -25,7 +25,7 @@ namespace Installers.Prefabs
 
         protected override void BindData()
         {
-            _enemySettings = Resources.Load<EnemySettings>("Data/MetaData/ZombieSettings");
+            _enemySettings = Resources.Load<EnemySettings>("Data/Enemies/ZombieSettings");
             Container.BindInstance(_enemySettings).AsSingle();
         }
 

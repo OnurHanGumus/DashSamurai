@@ -32,7 +32,6 @@ namespace Managers
         #endregion
 
         #region Private Variables
-        private ScoreData _data;
         private int _gem;
         public int Gem
         {

@@ -1,4 +1,3 @@
-using Data.MetaData;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;

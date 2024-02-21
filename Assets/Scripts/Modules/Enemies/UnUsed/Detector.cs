@@ -4,7 +4,6 @@ using UnityEngine;
 using Zenject;
 using Enums;
 using System;
-using Data.MetaData;
 using Components.Enemies;
 using Signals;
 using System.Threading.Tasks;

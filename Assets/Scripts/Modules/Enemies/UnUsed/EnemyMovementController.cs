@@ -1,5 +1,4 @@
 using Components.Enemies;
-using Data.MetaData;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;

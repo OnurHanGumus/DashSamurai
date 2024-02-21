@@ -1,5 +1,4 @@
-﻿using Data.MetaData;
-using Managers;
+﻿using Managers;
 using Signals;
 using System;
 using UnityEngine;

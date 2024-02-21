@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 using Enums;
-using Data.MetaData;
 
 public class AttackState : IState
 {

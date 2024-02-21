@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using Controllers;
-using Data.MetaData;
 
 public class BomberAttackCondition : ICondition
 {

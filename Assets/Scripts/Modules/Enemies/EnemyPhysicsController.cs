@@ -4,7 +4,6 @@ using Zenject;
 using Signals;
 using System.Threading.Tasks;
 using Components.Enemies;
-using Data.MetaData;
 using System;
 
 public class EnemyPhysicsController : MonoBehaviour, IAttackable

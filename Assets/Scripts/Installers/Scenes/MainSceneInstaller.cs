@@ -1,6 +1,5 @@
 using Zenject;
 using UnityEngine;
-using Data.MetaData;
 using Signals;
 
 namespace Installers.Scenes
@@ -16,7 +15,6 @@ namespace Installers.Scenes
 
         [SerializeField] private SphereCollider poisonParticleCollider;
 
-        private BulletSettings _bulletSettings;
         private PlayerSettings _playerSettings;
         private AbilitySettings _abilitySettings;
         private CD_EnemySpawn _enemySpawnSettings;
@@ -82,9 +80,6 @@ namespace Installers.Scenes
 
         private void BindSettings()
         {
-            _bulletSettings = Resources.Load<BulletSettings>("Data/MetaData/BulletSettings");
-            Container.BindInstance(_bulletSettings).AsSingle();
-
             _enemySpawnSettings = Resources.Load<CD_EnemySpawn>("Data/MetaData/EnemySpawnSettings");
             Container.BindInstance(_enemySpawnSettings).AsSingle();
 
@@ -93,7 +88,6 @@ namespace Installers.Scenes
 
             _playerSettings = Resources.Load<PlayerSettings>("Data/MetaData/PlayerSettings");
             Container.BindInstance(_playerSettings).AsSingle();
-
         }
     }
 }

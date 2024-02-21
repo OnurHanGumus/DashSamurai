@@ -1,4 +1,3 @@
-using Data.MetaData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

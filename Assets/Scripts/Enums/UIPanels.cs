@@ -1,20 +1,16 @@
 using System;
 
-namespace Enums
+[Serializable]
+public enum UIPanels
 {
-    [Serializable]
-    public enum UIPanels
-    {
-        StartPanel,
-        LevelPanel,
-        PausePanel,
-        WinPanel,
-        FailPanel,
-        //MiniGamePanel,
-        HighScorePanel,
-        OptionsPanel,
-        GameOverPanel,
-        BoomerangPanel,
-        StorePanel,
-    }
+    StartPanel,
+    LevelPanel,
+    PausePanel,
+    WinPanel,
+    FailPanel,
+    HighScorePanel,
+    OptionsPanel,
+    GameOverPanel,
+    BoomerangPanel,
+    StorePanel,
 }

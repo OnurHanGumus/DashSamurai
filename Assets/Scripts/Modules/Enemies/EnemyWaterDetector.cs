@@ -66,7 +66,7 @@ public class EnemyWaterDetector : MonoBehaviour
                     return;
                 }
 
-                _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.WaterSplash);
+                _audioSignals.onPlaySound?.Invoke(AudioSoundEnums.WaterSplash);
                 GameObject particle = _poolSignals.onGetObject(PoolEnums.WaterSplash, hitPoint);
                 particle.SetActive(true);
                 _isDropable = false;

@@ -1,12 +1,8 @@
 using System;
 
-namespace Enums
+[Serializable]
+public enum SaveFiles
 {
-    [Serializable]
-    public enum SaveFiles
-    {
-        SaveFile,
-        GameOptions,
-
-    }
+    SaveFile,
+    GameOptions,
 }

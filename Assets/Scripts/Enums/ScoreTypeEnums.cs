@@ -1,12 +1,9 @@
 using System;
 
-namespace Enums
+[Serializable]
+public enum ScoreTypeEnums
 {
-    [Serializable]
-    public enum ScoreTypeEnums
-    {
-        Money,
-        Gem,
-        Score,
-    }
+    Money,
+    Gem,
+    Score,
 }

@@ -1,16 +1,13 @@
 using System;
 
-namespace Enums
+[Serializable]
+public enum SaveLoadStates
 {
-    [Serializable]
-    public enum SaveLoadStates
-    {
-        Score,
-        //Options
-        SoundState,
-        Level,
-        Gem,
-        BuyItem,
-        SelectedItem,
-    }
+    Score,
+    //Options
+    SoundState,
+    Level,
+    Gem,
+    BuyItem,
+    SelectedItem,
 }

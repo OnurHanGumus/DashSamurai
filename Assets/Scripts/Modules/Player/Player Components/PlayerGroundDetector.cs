@@ -56,7 +56,7 @@ public class PlayerGroundDetector : MonoBehaviour
         if (!other.CompareTag("Ground"))
         {
             _playerSignals.onPlayerStopped?.Invoke();
-            _playerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Attack);
+            _playerSignals.onChangeAnimation?.Invoke(PlayerAnimationStates.Attack);
         }
 
         if (other.CompareTag("Ground"))

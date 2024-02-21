@@ -97,12 +97,12 @@ namespace Controllers
             _pastInput = _input;
             transform.LookAt(transform.localPosition + _input);
 
-            PlayerSignals.onChangeAnimation?.Invoke(Enums.PlayerAnimationStates.Move);
+            PlayerSignals.onChangeAnimation?.Invoke(PlayerAnimationStates.Move);
             _currentTime = 0f;
             isPlayerStopped = false;
             _manager.IsMoving = true;
             PlayerSignals.onUseAbility?.Invoke(-30);
-            _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashIn);
+            _audioSignals.onPlaySound?.Invoke(AudioSoundEnums.DashIn);
         }
 
         public void OnPlayerStopped()
@@ -112,7 +112,7 @@ namespace Controllers
             _manager.IsMoving = false;
             Vector3 newPos = groundDetector.CurrentGround.transform.position;
             transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
-            _audioSignals.onPlaySound?.Invoke(Enums.AudioSoundEnums.DashOut);
+            _audioSignals.onPlaySound?.Invoke(AudioSoundEnums.DashOut);
         }
 
         public void OnRestartLevel()

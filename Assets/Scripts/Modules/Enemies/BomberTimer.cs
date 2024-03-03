@@ -35,6 +35,11 @@ public class BomberTimer : MonoBehaviour, ITimer
 
     private void Awake()
     {
+        Init();
+    }
+
+    private void Init()
+    {
         _particleInitializeScale = fireParticle.transform.localScale;
     }
 
@@ -80,7 +85,9 @@ public class BomberTimer : MonoBehaviour, ITimer
         if (_lastTimeValue - (int)_timer == 1)
         {
             _lastTimeValue = (int)_timer;
-            fireParticle.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f); 
+            fireParticle.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            onTimeUpdated.Invoke((int)_timer);
+
         }
 
         if (_timer <= 1)

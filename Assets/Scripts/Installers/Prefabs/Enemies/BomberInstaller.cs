@@ -7,6 +7,8 @@ namespace Installers.Prefabs
 {
     public class BomberInstaller : EnemyInstaller
     {
+        private BomberUiSettings _bomberUiSettings;
+
         public override void InstallBindings()
         {
 
@@ -28,6 +30,9 @@ namespace Installers.Prefabs
         {
             _enemySettings = Resources.Load<EnemySettings>("Data/Enemies/BomberSettings");
             Container.BindInstance(_enemySettings).AsSingle();
+
+            _bomberUiSettings = Resources.Load<BomberUiSettings>("Data/Enemies/BomberUiSettings");
+            Container.BindInstance(_bomberUiSettings).AsSingle();
         }
 
         protected override void BindReferences()

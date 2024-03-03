@@ -1031,7 +1031,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    WaveDuration: 50
+    WaveDuration: 1000
     WaveScale: 0.5
   TimeBetweenWaves: 1
   WaveTextShowingTime: 1

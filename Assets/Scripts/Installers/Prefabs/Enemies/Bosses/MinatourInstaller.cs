@@ -39,9 +39,11 @@ namespace Installers.Prefabs
             base.BindConditions();
         }
 
-        protected override void BindTransitions()
+        protected virtual void BindTransitions()
         {
-            base.BindTransitions();
+            conditionInMoveState = new Conditions(attackCondition, deadCondition);
+            conditionInAttackState = new Conditions(moveCondition, deadCondition);
+            conditionInAnyState = new Conditions(moveCondition, deadCondition, attackCondition);
         }
 
         protected override void BindStates()

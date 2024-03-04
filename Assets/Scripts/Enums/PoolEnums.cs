@@ -26,4 +26,6 @@ public enum PoolEnums
     Hit,
     WizardDieParticle,
     VampireDieParticle,
+
+    Minotaur,
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   AttackRotatableTime: 1.2
   AnyStateDuration: 1
   DeathDuration: 1
-  AttackPower: 10
+  AttackPower: 30
   Health: 10
   MoveSpeed: 7.53
   AttackDistance: 4.6

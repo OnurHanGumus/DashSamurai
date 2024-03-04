@@ -6,7 +6,6 @@ namespace Installers.Scenes
 {
     public class MainSceneInstaller : MonoInstaller<MainSceneInstaller>
     {
-        [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private Transform playerTransform;
 
@@ -50,6 +49,7 @@ namespace Installers.Scenes
             Container.BindInterfacesAndSelfTo<WaveManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemySpawnManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<CollectableSpawnManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BossSpawnManager>().AsSingle();
             Container.BindInstance(playerTransform).WithId("Player").AsSingle();
             #region Abilities
 

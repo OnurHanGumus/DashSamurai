@@ -20,8 +20,17 @@ public struct WaveData
         public Vector3 Position;
     }
 
+    [System.Serializable]
+    public struct Bosses
+    {
+        public BossTypeEnums BossType;
+        public int SecondToInstantiate;
+        public Vector3 Position;
+    }
+
     public List<Enemies> SpawnableEnemies;
     public List<Collectables> SpawnableCollectables;
+    public List<Bosses> SpawnBosses;
     public AnimationCurve SpawnDelay;
     public int WaveDuration;
     public float WaveScale;

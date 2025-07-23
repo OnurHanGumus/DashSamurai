@@ -130,6 +130,7 @@ namespace Managers
         {
             CoreGameSignals.onRestart?.Invoke();
             UISignals.onClosePanel?.Invoke(UIPanels.FailPanel);
+            UISignals.onClosePanel?.Invoke(UIPanels.LevelPanel);
             UISignals.onOpenPanel?.Invoke(UIPanels.StartPanel);
         }
 

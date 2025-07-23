@@ -58,7 +58,7 @@ namespace Controllers
                 return;
             }
 
-            _rig.velocity = (isPlayerStopped ? 0 : 1) * _input * PlayerSettings.Speed * PlayerSettings.SpeedCurve.Evaluate(_currentTime);
+            _rig.linearVelocity = (isPlayerStopped ? 0 : 1) * _input * PlayerSettings.Speed * PlayerSettings.SpeedCurve.Evaluate(_currentTime);
         }
 
         public void OnPlay()
@@ -107,7 +107,7 @@ namespace Controllers
 
         public void OnPlayerStopped()
         {
-            _rig.velocity = Vector3.zero;
+            _rig.linearVelocity = Vector3.zero;
             isPlayerStopped = true;
             _manager.IsMoving = false;
             Vector3 newPos = groundDetector.CurrentGround.transform.position;
